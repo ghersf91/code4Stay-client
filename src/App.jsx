@@ -1,13 +1,15 @@
 import './App.css';
-import HomePage from './Pages/HomePage/HomePage';
+import Footer from './Components/Footer/Footer';
 import Navigation from './Components/Navigation/Navigation';
+import AppRoutes from './Routes/AppRoutes';
 
 
 function App() {
   return (
     <div className="App">
       <Navigation />
-      <HomePage />
+      <AppRoutes />
+      <Footer />
     </div>
   );
 }
