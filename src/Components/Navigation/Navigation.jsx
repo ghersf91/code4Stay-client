@@ -17,7 +17,10 @@ const Navigation = () => {
                             <Nav.Link as="span">Projects</Nav.Link>
                         </Link>
                         <Link to="/signup">
-                            <Nav.Link as="span">Register</Nav.Link>
+                            <Nav.Link as="span">Sign up</Nav.Link>
+                        </Link>
+                        <Link to="/login">
+                            <Nav.Link as="span">Login</Nav.Link>
                         </Link>
                     </Nav>
                 </Navbar.Collapse>

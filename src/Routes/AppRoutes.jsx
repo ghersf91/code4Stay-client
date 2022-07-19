@@ -4,6 +4,7 @@ import SignupPage from '../Pages/SignupPage/SignupPage'
 import HomePage from './../Pages/HomePage/HomePage'
 import ProjectsPage from './../Pages/ProjectsPage/ProjectsPage'
 import CreateProjectPage from './../Pages/CreateProjectPage/CreateProjectPage'
+import LoginPage from '../Pages/LoginPage/LoginPage'
 
 
 const AppRoutes = () => {
@@ -21,6 +22,9 @@ const AppRoutes = () => {
             </Routes>
             <Routes>
                 <Route path="/signup" element={<SignupPage />} />
+            </Routes>
+            <Routes>
+                <Route path="/login" element={<LoginPage />} />
             </Routes>
         </>
 
