@@ -37,7 +37,7 @@ const ProjectPage = () => {
     }
     return (
         <>
-            <ProjectsList />
+            <ProjectsList projects={projects} />
         </>
     )
 }

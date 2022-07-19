@@ -33,11 +33,16 @@ const CreateProjectForm = ({ fireFinalActions }) => {
             .catch(ERR => console.error(ERR))
     }
 
-    const { site, projectType, hoursPerWeek, description, minWeeks, mealsIncluded, shelterType, gallery, languagesSpoken } = projectData
+    const { site, projectName, projectType, hoursPerWeek, description, minWeeks, mealsIncluded, shelterType, gallery, languagesSpoken } = projectData
 
     return (
 
         <Form onSubmit={handleSubmit}>
+
+            <Form.Group className='mb-3' controlId='projectName'>
+                <Form.Label>Project name</Form.Label>
+                <Form.Control type='text' value={projectName} onChange={handleChange} name='projectName' />
+            </Form.Group>
 
             <Form.Group className='mb-3' controlId='site'>
                 <Form.Label>Site</Form.Label>
@@ -51,20 +56,26 @@ const CreateProjectForm = ({ fireFinalActions }) => {
 
             <Row>
 
-                <Form.Group className='mb-3' controlId='projectType'>
-                    <Form.Label>Project type</Form.Label>
-                    <Form.Control type='text' value={projectType} onChange={handleChange} name='projectType' />
-                </Form.Group>
+                <Col>
+                    <Form.Group className='mb-3' controlId='projectType'>
+                        <Form.Label>Project type</Form.Label>
+                        <Form.Control type='text' value={projectType} onChange={handleChange} name='projectType' />
+                    </Form.Group>
+                </Col>
 
-                <Form.Group className='mb-3' controlId='hoursPerWeek'>
-                    <Form.Label>Hours per week</Form.Label>
-                    <Form.Control type='number' value={hoursPerWeek} onChange={handleChange} name='hoursPerWeek' />
-                </Form.Group>
+                <Col>
+                    <Form.Group className='mb-3' controlId='hoursPerWeek'>
+                        <Form.Label>Hours per week</Form.Label>
+                        <Form.Control type='number' value={hoursPerWeek} onChange={handleChange} name='hoursPerWeek' />
+                    </Form.Group>
+                </Col>
 
-                <Form.Group className='mb-3' controlId='minWeeks'>
-                    <Form.Label>Minimum weeks</Form.Label>
-                    <Form.Control type='number' value={minWeeks} onChange={handleChange} name='minWeeks' />
-                </Form.Group>
+                <Col>
+                    <Form.Group className='mb-3' controlId='minWeeks'>
+                        <Form.Label>Minimum weeks</Form.Label>
+                        <Form.Control type='number' value={minWeeks} onChange={handleChange} name='minWeeks' />
+                    </Form.Group>
+                </Col>
 
             </Row>
 
