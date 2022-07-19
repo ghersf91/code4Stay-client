@@ -1,7 +1,21 @@
+import { useContext } from 'react'
 import { Nav, Navbar, Container } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import { AuthContext } from '../../Context/auth.context'
+import { MessageContext } from '../../Context/userMessage.context'
+
 
 const Navigation = () => {
+
+    const { user, logoutUser } = useContext(AuthContext)
+    const { setShowMessage } = useContext(MessageContext)
+
+
+    const logout = () => {
+        setShowMessage({ show: true, title: 'Until nex time', text: 'your session was closed successfully' })
+        logoutUser()
+    }
+
 
     return (
         <Navbar bg="dark" expand="md" variant="dark" className='mb-5'>
@@ -19,12 +33,27 @@ const Navigation = () => {
                         <Link to="/projects/create">
                             <Nav.Link as="span">Create project</Nav.Link>
                         </Link>
-                        <Link to="/signup">
-                            <Nav.Link as="span">Sign up</Nav.Link>
-                        </Link>
-                        <Link to="/login">
-                            <Nav.Link as="span">Login</Nav.Link>
-                        </Link>
+                        {
+                            !user ?
+                                <>
+                                    <Link to="/signup">
+                                        <Nav.Link as="span">Sign up</Nav.Link>
+                                    </Link>
+                                    <Link to="/login">
+                                        <Nav.Link as="span">Login</Nav.Link>
+                                    </Link>
+                                </> :
+                                <>
+                                    <Link to="/">
+                                        <Nav.Link as="span">My profile {user.username}</Nav.Link>
+                                    </Link>
+                                    <Nav.Link as="span" onClick={logout}>Cerrar sesión</Nav.Link>
+
+                                </>
+
+                        }
+
+
                     </Nav>
                 </Navbar.Collapse>
             </Container>
