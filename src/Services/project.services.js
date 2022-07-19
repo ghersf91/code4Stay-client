@@ -7,6 +7,17 @@ class ProjectService {
         this.api = axios.create({
             baseURL: `${process.env.REACT_APP_API_URL}/projects`
         })
+
+        this.api.interceptors.request.use((config) => {
+
+            const storedToken = localStorage.getItem("authToken");
+
+            if (storedToken) {
+                config.headers = { Authorization: `Bearer ${storedToken}` }
+            }
+
+            return config
+        })
     }
 
     getProjects() {
