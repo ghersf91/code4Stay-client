@@ -1,9 +1,12 @@
 import ProjectsList from "../../Components/ProjectsList/ProjectList"
 import { useState, useEffect, useContext } from "react"
 import projectsService from "../../Services/project.services"
+import { Container, Modal } from 'react-bootstrap'
+
 
 import { MessageContext } from "./../../Context/userMessage.context"
 import { AuthContext } from "./../../Context/auth.context"
+import CreateProjectForm from "../../Components/CreateProjectForm/CreateProjectForm"
 
 
 const ProjectPage = () => {
@@ -38,6 +41,16 @@ const ProjectPage = () => {
     return (
         <>
             <ProjectsList projects={projects} />
+
+            <Modal show={showModal} onHide={closeModal}>
+                <Modal.Header closeButton>
+                    <Modal.Title>New project</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <CreateProjectForm fireFinalActions={fireFinalActions} />
+                </Modal.Body>
+            </Modal>
+
         </>
     )
 }
