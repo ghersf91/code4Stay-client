@@ -7,8 +7,7 @@ const AuthContext = createContext()
 function AuthProviderWrapper(props) {
 
     const [user, setUser] = useState(null)
-
-
+    const [isLoading, setIsLoading] = useState(true)
 
     const storeToken = (token) => {
         localStorage.setItem("authToken", token)
@@ -20,12 +19,16 @@ function AuthProviderWrapper(props) {
 
         authService
             .verify(token)
-            .then(({ data }) => setUser(data))
-            .catch(err => console.error(err))
+            .then(({ data }) => {
+                setUser(data)
+                setIsLoading(false)
+            })
+            .catch(err => logoutUser())
     }
 
     const logoutUser = () => {
         setUser(null)
+        setIsLoading(false)
         localStorage.removeItem('authToken')
     }
 
@@ -34,7 +37,7 @@ function AuthProviderWrapper(props) {
     }, [])
 
     return (
-        <AuthContext.Provider value={{ user, storeToken, authenticateUser, logoutUser }}>
+        <AuthContext.Provider value={{ isLoading, user, storeToken, authenticateUser, logoutUser }}>
             {props.children}
         </AuthContext.Provider>
     )
