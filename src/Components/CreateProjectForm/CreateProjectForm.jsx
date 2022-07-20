@@ -2,6 +2,7 @@ import { Form, Button, Row, Col, Container } from 'react-bootstrap'
 import { useState } from 'react'
 import projectsService from './../../Services/project.services'
 import './CreateProjectForm.css'
+import uploadService from './../../Services/upload.services'
 
 
 const CreateProjectForm = ({ fireFinalActions }) => {
@@ -58,12 +59,23 @@ const CreateProjectForm = ({ fireFinalActions }) => {
             .catch(ERR => console.error(ERR))
     }
 
+    const handleFileInput = e => {
+
+        const formData = new FormData()
+        formData.append('imageData', e.target.files[0])
+
+        uploadService
+            .uploadImage(formData)
+            .then(({ data }) => console.log(data))
+            .catch(err => console.log(err))
+    }
+
     const { site, projectName, projectType, hoursPerWeek, description, minWeeks, mealsIncluded, shelterType, gallery, languagesSpoken } = projectData
 
     return (
         <Container>
             <Form onSubmit={handleSubmit}>
-
+                <h1>New Project</h1>
                 <Form.Group className='mb-3' controlId='projectName'>
                     <Form.Label>Project name</Form.Label>
                     <Form.Control type='text' value={projectName} onChange={handleChange} name='projectName' />
@@ -152,9 +164,14 @@ const CreateProjectForm = ({ fireFinalActions }) => {
                     <Form.Control type='text' value={shelterType} onChange={handleChange} name='shelterType' />
                 </Form.Group>
 
-                <Form.Group className='mb-3' controlId='gallery'>
+                {/* <Form.Group className='mb-3' controlId='gallery'>
                     <Form.Label>Photos (URL)</Form.Label>
                     <Form.Control type='text' value={gallery} onChange={handleChange} name='gallery' />
+                </Form.Group> */}
+
+                <Form.Group className='mb-3' controlId='gallery'>
+                    <Form.Label>Photos (Files)</Form.Label>
+                    <Form.Control type='file' onChange={handleFileInput} name='gallery' />
                 </Form.Group>
 
                 <Form.Group className='mb-3' controlId='languagesSpoken'>
