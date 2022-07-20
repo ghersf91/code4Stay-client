@@ -1,9 +1,12 @@
-import { Card, Row, Col, Button } from 'react-bootstrap'
+import { Card, Row, Col, Button, ButtonGroup } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import { useContext } from 'react'
+import { AuthContext } from './../../Context/auth.context'
 
 
 const ProjectCard = ({ project }) => {
-    console.log(project.description)
+
+    const { user } = useContext(AuthContext)
     return (
 
         <Row xs={1} md={1} className="g-4">
@@ -19,7 +22,23 @@ const ProjectCard = ({ project }) => {
                             </Card.Text>
                             <Link to={`#`}>
                                 <div className="d-grid">
-                                    <Button variant="dark" size="sm" as="div">See more</Button>
+
+                                    {
+                                        user && project.owner === user._id
+                                            ?
+                                            <ButtonGroup>
+                                                <Link to={`/projects/${project._id}/details`}>
+                                                    <Button size="sm" variant="dark">Details</Button>
+                                                </Link>
+                                                <Link to={`/projects/${project._id}/edit`}>
+                                                    <Button size="sm" variant="warning">Edit</Button>
+                                                </Link>
+                                            </ButtonGroup>
+                                            :
+                                            <Link to={`/projects/${project._id}/details`}>
+                                                <Button variant="dark" size="sm" as="div">Details</Button>
+                                            </Link>
+                                    }
                                 </div>
                             </Link>
                         </Card.Body>

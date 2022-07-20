@@ -30,9 +30,7 @@ const Navigation = () => {
                         <Link to="/projects">
                             <Nav.Link as="span">Projects</Nav.Link>
                         </Link>
-                        <Link to="/projects/create">
-                            <Nav.Link as="span">Create project</Nav.Link>
-                        </Link>
+
                         {
                             !user ?
                                 <>
@@ -44,6 +42,9 @@ const Navigation = () => {
                                     </Link>
                                 </> :
                                 <>
+                                    <Link to="/projects/create">
+                                        <Nav.Link as="span">Create project</Nav.Link>
+                                    </Link>
                                     <Link to="/">
                                         <Nav.Link as="span">My profile {user.username}</Nav.Link>
                                     </Link>
