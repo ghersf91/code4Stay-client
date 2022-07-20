@@ -1,5 +1,5 @@
 import { useContext, useState } from "react"
-import { Form, Button } from "react-bootstrap"
+import { Form, Button, Container } from "react-bootstrap"
 import { useNavigate } from 'react-router-dom'
 import { MessageContext } from "../../Context/userMessage.context"
 import authService from "./../../Services/auth.services"
@@ -39,31 +39,34 @@ const SignupForm = () => {
 
 
     return (
-        <Form onSubmit={handleSubmit}>
+        <Container>
+            <Form onSubmit={handleSubmit}>
+                <h1>Sign Up</h1>
 
-            <Form.Group className="mb-3" controlId="username">
-                <Form.Label>Username</Form.Label>
-                <Form.Control type="text" value={username} onChange={handleInputChange} name="username" />
-            </Form.Group>
-
-
-            <Form.Group className="mb-3" controlId="password">
-                <Form.Label>Password</Form.Label>
-                <Form.Control type="password" value={password} onChange={handleInputChange} name="password" />
-            </Form.Group>
+                <Form.Group className="mb-3" controlId="username">
+                    <Form.Label>Username</Form.Label>
+                    <Form.Control type="text" value={username} onChange={handleInputChange} name="username" />
+                </Form.Group>
 
 
-            <Form.Group className="mb-3" controlId="email">
-                <Form.Label>Email</Form.Label>
-                <Form.Control type="email" value={email} onChange={handleInputChange} name="email" />
-            </Form.Group>
+                <Form.Group className="mb-3" controlId="password">
+                    <Form.Label>Password</Form.Label>
+                    <Form.Control type="password" value={password} onChange={handleInputChange} name="password" />
+                </Form.Group>
 
 
-            <div className="d-grid">
-                <Button variant="dark" type="submit">Register</Button>
-            </div>
+                <Form.Group className="mb-3" controlId="email">
+                    <Form.Label>Email</Form.Label>
+                    <Form.Control type="email" value={email} onChange={handleInputChange} name="email" />
+                </Form.Group>
 
-        </Form>
+
+                <div className="d-grid">
+                    <Button variant="dark" type="submit">Register</Button>
+                </div>
+
+            </Form>
+        </Container>
     )
 }
 

@@ -18,7 +18,6 @@ const CreateProjectPage = () => {
     }
     return (
         <>
-            <h1>Create project</h1>
             <CreateProjectForm fireFinalActions={fireFinalActions} />
         </>
     )
