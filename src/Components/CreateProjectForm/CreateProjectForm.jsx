@@ -1,6 +1,7 @@
 import { Form, Button, Row, Col } from 'react-bootstrap'
 import { useState } from 'react'
 import projectsService from './../../Services/project.services'
+import './CreateProjectForm.css'
 
 
 const CreateProjectForm = ({ fireFinalActions }) => {

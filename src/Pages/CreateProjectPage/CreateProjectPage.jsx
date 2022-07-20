@@ -5,9 +5,12 @@ const CreateProjectPage = () => {
 
     const [showModal, setShowModal] = useState(false)
 
-
     const openModal = () => setShowModal(true)
     const closeModal = () => setShowModal(false)
+
+    const createProject() => {
+
+    }
 
     const fireFinalActions = () => {
         closeModal()
