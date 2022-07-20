@@ -2,6 +2,7 @@ import { Card, Row, Col, Button, ButtonGroup } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { useContext } from 'react'
 import { AuthContext } from './../../Context/auth.context'
+import ProjectsCardButton from './ProjectsCardButton'
 
 
 const ProjectCard = ({ project }) => {
@@ -22,23 +23,28 @@ const ProjectCard = ({ project }) => {
                             </Card.Text>
                             <Link to={`#`}>
                                 <div className="d-grid">
+                                    <ProjectsCardButton project={project} />
 
-                                    {
-                                        user && project.owner === user._id
-                                            ?
-                                            <ButtonGroup>
-                                                <Link to={`/projects/${project._id}/details`}>
-                                                    <Button size="sm" variant="dark">Details</Button>
-                                                </Link>
+                                    {/* <ButtonGroup>
+                                            <Link to={`/projects/${project._id}/details`}>
+                                                <Button size="sm" variant="dark">Details</Button>
+                                            </Link>
+                                            {
+                                                user && project.owner === user._id
+                                                &&
                                                 <Link to={`/projects/${project._id}/edit`}>
                                                     <Button size="sm" variant="warning">Edit</Button>
                                                 </Link>
-                                            </ButtonGroup>
-                                            :
-                                            <Link to={`/projects/${project._id}/details`}>
-                                                <Button variant="dark" size="sm" as="div">Details</Button>
-                                            </Link>
-                                    }
+                                            }
+                                            {
+                                                user?.role === 'ADMIN'
+                                                &&
+                                                <Link to={`/projects/${project._id}/delete`}>
+                                                    <Button size="sm" variant="danger">Delete</Button>
+                                                </Link>
+                                            }
+
+                                        </ButtonGroup> */}
                                 </div>
                             </Link>
                         </Card.Body>

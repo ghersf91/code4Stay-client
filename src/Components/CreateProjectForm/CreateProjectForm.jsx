@@ -2,9 +2,11 @@ import { Form, Button, Row, Col, Container } from 'react-bootstrap'
 import { useState } from 'react'
 import projectsService from './../../Services/project.services'
 import './CreateProjectForm.css'
+import { useEffect } from 'react'
 
 
 const CreateProjectForm = ({ fireFinalActions }) => {
+
 
     const [projectData, setProjectData] = useState({
         site: '',
@@ -15,7 +17,7 @@ const CreateProjectForm = ({ fireFinalActions }) => {
         shelterType: '',
         mealsIncluded: [],
         gallery: '',
-        languagesSpoken: '',
+        languagesSpoken: ''
     })
     const [aux, setAux] = useState(projectData.mealsIncluded)
 
@@ -35,12 +37,14 @@ const CreateProjectForm = ({ fireFinalActions }) => {
                 console.log('quiero borrarlo', auxIndex)
 
                 const newAux = aux.filter(e => e !== name)
+                console.log(newAux)
                 setAux(newAux)
             }
-            console.log(aux)
-            setProjectData({ ...projectData, mealsIncluded: aux })
+            // console.log(aux)
+            //setProjectData({ ...projectData, mealsIncluded: aux })
 
         }
+        console.log(projectData)
         setProjectData({ ...projectData, [name]: value, mealsIncluded: aux })
 
     }
@@ -48,7 +52,7 @@ const CreateProjectForm = ({ fireFinalActions }) => {
     const handleSubmit = e => {
         e.preventDefault()
 
-        console.log(projectData)
+        //console.log(projectData)
 
         projectsService
             .createProject(projectData)
@@ -57,6 +61,8 @@ const CreateProjectForm = ({ fireFinalActions }) => {
             })
             .catch(ERR => console.error(ERR))
     }
+
+
 
     const { site, projectName, projectType, hoursPerWeek, description, minWeeks, mealsIncluded, shelterType, gallery, languagesSpoken } = projectData
 

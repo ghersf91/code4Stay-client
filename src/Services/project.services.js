@@ -25,7 +25,7 @@ class ProjectService {
     }
 
     getOneProject(project_id) {
-        return this.api.get(`getOneCoaster/${project_id}`)
+        return this.api.get(`getOneProject/${project_id}`)
     }
 
     createProject(projectData) {
