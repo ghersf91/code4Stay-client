@@ -10,7 +10,8 @@ const CreateProjectForm = ({ fireFinalActions }) => {
 
 
     const [projectData, setProjectData] = useState({
-        site: '',
+        city: '',
+        country: '',
         projectType: '',
         description: '',
         hoursPerWeek: '',
@@ -65,17 +66,20 @@ const CreateProjectForm = ({ fireFinalActions }) => {
 
 
     const handleFileInput = e => {
-
         const formData = new FormData()
         formData.append('imageData', e.target.files[0])
 
         uploadService
             .uploadImage(formData)
-            .then(({ data }) => console.log(data))
+            .then(({ data }) => {
+                const fileToUpload = data.cloudinary_url
+                setProjectData({ ...projectData, gallery: fileToUpload })
+                console.log(data.cloudinary_url)
+            })
             .catch(err => console.log(err))
     }
 
-    const { site, projectName, projectType, hoursPerWeek, description, minWeeks, mealsIncluded, shelterType, gallery, languagesSpoken } = projectData
+    const { city, country, projectName, projectType, hoursPerWeek, description, minWeeks, mealsIncluded, shelterType, gallery, languagesSpoken } = projectData
 
     return (
         <Container>
@@ -86,10 +90,26 @@ const CreateProjectForm = ({ fireFinalActions }) => {
                     <Form.Control type='text' value={projectName} onChange={handleChange} name='projectName' />
                 </Form.Group>
 
-                <Form.Group className='mb-3' controlId='site'>
-                    <Form.Label>Site</Form.Label>
-                    <Form.Control type='text' value={site.address} onChange={handleChange} name='site' />
-                </Form.Group>
+                <Row>
+
+                    <Col>
+
+                        <Form.Group className='mb-3' controlId='city'>
+                            <Form.Label>City</Form.Label>
+                            <Form.Control type='text' value={city} onChange={handleChange} name='city' />
+                        </Form.Group>
+
+                    </Col>
+
+                    <Col>
+
+                        <Form.Group className='mb-3' controlId='country'>
+                            <Form.Label>Country</Form.Label>
+                            <Form.Control type='text' value={country} onChange={handleChange} name='country' />
+                        </Form.Group>
+                    </Col>
+
+                </Row>
 
                 <Form.Group className='mb-3' controlId='description'>
                     <Form.Label>Description</Form.Label>
@@ -175,7 +195,7 @@ const CreateProjectForm = ({ fireFinalActions }) => {
                 </Form.Group> */}
 
                 <Form.Group className='mb-3' controlId='gallery'>
-                    <Form.Label>Photos (Files)</Form.Label>
+                    <Form.Label>Photo (File)</Form.Label>
                     <Form.Control type='file' onChange={handleFileInput} name='gallery' />
                 </Form.Group>
 
