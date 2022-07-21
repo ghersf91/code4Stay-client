@@ -17,6 +17,9 @@ const UserEditForm = () => {
         password: '',
         bio: '',
         role: '',
+        projectTypeInterests: '',
+        locationInterests: '',
+        profilePicture: '',
     })
 
     const { setShowMessage } = useContext(MessageContext)

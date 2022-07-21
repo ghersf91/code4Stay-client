@@ -12,7 +12,6 @@ import ProjectDetailsPage from '../Pages/ProjectsDetailsPage/ProjectDetails'
 import EditProjectPage from '../Pages/EditProjectPage/EditProjectPage'
 
 
-
 const AppRoutes = () => {
 
     return (
