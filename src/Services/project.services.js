@@ -36,6 +36,10 @@ class ProjectService {
         return this.api.post(`/edit/${project_id}`, projectData)
 
     }
+
+    deleteProject(project_id) {
+        return this.api.post(`/delete/${project_id}`)
+    }
 }
 
 const projectsService = new ProjectService()
