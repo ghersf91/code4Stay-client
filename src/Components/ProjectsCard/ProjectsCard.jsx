@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 import { useContext } from 'react'
 import { AuthContext } from './../../Context/auth.context'
 import ProjectsCardButton from './ProjectsCardButton'
+import './ProjectsCard.css'
+
 
 
 const ProjectCard = ({ project }) => {

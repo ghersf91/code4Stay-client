@@ -74,7 +74,6 @@ const CreateProjectForm = ({ fireFinalActions }) => {
             .then(({ data }) => {
                 const fileToUpload = data.cloudinary_url
                 setProjectData({ ...projectData, gallery: fileToUpload })
-                console.log(data.cloudinary_url)
             })
             .catch(err => console.log(err))
     }
@@ -146,7 +145,6 @@ const CreateProjectForm = ({ fireFinalActions }) => {
                                         name="Breakfast"
                                         type={`checkbox`}
                                         id={"Breakfast"}
-
                                     />
                                     <Form.Check
                                         inline

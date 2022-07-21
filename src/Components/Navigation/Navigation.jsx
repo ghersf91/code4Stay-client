@@ -45,7 +45,7 @@ const Navigation = () => {
                                     <Link to="/projects/create">
                                         <Nav.Link as="span">Create project</Nav.Link>
                                     </Link>
-                                    <Link to="/">
+                                    <Link to={`/users/profile/${user._id}`}>
                                         <Nav.Link as="span">My profile {user.username}</Nav.Link>
                                     </Link>
                                     <Nav.Link as="span" onClick={logout}>Cerrar sesión</Nav.Link>
