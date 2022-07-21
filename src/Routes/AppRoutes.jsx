@@ -8,6 +8,8 @@ import LoginPage from '../Pages/LoginPage/LoginPage'
 import PrivateRoute from './PrivateRoutes'
 import ProjectDetailsPage from '../Pages/ProjectsDetailsPage/ProjectDetails'
 import EditProjectPage from '../Pages/EditProjectPage/EditProjectPage'
+import ProfilePage from '../Pages/ProfilePage/ProfilePage'
+import UserEditPage from '../Pages/UserEditPage/UserEditPage'
 
 
 const AppRoutes = () => {
@@ -15,6 +17,13 @@ const AppRoutes = () => {
     return (
         <>
             <Routes>
+                <Route path="/users/profile/:user_id" element={<PrivateRoute />}>
+                    <Route path="" element={<ProfilePage />} />
+                </Route>
+                <Route path="/users/editUser/:user_id" element={<PrivateRoute />}>
+                    <Route path="" element={<UserEditPage />} />
+                </Route>
+
                 <Route path="projects/:id/details" element={<ProjectDetailsPage />} />
 
 

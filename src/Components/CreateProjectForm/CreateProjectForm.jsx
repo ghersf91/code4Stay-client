@@ -10,7 +10,6 @@ const CreateProjectForm = ({ fireFinalActions }) => {
 
 
     const [projectData, setProjectData] = useState({
-        site: '',
         projectType: 'FARM',
         city: '',
         country: '',
@@ -75,13 +74,9 @@ const CreateProjectForm = ({ fireFinalActions }) => {
             .then(({ data }) => {
                 const fileToUpload = data.cloudinary_url
                 setProjectData({ ...projectData, gallery: fileToUpload })
-                console.log(data.cloudinary_url)
             })
             .catch(err => console.log(err))
     }
-    // useEffect(() => {
-    //     handleChange()
-    // }, [mealsIncluded])
 
     const { city, country, projectName, projectType, hoursPerWeek, description, minWeeks, mealsIncluded, shelterType, gallery, languagesSpoken } = projectData
 
@@ -150,7 +145,6 @@ const CreateProjectForm = ({ fireFinalActions }) => {
                                         name="Breakfast"
                                         type={`checkbox`}
                                         id={"Breakfast"}
-
                                     />
                                     <Form.Check
                                         inline
