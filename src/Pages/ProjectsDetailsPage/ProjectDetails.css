@@ -1,6 +1,7 @@
 .id-card {
     display: flex;
     padding: 5px;
+    width: 100%;
 }
 
 .id-card img {

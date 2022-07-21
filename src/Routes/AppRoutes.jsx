@@ -7,6 +7,8 @@ import CreateProjectPage from './../Pages/CreateProjectPage/CreateProjectPage'
 import LoginPage from '../Pages/LoginPage/LoginPage'
 import PrivateRoute from './PrivateRoutes'
 import ProjectDetailsPage from '../Pages/ProjectsDetailsPage/ProjectDetails'
+import EditProjectPage from '../Pages/EditProjectPage/EditProjectPage'
+
 
 const AppRoutes = () => {
 
@@ -14,6 +16,11 @@ const AppRoutes = () => {
         <>
             <Routes>
                 <Route path="projects/:id/details" element={<ProjectDetailsPage />} />
+
+
+                <Route path="projects/edit/:id" element={<EditProjectPage />} />
+
+
 
                 <Route path="/projects/create" element={<PrivateRoute />}>
                     <Route path="" element={<CreateProjectPage />} />

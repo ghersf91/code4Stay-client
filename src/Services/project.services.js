@@ -31,6 +31,11 @@ class ProjectService {
     createProject(projectData) {
         return this.api.post('/create', projectData)
     }
+
+    editProject(project_id, projectData) {
+        return this.api.get(`/edit/${project_id}`, projectData)
+
+    }
 }
 
 const projectsService = new ProjectService()

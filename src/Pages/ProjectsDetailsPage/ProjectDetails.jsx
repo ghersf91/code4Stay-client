@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { Card } from "react-bootstrap"
 import { useParams } from "react-router-dom"
 import Loader from "../../Components/Loader/Loader"
 import projectsService from "../../Services/project.services"
@@ -16,7 +17,8 @@ const ProjectDetailsPage = () => {
 
     useEffect(() => {
         loadProject()
-        setIsLoading(false)
+        // console.log(project)
+        // setIsLoading(false)
 
     }, [])
 
@@ -24,7 +26,10 @@ const ProjectDetailsPage = () => {
 
         projectsService
             .getOneProject(id)
-            .then(({ data }) => setProject(data))
+            .then(({ data }) => {
+                setProject(data)
+                setIsLoading(false)
+            })
             .catch(err => setIsLoading(false))
     }
 
@@ -37,13 +42,18 @@ const ProjectDetailsPage = () => {
                 isLoading ?
                     <Loader /> :
                     <>
-                        <img src={project.gallery[0]} alt="Germán" />
 
-                        <footer>
-                            <p> {project.description}</p>
-                            <p>{project.projectType}</p>
+                        <Card className='projectDetails'>
+                            <Card.Img variant="top" src={project.gallery} />
+                            <Card.Body>
+                                <Card.Title>{project.projectName}</Card.Title>
+                                <Card.Subtitle className="mb-2 text-muted">Site: {project.city}, {project.country}</Card.Subtitle>
+                                <Card.Text>
+                                    {project.description}
+                                </Card.Text>
+                            </Card.Body>
+                        </Card>
 
-                        </footer>
                     </>
             }
         </article>

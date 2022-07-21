@@ -32,7 +32,7 @@ const ProjectCard = ({ project }) => {
                                         {
                                             user && project.owner === user._id
                                             &&
-                                            <Link to={`/projects/${project._id}/edit`}>
+                                            <Link to={`/projects/edit/${project._id}`}>
                                                 <Button size="sm" variant="warning">Edit</Button>
                                             </Link>
                                         }
