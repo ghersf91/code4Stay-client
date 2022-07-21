@@ -33,9 +33,9 @@ const SignupForm = () => {
             .catch(err => console.log(err))
     }
 
+
+
     const { username, password, email } = signupData
-
-
 
 
     return (

@@ -4,7 +4,10 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { MessageContext } from "../../Context/userMessage.context"
 import userService from "./../../Services/user.services"
 import uploadService from './../../Services/upload.services'
+
+
 const UserEditForm = () => {
+
     const { user_id } = useParams()
     const [editData, setEditData] = useState({
         username: '',
@@ -13,12 +16,16 @@ const UserEditForm = () => {
         bio: '',
         role: '',
     })
+
     const { setShowMessage } = useContext(MessageContext)
+
     const navigate = useNavigate()
+
     const handleInputChange = e => {
         const { value, name } = e.target
         setEditData({ ...editData, [name]: value })
     }
+
     const handleSubmit = e => {
         e.preventDefault()
         userService
@@ -28,6 +35,7 @@ const UserEditForm = () => {
             })
             .catch(err => console.log(err))
     }
+
     const handleFileInput = e => {
         const formData = new FormData()
         formData.append('imageData', e.target.files[0])
@@ -39,8 +47,10 @@ const UserEditForm = () => {
             })
             .catch(err => console.log(err))
     }
+
     const { username, email, bio, role, projectTypeInterests, locationInterests } = editData
     return (
+
         <Container>
             <Form onSubmit={handleSubmit}>
                 <h1>Edit profile</h1>

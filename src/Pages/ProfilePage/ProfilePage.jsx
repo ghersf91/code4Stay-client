@@ -1,7 +1,10 @@
 import { Link, useParams } from "react-router-dom"
 import UserEditPage from "./../UserEditPage/UserEditPage"
+
 const ProfilePage = () => {
+
     const { user_id } = useParams()
+
     return (
         <>
             <h1>Soy la página de perfil!</h1>
@@ -11,6 +14,8 @@ const ProfilePage = () => {
                 </div>
             </Link>
         </>
+
     )
 }
+
 export default ProfilePage
