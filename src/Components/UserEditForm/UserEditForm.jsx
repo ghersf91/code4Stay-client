@@ -4,6 +4,8 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { MessageContext } from "../../Context/userMessage.context"
 import userService from "./../../Services/user.services"
 import uploadService from './../../Services/upload.services'
+import { useEffect } from "react"
+
 
 
 const UserEditForm = () => {
@@ -21,6 +23,19 @@ const UserEditForm = () => {
 
     const navigate = useNavigate()
 
+    useEffect(() => {
+        loadUser()
+    }, [])
+
+    const loadUser = () => {
+        userService
+            .getUser(user_id)
+            .then(({ data }) => {
+                setEditData(data)
+            })
+            .catch(err => console.log(err))
+    }
+
     const handleInputChange = e => {
         const { value, name } = e.target
         setEditData({ ...editData, [name]: value })
@@ -31,6 +46,7 @@ const UserEditForm = () => {
         userService
             .editUser(user_id, editData)
             .then(({ data }) => {
+                console.log(data)
                 navigate(`/users/profile/${user_id}`)
             })
             .catch(err => console.log(err))
@@ -47,7 +63,7 @@ const UserEditForm = () => {
             })
             .catch(err => console.log(err))
     }
-
+    console.log(editData)
     const { username, email, bio, role, projectTypeInterests, locationInterests } = editData
     return (
 

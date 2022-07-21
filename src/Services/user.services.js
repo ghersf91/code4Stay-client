@@ -19,6 +19,9 @@ class UserService {
             return config
         })
     }
+    getUser(user_id) {
+        return this.api.get(`/getOneUser/${user_id}`)
+    }
 
     editUser(user_id, userData) {
         return this.api.post(`/editUser/${user_id}`, userData)

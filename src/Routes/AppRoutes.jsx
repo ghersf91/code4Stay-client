@@ -10,8 +10,7 @@ import UserEditPage from '../Pages/UserEditPage/UserEditPage'
 import PrivateRoute from './PrivateRoutes'
 import ProjectDetailsPage from '../Pages/ProjectsDetailsPage/ProjectDetails'
 import EditProjectPage from '../Pages/EditProjectPage/EditProjectPage'
-import ProfilePage from '../Pages/ProfilePage/ProfilePage'
-import UserEditPage from '../Pages/UserEditPage/UserEditPage'
+
 
 
 const AppRoutes = () => {
