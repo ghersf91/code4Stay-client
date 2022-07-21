@@ -7,6 +7,7 @@ import './ProjectsCard.css'
 const ProjectCard = ({ project }) => {
 
     const { user } = useContext(AuthContext)
+
     return (
 
         <Row xs={1} md={1} className="g-4">
@@ -25,7 +26,7 @@ const ProjectCard = ({ project }) => {
                                     {/* <ProjectsCardButton project={project} /> */}
 
                                     <ButtonGroup>
-                                        <Link to={`/projects/${project._id}/details`}>
+                                        <Link to={`/projects/details/${project._id}`}>
                                             <Button size="sm" variant="dark">Details</Button>
                                         </Link>
                                         {
@@ -38,7 +39,7 @@ const ProjectCard = ({ project }) => {
                                         {
                                             user?.role === 'ADMIN'
                                             &&
-                                            <Link to={`/projects/${project._id}/delete`}>
+                                            <Link to={`/projects/delete/${project._id}`}>
                                                 <Button size="sm" variant="danger">Delete</Button>
                                             </Link>
                                         }

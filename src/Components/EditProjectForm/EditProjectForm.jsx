@@ -7,7 +7,7 @@ import { useParams } from 'react-router-dom'
 
 const EditProjectForm = ({ fireFinalActions }) => {
 
-    const { id } = useParams()
+    const { project_id } = useParams()
 
     const [projectData, setProjectData] = useState({
         site: '',
@@ -29,7 +29,7 @@ const EditProjectForm = ({ fireFinalActions }) => {
     const loadProject = () => {
 
         projectsService
-            .getOneProject(id)
+            .getOneProject(project_id)
             .then(({ data }) => {
                 setProjectData(data)
             })
@@ -69,7 +69,7 @@ const EditProjectForm = ({ fireFinalActions }) => {
         console.log(projectData)
 
         projectsService
-            .editProject(id, projectData)
+            .editProject(project_id, projectData)
             .then(() => {
                 fireFinalActions()
             })

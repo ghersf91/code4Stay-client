@@ -9,26 +9,27 @@ import './ProjectDetails.css'
 
 const ProjectDetailsPage = () => {
 
-    const { id } = useParams()
+    const { project_id } = useParams()
     const [project, setProject] = useState({})
     const [isLoading, setIsLoading] = useState(true)
 
 
-
+    console.log(project_id)
     useEffect(() => {
         loadProject()
-        // console.log(project)
-        // setIsLoading(false)
+        console.log(project)
+        setIsLoading(false)
 
     }, [])
 
     const loadProject = () => {
 
         projectsService
-            .getOneProject(id)
+            .getOneProject(project_id)
             .then(({ data }) => {
+                console.log(data)
                 setProject(data)
-                setIsLoading(false)
+                // setIsLoading(false)
             })
             .catch(err => setIsLoading(false))
     }
