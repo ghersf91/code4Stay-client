@@ -21,47 +21,33 @@ const CreateProjectForm = ({ fireFinalActions }) => {
         gallery: '',
         languagesSpoken: ''
     })
-    const [aux, setAux] = useState(projectData.mealsIncluded)
 
     const handleChange = e => {
 
-        const { value, name } = e.target
+        const { value, name, type, checked } = e.target
+        const inputValue = type === 'checkbox' ? checked : value
+        const currentMeals = [...projectData.mealsIncluded]
 
-        if (name === 'Breakfast' || name === "Lunch" || name === "Supper") {
+        if (type === 'checkbox' && checked && !projectData.mealsIncluded.includes(name)) {
+            currentMeals.push(name)
+        } else if (projectData.mealsIncluded.includes(name)) {
+            const mealIndex = currentMeals.indexOf(name)
 
-            const auxIndex = aux.indexOf(name)
-
-            if (auxIndex === -1) {
-                setAux([...aux, name])
-            } else {
-
-                console.log(aux)
-                console.log('quiero borrarlo', auxIndex)
-
-                const newAux = aux.filter(e => e !== name)
-                console.log(newAux)
-                setAux(newAux)
-            }
-            // console.log(aux)
-            //setProjectData({ ...projectData, mealsIncluded: aux })
-
+            mealIndex > -1 && currentMeals.splice(mealIndex, 1)
+            console.log(currentMeals)
         }
-        console.log(projectData)
-        setProjectData({ ...projectData, [name]: value, mealsIncluded: aux })
-
+        setProjectData({ ...projectData, mealsIncluded: currentMeals, [name]: inputValue })
     }
 
     const handleSubmit = e => {
         e.preventDefault()
-
-        //console.log(projectData)
 
         projectsService
             .createProject(projectData)
             .then(() => {
                 fireFinalActions()
             })
-            .catch(ERR => console.error(ERR))
+            .catch(err => console.error(err))
     }
 
 
@@ -186,11 +172,6 @@ const CreateProjectForm = ({ fireFinalActions }) => {
                     <Form.Label>Shelter type</Form.Label>
                     <Form.Control type='text' value={shelterType} onChange={handleChange} name='shelterType' />
                 </Form.Group>
-
-                {/* <Form.Group className='mb-3' controlId='gallery'>
-                    <Form.Label>Photos (URL)</Form.Label>
-                    <Form.Control type='text' value={gallery} onChange={handleChange} name='gallery' />
-                </Form.Group> */}
 
                 <Form.Group className='mb-3' controlId='gallery'>
                     <Form.Label>Photo (File)</Form.Label>
