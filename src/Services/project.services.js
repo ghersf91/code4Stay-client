@@ -33,7 +33,7 @@ class ProjectService {
     }
 
     editProject(project_id, projectData) {
-        return this.api.get(`/edit/${project_id}`, projectData)
+        return this.api.post(`/edit/${project_id}`, projectData)
 
     }
 }

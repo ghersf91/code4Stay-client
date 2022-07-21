@@ -23,7 +23,6 @@ const EditProjectForm = ({ fireFinalActions }) => {
         languagesSpoken: ''
     })
     const [aux, setAux] = useState(projectData.mealsIncluded)
-    const [submit, setSubmit] = useState(false)
 
     console.log(projectData)
 
@@ -67,7 +66,7 @@ const EditProjectForm = ({ fireFinalActions }) => {
     const handleSubmit = e => {
         e.preventDefault()
 
-        //console.log(projectData)
+        console.log(projectData)
 
         projectsService
             .editProject(id, projectData)
@@ -96,17 +95,20 @@ const EditProjectForm = ({ fireFinalActions }) => {
     }, [])
 
 
+
     const { city, country, projectName, projectType, hoursPerWeek, description, minWeeks, mealsIncluded, shelterType, gallery, languagesSpoken } = projectData
 
     return (
         <Container>
-            <Form onSubmit={setSubmit(true)}>
+            <Form onSubmit={handleSubmit}>
                 <h1>Edit Project</h1>
                 <Form.Group className='mb-3' controlId='projectName'>
                     <Form.Label>Project name</Form.Label>
                     <Form.Control type='text' value={projectName} onChange={handleChange} name='projectName' />
                 </Form.Group>
+
                 <Row>
+
                     <Col>
 
                         <Form.Group className='mb-3' controlId='city'>
@@ -123,6 +125,7 @@ const EditProjectForm = ({ fireFinalActions }) => {
                             <Form.Control type='text' value={country} onChange={handleChange} name='country' />
                         </Form.Group>
                     </Col>
+
                 </Row>
 
                 <Form.Group className='mb-3' controlId='description'>
@@ -160,6 +163,7 @@ const EditProjectForm = ({ fireFinalActions }) => {
                                         name="Breakfast"
                                         type={`checkbox`}
                                         id={"Breakfast"}
+                                        defaultChecked={mealsIncluded.includes('Breakfast') ? true : false}
 
                                     />
                                     <Form.Check
