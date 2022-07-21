@@ -11,7 +11,7 @@ const CreateProjectForm = ({ fireFinalActions }) => {
 
     const [projectData, setProjectData] = useState({
         site: '',
-        projectType: '',
+        projectType: 'FARM',
         description: '',
         hoursPerWeek: '',
         minWeeks: '',
@@ -74,6 +74,9 @@ const CreateProjectForm = ({ fireFinalActions }) => {
             .then(({ data }) => console.log(data))
             .catch(err => console.log(err))
     }
+    // useEffect(() => {
+    //     handleChange()
+    // }, [mealsIncluded])
 
     const { site, projectName, projectType, hoursPerWeek, description, minWeeks, mealsIncluded, shelterType, gallery, languagesSpoken } = projectData
 

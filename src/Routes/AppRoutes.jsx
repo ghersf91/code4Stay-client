@@ -6,22 +6,25 @@ import ProjectsPage from './../Pages/ProjectsPage/ProjectsPage'
 import CreateProjectPage from './../Pages/CreateProjectPage/CreateProjectPage'
 import LoginPage from '../Pages/LoginPage/LoginPage'
 import PrivateRoute from './PrivateRoutes'
+import ProjectDetailsPage from '../Pages/ProjectsDetailsPage/ProjectDetails'
 
 const AppRoutes = () => {
 
     return (
         <>
             <Routes>
-                <Route path="/" element={<HomePage />} />
-                <Route path="/projects" element={<ProjectsPage />} />
+                <Route path="projects/:id/details" element={<ProjectDetailsPage />} />
 
                 <Route path="/projects/create" element={<PrivateRoute />}>
                     <Route path="" element={<CreateProjectPage />} />
                 </Route>
 
+                <Route path="/projects" element={<ProjectsPage />} />
+
                 <Route path="/signup" element={<SignupPage />} />
                 <Route path="/login" element={<LoginPage />} />
 
+                <Route path="/" element={<HomePage />} />
 
             </Routes>
 

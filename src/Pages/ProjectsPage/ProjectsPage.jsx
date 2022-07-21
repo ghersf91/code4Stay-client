@@ -1,7 +1,7 @@
 import ProjectsList from "../../Components/ProjectsList/ProjectList"
 import { useState, useEffect, useContext } from "react"
 import projectsService from "../../Services/project.services"
-import { Container, Modal } from 'react-bootstrap'
+import { Modal } from 'react-bootstrap'
 
 
 import { MessageContext } from "./../../Context/userMessage.context"
