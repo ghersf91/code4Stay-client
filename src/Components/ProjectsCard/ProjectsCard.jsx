@@ -13,11 +13,11 @@ const ProjectCard = ({ project }) => {
         <Row xs={1} md={1} className="g-4">
             {Array.from({ length: 1 }).map((_, idx) => (
                 <Col>
-                    <Card>
-                        <Card.Img variant="top" src={project.gallery[0]} />
+                    <Card className='ProjectCard'>
+                        <Card.Img variant="top" src={project.gallery} />
                         <Card.Body>
                             <Card.Title>{project.projectName}</Card.Title>
-                            <Card.Subtitle className="mb-2 text-muted">Site: {project.site.address}</Card.Subtitle>
+                            <Card.Subtitle className="mb-2 text-muted">Site: {project.city}, {project.country}</Card.Subtitle>
                             <Card.Text>
                                 {project.description}
                             </Card.Text>
