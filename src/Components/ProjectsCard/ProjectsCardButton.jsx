@@ -8,24 +8,26 @@ const ProjectsCardButton = ({ project }) => {
 
     const { user } = useContext(AuthContext)
 
-    console.log(project)
+    const id = project.project.id
+
+    console.log(id)
 
     return (
         <ButtonGroup>
-            <Link to={`/projects/${project._id}/details`}>
+            <Link to={`/projects/${id}/details`}>
                 <Button size="sm" variant="dark">Details</Button>
             </Link>
             {
                 project.owner === user._id
                 &&
-                <Link to={`/projects/${project._id}/edit`}>
+                <Link to={`/projects/${id}/edit`}>
                     <Button size="sm" variant="warning">Edit</Button>
                 </Link>
             }
             {
                 user?.role === 'ADMIN'
                 &&
-                <Link to={`/projects/${project._id}/delete`}>
+                <Link to={`/projects/${id}/delete`}>
                     <Button size="sm" variant="danger">Delete</Button>
                 </Link>
             }
