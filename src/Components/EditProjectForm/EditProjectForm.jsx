@@ -47,18 +47,17 @@ const EditProjectForm = ({ fireFinalActions }) => {
 
     const handleChange = e => {
 
-        const { value, name, type, checked } = e.target
+        const { value, name, type, checked, id } = e.target
         const inputValue = type === 'checkbox' ? checked : value
         const currentMeals = [...projectData.mealsIncluded]
 
-        console.log(e)
-        if (type === 'checkbox' && checked && !projectData.mealsIncluded.includes(name)) {
+        const mealIndex = currentMeals.indexOf(name)
 
+
+        if (type === 'checkbox' && checked && !projectData.mealsIncluded.includes(name)) {
             currentMeals.push(name)
 
         } else if (projectData.mealsIncluded.includes(name) && !checked) {
-
-            const mealIndex = currentMeals.indexOf(name)
 
             mealIndex > -1 && currentMeals.splice(mealIndex, 1)
 
@@ -154,7 +153,7 @@ const EditProjectForm = ({ fireFinalActions }) => {
                     <Col>
 
                         <Form>
-                            <Form.Group className='mb-3' controlId='mealsIncluded' name='mealsIncluded' onChange={handleChange}>
+                            <Form.Group className='mb-3' controlId='mealsIncluded' name='mealsIncluded' onClick={handleChange}>
                                 <Form.Label>Meals included</Form.Label>
                                 <div key={`inline-checkbox`} className="mb-3">
 
