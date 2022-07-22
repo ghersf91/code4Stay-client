@@ -1,14 +1,21 @@
 import { Link, useParams, useNavigate } from "react-router-dom"
 import userService from "../../Services/user.services"
-import { useEffect, useState } from "react"
+import { useEffect, useState, useContext } from "react"
+import { AuthContext } from '../../Context/auth.context'
 import { Button, Card } from 'react-bootstrap'
 
 
 const ProfilePage = () => {
 
+    const { user, logoutUser } = useContext(AuthContext)
+
     const { user_id } = useParams()
 
     const navigate = useNavigate()
+
+    const logout = () => {
+        logoutUser()
+    }
 
     const [userData, setUserData] = useState({
         username: '',
@@ -75,7 +82,10 @@ const ProfilePage = () => {
                     </Link>
                     <Link to={`/`}>
                         <Button variant="danger"
-                            onClick={() => userDelete()}>
+                            onClick={() => {
+                                userDelete()
+                                logout()
+                            }}>
                             Delete account
                         </Button>
                     </Link>
