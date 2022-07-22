@@ -13,8 +13,6 @@ const ProjectDetailsPage = () => {
     const [project, setProject] = useState({})
     const [isLoading, setIsLoading] = useState(true)
 
-
-    console.log(project_id)
     useEffect(() => {
         loadProject()
         console.log(project)
@@ -27,15 +25,11 @@ const ProjectDetailsPage = () => {
         projectsService
             .getOneProject(project_id)
             .then(({ data }) => {
-                console.log(data)
                 setProject(data)
-                // setIsLoading(false)
             })
             .catch(err => setIsLoading(false))
     }
 
-
-    console.log(project)
     return (
 
         <article className="id-card">

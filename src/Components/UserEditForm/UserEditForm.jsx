@@ -48,10 +48,7 @@ const UserEditForm = () => {
         e.preventDefault()
         userService
             .editUser(user_id, editData)
-            .then(({ data }) => {
-                console.log(data)
-                navigate(`/users/profile/${user_id}`)
-            })
+            .then(({ data }) => navigate(`/users/profile/${user_id}`))
             .catch(err => console.log(err))
     }
 
