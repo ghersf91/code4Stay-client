@@ -47,11 +47,11 @@ const EditProjectForm = ({ fireFinalActions }) => {
 
     const handleChange = e => {
 
-        const { value, name, type, checked } = e.target
+        const { value, name, type, checked, id } = e.target
         const inputValue = type === 'checkbox' ? checked : value
         const currentMeals = [...projectData.mealsIncluded]
 
-
+        console.log(id)
         if (type === 'checkbox' && checked && !projectData.mealsIncluded.includes(name)) {
             currentMeals.push(name)
         } else if (projectData.mealsIncluded.includes(name)) {
@@ -64,12 +64,9 @@ const EditProjectForm = ({ fireFinalActions }) => {
     const handleSubmit = e => {
         e.preventDefault()
 
-        console.log(projectData)
-
         projectsService
             .editProject(project_id, projectData)
             .then(({ data }) => {
-                console.log(data)
                 fireFinalActions()
             })
             .catch(ERR => console.error(ERR))
@@ -85,7 +82,6 @@ const EditProjectForm = ({ fireFinalActions }) => {
             .then(({ data }) => {
                 const fileToUpload = data.cloudinary_url
                 setProjectData({ ...projectData, gallery: fileToUpload })
-                console.log(data.cloudinary_url)
             })
             .catch(err => console.log(err))
     }
@@ -167,6 +163,7 @@ const EditProjectForm = ({ fireFinalActions }) => {
                                                 name="Breakfast"
                                                 type={`checkbox`}
                                                 id={"Breakfast"}
+                                                value={'on'}
 
                                             /> :
                                             <Form.Check
