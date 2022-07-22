@@ -108,7 +108,7 @@ const UserEditForm = () => {
             .uploadImage(formData)
             .then(({ data }) => {
                 const fileToUpload = data.cloudinary_url
-                setUserData({ ...userData, gallery: fileToUpload })
+                setUserData({ ...userData, profilePicture: fileToUpload })
             })
             .catch(err => console.log(err))
     }
