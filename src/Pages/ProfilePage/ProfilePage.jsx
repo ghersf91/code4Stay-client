@@ -8,6 +8,7 @@ import { Button, Card } from 'react-bootstrap'
 const ProfilePage = () => {
 
     const { user, logoutUser } = useContext(AuthContext)
+    console.log(user)
 
     const { user_id } = useParams()
 
@@ -47,50 +48,61 @@ const ProfilePage = () => {
             .catch(err => console.log(err))
     }
 
-    const { username, email, bio, role, projectTypeInterests, locationInterests, profilePicture } = userData
+    const { username, email, bio, role, projectTypeInterests, locationInterests, profilePicture, _id } = userData
 
     return (
         <>
-            <h1>Welcome, {username}!</h1>
+            {
+                user._id === _id &&
 
-            <Card style={{ width: '18rem' }}>
-                <Card.Img variant="top" src={profilePicture} />
-                <Card.Body>
-                    <Card.Title>{role}</Card.Title>
-                    <Card.Text>
-                        {bio}
-                    </Card.Text>
-                    <Card.Text>
-                        {email}
-                    </Card.Text>
-                    <Card.Text>
-                        Interested in: <ul>
-                            {
-                                projectTypeInterests.map(project => <li>{project}</li>)
-                            }
-                        </ul>
-                    </Card.Text>
-                    <Card.Text>
-                        I want to go to: <ul>
-                            {
-                                locationInterests.map(project => <li>{project}</li>)
-                            }
-                        </ul>
-                    </Card.Text>
-                    <Link to={`/users/editUser/${user_id}`}>
-                        <Button variant="primary">Update user information</Button>
-                    </Link>
-                    <Link to={`/`}>
-                        <Button variant="danger"
-                            onClick={() => {
-                                userDelete()
-                                logout()
-                            }}>
-                            Delete account
-                        </Button>
-                    </Link>
-                </Card.Body>
-            </Card>
+                <div>
+                    <h1>Welcome, {username}!</h1>
+
+                    <Card style={{ width: '18rem' }}>
+                        <Card.Img variant="top" src={profilePicture} />
+                        <Card.Body>
+                            <Card.Title>{role}</Card.Title>
+                            <Card.Text>
+                                {bio}
+                            </Card.Text>
+                            <Card.Text>
+                                {email}
+                            </Card.Text>
+                            <Card.Text>
+                                Interested in: <ul>
+                                    {
+                                        projectTypeInterests.map(project => <li>{project}</li>)
+                                    }
+                                </ul>
+                            </Card.Text>
+                            <Card.Text>
+                                I want to go to: <ul>
+                                    {
+                                        locationInterests.map(project => <li>{project}</li>)
+                                    }
+                                </ul>
+                            </Card.Text>
+                            <Link to={`/users/editUser/${user_id}`}>
+                                <Button variant="primary">Update user information</Button>
+                            </Link>
+                            <Link to={`/`}>
+                                <Button variant="danger"
+                                    onClick={() => {
+                                        userDelete()
+                                        logout()
+                                    }}>
+                                    Delete account
+                                </Button>
+                            </Link>
+                        </Card.Body>
+                    </Card>
+                </div>
+            }
+
+            {
+                user._id !== _id &&
+                <h1>You are not allowed to enter this route</h1>
+            }
         </>
 
     )
