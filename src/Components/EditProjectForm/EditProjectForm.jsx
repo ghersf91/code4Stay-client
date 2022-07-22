@@ -47,16 +47,21 @@ const EditProjectForm = ({ fireFinalActions }) => {
 
     const handleChange = e => {
 
-        const { value, name, type, checked, id } = e.target
+        const { value, name, type, checked } = e.target
         const inputValue = type === 'checkbox' ? checked : value
         const currentMeals = [...projectData.mealsIncluded]
 
-        console.log(id)
+        console.log(e)
         if (type === 'checkbox' && checked && !projectData.mealsIncluded.includes(name)) {
+
             currentMeals.push(name)
-        } else if (projectData.mealsIncluded.includes(name)) {
+
+        } else if (projectData.mealsIncluded.includes(name) && !checked) {
+
             const mealIndex = currentMeals.indexOf(name)
+
             mealIndex > -1 && currentMeals.splice(mealIndex, 1)
+
         }
         setProjectData({ ...projectData, mealsIncluded: currentMeals, [name]: inputValue })
     }

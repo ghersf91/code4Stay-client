@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { Card } from "react-bootstrap"
 import { useParams } from "react-router-dom"
+import CommentBox from "../../Components/CommentBox/CommentBox"
 import Loader from "../../Components/Loader/Loader"
 import projectsService from "../../Services/project.services"
 import './ProjectDetails.css'
@@ -47,6 +48,7 @@ const ProjectDetailsPage = () => {
                                 </Card.Text>
                             </Card.Body>
                         </Card>
+                        <CommentBox />
                     </>
             }
         </article>
