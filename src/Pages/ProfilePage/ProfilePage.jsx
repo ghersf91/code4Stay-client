@@ -13,8 +13,8 @@ const ProfilePage = () => {
         email: '',
         bio: '',
         role: '',
-        projectTypeInterests: '',
-        locationInterests: '',
+        projectTypeInterests: [],
+        locationInterests: [],
         profilePicture: '',
     })
 
@@ -48,10 +48,24 @@ const ProfilePage = () => {
                         {email}
                     </Card.Text>
                     <Card.Text>
-                        Interested in: {projectTypeInterests}
+                        Interested in: <ul>{
+                            projectTypeInterests.map(project => {
+                                return (
+                                    <li>{project}</li>
+                                )
+                            })
+                        }
+                        </ul>
                     </Card.Text>
                     <Card.Text>
-                        I want to go to: {locationInterests}
+                        I want to go to: <ul>{
+                            locationInterests.map(project => {
+                                return (
+                                    <li>{project}</li>
+                                )
+                            })
+                        }
+                        </ul>
                     </Card.Text>
                     <Link to={`/users/editUser/${user_id}`}>
                         <Button variant="primary">Update user information</Button>
