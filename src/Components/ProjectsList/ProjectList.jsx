@@ -13,7 +13,7 @@ const ProjectsList = ({ projects }) => {
                     projects.map(project => {
                         return (
                             <Col md={3} key={project._id} >
-                                <ProjectCard project={project} />
+                                <ProjectCard {...project} />
                             </Col>
                         )
                     })

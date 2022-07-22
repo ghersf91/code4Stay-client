@@ -5,16 +5,15 @@ import { useContext } from 'react'
 import { AuthContext } from './../../Context/auth.context'
 import projectsService from '../../Services/project.services'
 
-const ProjectCard = ({ project }) => {
+const ProjectCard = ({ gallery, projectName, city, country, description, _id, owner }) => {
 
     const { user } = useContext(AuthContext)
-    const id = project._id
 
     const navigate = useNavigate()
 
     const projectDelete = () => {
         projectsService
-            .deleteProject(id)
+            .deleteProject(_id)
             .then(() => navigate('/'))
             .catch(err => console.log(err))
     }
@@ -25,23 +24,23 @@ const ProjectCard = ({ project }) => {
             {Array.from({ length: 1 }).map((_, idx) => (
                 <Col>
                     <Card className='ProjectCard'>
-                        <Card.Img variant="top" src={project.gallery} />
+                        <Card.Img variant="top" src={gallery} />
                         <Card.Body>
-                            <Card.Title>{project.projectName}</Card.Title>
-                            <Card.Subtitle className="mb-2 text-muted">Site: {project.city}, {project.country}</Card.Subtitle>
+                            <Card.Title>{projectName}</Card.Title>
+                            <Card.Subtitle className="mb-2 text-muted">Site: {city}, {country}</Card.Subtitle>
                             <Card.Text>
-                                {project.description}
+                                {description}
                             </Card.Text>
                             <Link to={`#`}>
                                 <div className="d-grid">
                                     <ButtonGroup>
-                                        <Link to={`/projects/details/${project._id}`}>
+                                        <Link to={`/projects/details/${_id}`}>
                                             <Button size="sm" variant="dark">Details</Button>
                                         </Link>
                                         {
-                                            user && project.owner === user._id
+                                            user && owner === user._id
                                             &&
-                                            <Link to={`/projects/edit/${project._id}`}>
+                                            <Link to={`/projects/edit/${_id}`}>
                                                 <Button size="sm" variant="warning">Edit</Button>
                                             </Link>
                                         }

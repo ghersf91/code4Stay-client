@@ -57,23 +57,17 @@ const ProfilePage = () => {
                         {email}
                     </Card.Text>
                     <Card.Text>
-                        Interested in: <ul>{
-                            projectTypeInterests.map(project => {
-                                return (
-                                    <li>{project}</li>
-                                )
-                            })
-                        }
+                        Interested in: <ul>
+                            {
+                                projectTypeInterests.map(project => <li>{project}</li>)
+                            }
                         </ul>
                     </Card.Text>
                     <Card.Text>
-                        I want to go to: <ul>{
-                            locationInterests.map(project => {
-                                return (
-                                    <li>{project}</li>
-                                )
-                            })
-                        }
+                        I want to go to: <ul>
+                            {
+                                locationInterests.map(project => <li>{project}</li>)
+                            }
                         </ul>
                     </Card.Text>
                     <Link to={`/users/editUser/${user_id}`}>

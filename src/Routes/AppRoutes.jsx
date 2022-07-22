@@ -17,9 +17,11 @@ const AppRoutes = () => {
     return (
         <>
             <Routes>
+
                 <Route path="/users/profile/:user_id" element={<PrivateRoute />}>
                     <Route path="" element={<ProfilePage />} />
                 </Route>
+
                 <Route path="/users/editUser/:user_id" element={<PrivateRoute />}>
                     <Route path="" element={<UserEditPage />} />
                 </Route>

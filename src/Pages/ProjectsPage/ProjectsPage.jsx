@@ -38,6 +38,7 @@ const ProjectPage = () => {
         loadProjects()
         setShowMessage({ show: true, title: 'Completed', text: 'Project created' })
     }
+
     return (
         <>
             <h1>Browse through our opportunities {user && <span onClick={openModal}>+</span>}</h1>

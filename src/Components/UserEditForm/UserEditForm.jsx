@@ -7,10 +7,10 @@ import uploadService from './../../Services/upload.services'
 import { useEffect } from "react"
 
 
-
 const UserEditForm = () => {
 
     const { user_id } = useParams()
+
     const [userData, setUserData] = useState({
         username: '',
         email: '',
@@ -40,29 +40,20 @@ const UserEditForm = () => {
     }
 
     const handleInputChange = e => {
+
         const { value, name, type, checked } = e.target
+
         const inputValue = type === 'checkbox' ? checked : value
-        const currentProjectInterests = [...userData.projectTypeInterests]
+
+        const projectInterests = ['Farm', 'NGO', 'Hostel', 'School', 'Camping', 'Other']
+        const locations = ['Americas', 'Europe', 'Asia', 'Africa', 'Oceania']
+
         const currentLocationInterests = [...userData.locationInterests]
+        const currentProjectInterests = [...userData.projectTypeInterests]
 
 
-        const projectInterests = () => {
-            if (name === 'Farm' || name === 'NGO' || name === 'Hostel'
-                || name === 'School' || name === 'Camping' || name === 'Other') {
-                return true
-            }
-            return false
-        }
+        if (projectInterests.includes(name)) {
 
-        const locations = () => {
-            if (name === 'Americas' || name === 'Europe' || name === 'Asia'
-                || name === 'Africa' || name === 'Oceania') {
-                return true
-            }
-            return false
-        }
-
-        if (projectInterests()) {
             if (checked && !userData.projectTypeInterests.includes(name)) {
 
                 currentProjectInterests.push(name)
@@ -75,7 +66,8 @@ const UserEditForm = () => {
                 console.log(currentProjectInterests)
             }
 
-        } else if (locations()) {
+        } else if (locations.includes(name)) {
+
             if (checked && !userData.locationInterests.includes(name)) {
 
                 currentLocationInterests.push(name)
@@ -85,12 +77,12 @@ const UserEditForm = () => {
                 const locationInterestsIndex = currentLocationInterests.indexOf(name)
 
                 locationInterestsIndex > -1 && currentLocationInterests.splice(locationInterestsIndex, 1)
+
                 console.log(currentLocationInterests)
             }
-
         }
-        setUserData({ ...userData, locationInterests: currentLocationInterests, projectTypeInterests: currentProjectInterests, [name]: inputValue })
 
+        setUserData({ ...userData, locationInterests: currentLocationInterests, projectTypeInterests: currentProjectInterests, [name]: inputValue })
     }
 
     const handleSubmit = e => {
