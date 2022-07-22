@@ -5,6 +5,7 @@ import { MessageContext } from "../../Context/userMessage.context"
 import userService from "./../../Services/user.services"
 import uploadService from './../../Services/upload.services'
 import { useEffect } from "react"
+import LocationCheckbox from "./LocationCheckbox"
 
 
 const UserEditForm = () => {
@@ -82,7 +83,10 @@ const UserEditForm = () => {
             }
         }
 
-        setUserData({ ...userData, locationInterests: currentLocationInterests, projectTypeInterests: currentProjectInterests, [name]: inputValue })
+        setUserData({
+            ...userData, locationInterests: currentLocationInterests,
+            projectTypeInterests: currentProjectInterests, [name]: inputValue
+        })
     }
 
     const handleSubmit = e => {
@@ -195,7 +199,8 @@ const UserEditForm = () => {
                         </Form>
                     </Col>
                     <Col>
-                        <Form>
+                        <LocationCheckbox location={locationInterests} />
+                        {/* <Form>
                             <Form.Group className='mb-3' controlId='locationInterests' name='locationInterests' onChange={handleInputChange}>
                                 <Form.Label>Region interests</Form.Label>
                                 <div key={`inline-checkbox`} className="mb-3">
@@ -236,7 +241,7 @@ const UserEditForm = () => {
                                     />
                                 </div>
                             </Form.Group>
-                        </Form>
+                        </Form> */}
                     </Col>
                 </Row>
                 <Form.Group className='mb-3' controlId='profilePicture'>

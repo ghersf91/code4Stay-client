@@ -47,7 +47,7 @@ const EditProjectForm = ({ fireFinalActions }) => {
 
     const handleChange = e => {
 
-        const { value, name, type, checked, id } = e.target
+        const { value, name, type, checked } = e.target
         const inputValue = type === 'checkbox' ? checked : value
         const currentMeals = [...projectData.mealsIncluded]
 
@@ -138,13 +138,14 @@ const EditProjectForm = ({ fireFinalActions }) => {
 
                         <Form.Group className='mb-3' controlId='projectType'>
                             <Form.Label>Project type</Form.Label>
-                            <Form.Select aria-label="Default select example" name='projectType' onChange={handleChange}>
-                                <option value={'FARM'}>Farm</option>
+                            <Form.Select aria-label="Default select example" name='projectType'
+                                value={projectType} onChange={handleChange}>
+                                <option value={'Farm'}>Farm</option>
                                 <option value={'NGO'}>NGO</option>
-                                <option value={'SCHOOL'}>School</option>
-                                <option value={'HOSTEL'}>Hostel</option>
-                                <option value={'CAMPING'}>Camping</option>
-                                <option value={'OTHER'}>Other</option>
+                                <option value={'School'}>School</option>
+                                <option value={'Hostel'}>Hostel</option>
+                                <option value={'Camping'}>Camping</option>
+                                <option value={'Other'}>Other</option>
                             </Form.Select>
                         </Form.Group>
 
