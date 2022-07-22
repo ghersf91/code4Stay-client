@@ -5,9 +5,6 @@ import ProjectCard from "../ProjectsCard/ProjectsCard"
 
 const ProjectsList = ({ projects }) => {
 
-
-    console.log(projects)
-
     return (
 
         <>
