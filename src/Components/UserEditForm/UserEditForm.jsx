@@ -1,7 +1,6 @@
 import { useContext, useState } from "react"
 import { Form, Button, Container, Row, Col } from "react-bootstrap"
 import { useNavigate, useParams } from 'react-router-dom'
-import { MessageContext } from "../../Context/userMessage.context"
 import userService from "./../../Services/user.services"
 import uploadService from './../../Services/upload.services'
 import { useEffect } from "react"
@@ -23,13 +22,18 @@ const UserEditForm = () => {
         profilePicture: '',
     })
 
-    const { setShowMessage } = useContext(MessageContext)
-
     const navigate = useNavigate()
 
     useEffect(() => {
         loadUser()
     }, [])
+
+    const receiveLocations = data => {
+        const updatedLocations = data
+        return updatedLocations
+    }
+
+
 
     const loadUser = () => {
         userService
@@ -52,7 +56,7 @@ const UserEditForm = () => {
         const currentLocationInterests = [...userData.locationInterests]
         const currentProjectInterests = [...userData.projectTypeInterests]
 
-
+        console.log(checked)
         if (projectInterests.includes(name)) {
 
             if (checked && !userData.projectTypeInterests.includes(name)) {
@@ -67,20 +71,20 @@ const UserEditForm = () => {
                 console.log(currentProjectInterests)
             }
 
-        } else if (locations.includes(name)) {
+            // } else if (locations.includes(name)) {
 
-            if (checked && !userData.locationInterests.includes(name)) {
+            //     if (checked && !userData.locationInterests.includes(name)) {
 
-                currentLocationInterests.push(name)
+            //         currentLocationInterests.push(name)
 
-            } else if (userData.locationInterests.includes(name)) {
+            //     } else if (userData.locationInterests.includes(name)) {
 
-                const locationInterestsIndex = currentLocationInterests.indexOf(name)
+            //         const locationInterestsIndex = currentLocationInterests.indexOf(name)
 
-                locationInterestsIndex > -1 && currentLocationInterests.splice(locationInterestsIndex, 1)
+            //         locationInterestsIndex > -1 && currentLocationInterests.splice(locationInterestsIndex, 1)
 
-                console.log(currentLocationInterests)
-            }
+            //         console.log(currentLocationInterests)
+            //     }
         }
 
         setUserData({
@@ -199,7 +203,7 @@ const UserEditForm = () => {
                         </Form>
                     </Col>
                     <Col>
-                        <LocationCheckbox location={locationInterests} />
+                        <LocationCheckbox id={user_id} receiveLocations={receiveLocations} />
                         {/* <Form>
                             <Form.Group className='mb-3' controlId='locationInterests' name='locationInterests' onChange={handleInputChange}>
                                 <Form.Label>Region interests</Form.Label>

@@ -53,7 +53,6 @@ const EditProjectForm = ({ fireFinalActions }) => {
 
         const mealIndex = currentMeals.indexOf(name)
 
-
         if (type === 'checkbox' && checked && !projectData.mealsIncluded.includes(name)) {
             currentMeals.push(name)
 
@@ -92,7 +91,6 @@ const EditProjectForm = ({ fireFinalActions }) => {
     useEffect(() => {
         loadProject()
     }, [])
-
 
 
     const { city, country, projectName, projectType, hoursPerWeek, description, minWeeks, mealsIncluded, shelterType, gallery, languagesSpoken } = projectData

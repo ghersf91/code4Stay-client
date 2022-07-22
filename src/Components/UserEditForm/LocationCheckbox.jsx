@@ -1,49 +1,70 @@
 import { useEffect } from "react"
 import { Form } from "react-bootstrap"
+import userService from "../../Services/user.services"
 
 const { useState } = require("react")
 
-const LocationCheckbox = ({ location }) => {
+const LocationCheckbox = ({ id, receiveLocations }) => {
     const [areChecked, setAreChecked] = useState([])
-    const [isChecked, setIsChecked] = useState(false)
+    const [americaChecked, setAmericaChecked] = useState(false)
+    const [asiaChecked, setAsiaChecked] = useState(false)
+    const [europeChecked, setEuropeChecked] = useState(false)
+    const [africaChecked, setAfricaChecked] = useState(false)
+    const [oceaniaChecked, setOceaniaChecked] = useState(false)
 
-    const allLocations = ['Americas', 'Europe', 'Asia', 'Africa', 'Oceania']
+    const isIncluded = (name) => {
+        name.locationInterests.includes('Americas') && setAmericaChecked(true)
+        name.locationInterests.includes('Europe') && setEuropeChecked(true)
+        name.locationInterests.includes('Asia') && setAsiaChecked(true)
+        name.locationInterests.includes('Africa') && setAfricaChecked(true)
+        name.locationInterests.includes('Oceania') && setOceaniaChecked(true)
+
+    }
 
     useEffect(() => {
         loadLocations()
-    })
+        receiveLocations(areChecked)
 
+    }, [])
+    console.log(id)
     const loadLocations = () => {
-        setAreChecked(allLocations)
+        userService
+            .getUser(id)
+            .then(({ data }) => {
+                console.log(data)
+                setAreChecked(data.locationInterests)
+                isIncluded(data)
+
+            })
+            .catch(err => console.log(err))
+
     }
-    const handleClick = () => setIsChecked(!isChecked)
 
     const handleInputChange = e => {
 
-        const { value, name, type, checked } = e.target
+        const { name, checked } = e.target
 
 
         // const checkedLocations = () => locations.forEach(e => {
         //     allLocations.includes(e) && handleClick()
         // })
-        console.log(areChecked)
+        console.log(checked, name)
         const currentLocationInterests = [...areChecked]
+        console.log(currentLocationInterests)
 
-        if (areChecked.includes(name)) {
+        if (checked && !currentLocationInterests.includes(name)) {
 
-            if (checked && !areChecked.includes(name)) {
+            currentLocationInterests.push(name)
 
-                currentLocationInterests.push(name)
+        } else if (currentLocationInterests.includes(name)) {
 
-            } else if (areChecked.includes(name)) {
+            const locationInterestsIndex = currentLocationInterests.indexOf(name)
 
-                const locationInterestsIndex = currentLocationInterests.indexOf(name)
+            locationInterestsIndex > -1 && currentLocationInterests.splice(locationInterestsIndex, 1)
 
-                locationInterestsIndex > -1 && currentLocationInterests.splice(locationInterestsIndex, 1)
-
-                console.log(currentLocationInterests)
-            }
+            console.log(currentLocationInterests)
         }
+
 
         setAreChecked(currentLocationInterests)
     }
@@ -66,41 +87,111 @@ const LocationCheckbox = ({ location }) => {
                             )
                         })
                     } */}
-                    <Form.Check
-                        inline
-                        label="Americas"
-                        name="Americas"
-                        type={`checkbox`}
-                        id={"Americas"}
-                    />
-                    <Form.Check
-                        inline
-                        label="Europe"
-                        name="Europe"
-                        type={`checkbox`}
-                        id={"Europe"}
-                    />
-                    <Form.Check
-                        inline
-                        label="Asia"
-                        name="Asia"
-                        type={`checkbox`}
-                        id={"Asia"}
-                    />
-                    <Form.Check
-                        inline
-                        label="Africa"
-                        name="Africa"
-                        type={`checkbox`}
-                        id={"Africa"}
-                    />
-                    <Form.Check
-                        inline
-                        label="Oceania"
-                        name="Oceania"
-                        type={`checkbox`}
-                        id={"Oceania"}
-                    />
+                    {
+                        americaChecked
+                            ?
+                            <Form.Check
+                                inline
+                                defaultChecked
+                                label="Americas"
+                                name="Americas"
+                                type={`checkbox`}
+                                id={"Americas"}
+                            />
+                            :
+                            <Form.Check
+                                inline
+                                label="Americas"
+                                name="Americas"
+                                type={`checkbox`}
+                                id={"Americas"}
+                            />
+                    }
+
+                    {
+                        europeChecked
+                            ?
+                            <Form.Check
+                                inline
+                                defaultChecked
+                                label="Europe"
+                                name="Europe"
+                                type={`checkbox`}
+                                id={"Europe"}
+                            />
+                            :
+                            <Form.Check
+                                inline
+                                label="Europe"
+                                name="Europe"
+                                type={`checkbox`}
+                                id={"Europe"}
+                            />
+                    }
+
+                    {
+                        asiaChecked
+                            ?
+                            <Form.Check
+                                inline
+                                defaultChecked
+                                label="Asia"
+                                name="Asia"
+                                type={`checkbox`}
+                                id={"Asia"}
+                            />
+                            :
+                            <Form.Check
+                                inline
+                                label="Asia"
+                                name="Asia"
+                                type={`checkbox`}
+                                id={"Asia"}
+                            />
+                    }
+
+                    {
+                        africaChecked
+                            ?
+                            <Form.Check
+                                inline
+                                defaultChecked
+                                label="Africa"
+                                name="Africa"
+                                type={`checkbox`}
+                                id={"Africa"}
+                            />
+                            :
+                            <Form.Check
+                                inline
+                                label="Africa"
+                                name="Africa"
+                                type={`checkbox`}
+                                id={"Africa"}
+                            />
+                    }
+
+                    {
+                        oceaniaChecked
+                            ?
+                            <Form.Check
+                                inline
+                                defaultChecked
+                                label="Oceania"
+                                name="Oceania"
+                                type={`checkbox`}
+                                id={"Oceania"}
+                            />
+                            :
+                            <Form.Check
+                                inline
+                                label="Oceania"
+                                name="Oceania"
+                                type={`checkbox`}
+                                id={"Oceania"}
+                            />
+                    }
+
                 </div>
             </Form.Group>
         </Form>
