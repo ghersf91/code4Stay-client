@@ -96,7 +96,7 @@ const UserEditForm = () => {
     const handleSubmit = e => {
         e.preventDefault()
         userService
-            .editUser(user_id, editData)
+            .editUser(user_id, userData)
             .then(({ data }) => navigate(`/users/profile/${user_id}`))
             .catch(err => console.log(err))
     }

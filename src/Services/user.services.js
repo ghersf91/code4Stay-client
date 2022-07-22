@@ -27,6 +27,10 @@ class UserService {
         return this.api.post(`/editUser/${user_id}`, userData)
     }
 
+    deleteUser(user_id) {
+        return this.api.post(`deleteUser/${user_id}`)
+    }
+
 }
 
 const userService = new UserService()

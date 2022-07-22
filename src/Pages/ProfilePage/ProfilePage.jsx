@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router-dom"
+import { Link, useParams, useNavigate } from "react-router-dom"
 import userService from "../../Services/user.services"
 import { useEffect, useState } from "react"
 import { Button, Card } from 'react-bootstrap'
@@ -7,6 +7,8 @@ import { Button, Card } from 'react-bootstrap'
 const ProfilePage = () => {
 
     const { user_id } = useParams()
+
+    const navigate = useNavigate()
 
     const [userData, setUserData] = useState({
         username: '',
@@ -28,6 +30,13 @@ const ProfilePage = () => {
             .then(({ data }) => {
                 setUserData(data)
             })
+            .catch(err => console.log(err))
+    }
+
+    const userDelete = () => {
+        userService
+            .deleteUser(user_id)
+            .then(() => navigate('/'))
             .catch(err => console.log(err))
     }
 
@@ -69,6 +78,12 @@ const ProfilePage = () => {
                     </Card.Text>
                     <Link to={`/users/editUser/${user_id}`}>
                         <Button variant="primary">Update user information</Button>
+                    </Link>
+                    <Link to={`/`}>
+                        <Button variant="danger"
+                            onClick={() => userDelete()}>
+                            Delete account
+                        </Button>
                     </Link>
                 </Card.Body>
             </Card>
