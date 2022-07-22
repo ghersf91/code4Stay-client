@@ -11,14 +11,14 @@ import { useEffect } from "react"
 const UserEditForm = () => {
 
     const { user_id } = useParams()
-    const [editData, setEditData] = useState({
+    const [userData, setUserData] = useState({
         username: '',
         email: '',
         password: '',
         bio: '',
         role: '',
-        projectTypeInterests: '',
-        locationInterests: '',
+        projectTypeInterests: [],
+        locationInterests: [],
         profilePicture: '',
     })
 
@@ -34,20 +34,69 @@ const UserEditForm = () => {
         userService
             .getUser(user_id)
             .then(({ data }) => {
-                setEditData(data)
+                setUserData(data)
             })
             .catch(err => console.log(err))
     }
 
     const handleInputChange = e => {
-        const { value, name } = e.target
-        setEditData({ ...editData, [name]: value })
+        const { value, name, type, checked } = e.target
+        const inputValue = type === 'checkbox' ? checked : value
+        const currentProjectInterests = [...userData.projectTypeInterests]
+        const currentLocationInterests = [...userData.locationInterests]
+
+
+        const projectInterests = () => {
+            if (name === 'Farm' || name === 'NGO' || name === 'Hostel'
+                || name === 'School' || name === 'Camping' || name === 'Other') {
+                return true
+            }
+            return false
+        }
+
+        const locations = () => {
+            if (name === 'Americas' || name === 'Europe' || name === 'Asia'
+                || name === 'Africa' || name === 'Oceania') {
+                return true
+            }
+            return false
+        }
+
+        if (projectInterests()) {
+            if (checked && !userData.projectTypeInterests.includes(name)) {
+
+                currentProjectInterests.push(name)
+
+            } else if (userData.projectTypeInterests.includes(name)) {
+
+                const projectInterestsIndex = currentProjectInterests.indexOf(name)
+
+                projectInterestsIndex > -1 && currentProjectInterests.splice(projectInterestsIndex, 1)
+                console.log(currentProjectInterests)
+            }
+
+        } else if (locations()) {
+            if (checked && !userData.locationInterests.includes(name)) {
+
+                currentLocationInterests.push(name)
+
+            } else if (userData.locationInterests.includes(name)) {
+
+                const locationInterestsIndex = currentLocationInterests.indexOf(name)
+
+                locationInterestsIndex > -1 && currentLocationInterests.splice(locationInterestsIndex, 1)
+                console.log(currentLocationInterests)
+            }
+
+        }
+        setUserData({ ...userData, locationInterests: currentLocationInterests, projectTypeInterests: currentProjectInterests, [name]: inputValue })
+
     }
 
     const handleSubmit = e => {
         e.preventDefault()
         userService
-            .editUser(user_id, editData)
+            .editUser(user_id, userData)
             .then(({ data }) => {
                 console.log(data)
                 navigate(`/users/profile/${user_id}`)
@@ -62,12 +111,12 @@ const UserEditForm = () => {
             .uploadImage(formData)
             .then(({ data }) => {
                 const fileToUpload = data.cloudinary_url
-                setEditData({ ...editData, gallery: fileToUpload })
+                setUserData({ ...userData, gallery: fileToUpload })
             })
             .catch(err => console.log(err))
     }
-    console.log(editData)
-    const { username, email, bio, role, projectTypeInterests, locationInterests } = editData
+
+    const { username, email, bio, role, projectTypeInterests, locationInterests } = userData
     return (
 
         <Container>
