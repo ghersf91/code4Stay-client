@@ -26,10 +26,7 @@ const AppRoutes = () => {
 
                 <Route path="projects/details/:project_id" element={<ProjectDetailsPage />} />
 
-
                 <Route path="projects/edit/:project_id" element={<EditProjectPage />} />
-
-
 
                 <Route path="/projects/create" element={<PrivateRoute />}>
                     <Route path="" element={<CreateProjectPage />} />
