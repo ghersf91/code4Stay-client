@@ -1,12 +1,23 @@
+import './ProjectsCard.css'
 import { Card, Row, Col, Button, ButtonGroup } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useContext } from 'react'
 import { AuthContext } from './../../Context/auth.context'
-import './ProjectsCard.css'
+import projectsService from '../../Services/project.services'
 
 const ProjectCard = ({ project }) => {
 
     const { user } = useContext(AuthContext)
+    const id = project._id
+
+    const navigate = useNavigate()
+
+    const projectDelete = () => {
+        projectsService
+            .deleteProject(id)
+            .then(() => navigate('/'))
+            .catch(err => console.log(err))
+    }
 
     return (
 
@@ -23,8 +34,6 @@ const ProjectCard = ({ project }) => {
                             </Card.Text>
                             <Link to={`#`}>
                                 <div className="d-grid">
-                                    {/* <ProjectsCardButton project={project} /> */}
-
                                     <ButtonGroup>
                                         <Link to={`/projects/details/${project._id}`}>
                                             <Button size="sm" variant="dark">Details</Button>
@@ -39,11 +48,13 @@ const ProjectCard = ({ project }) => {
                                         {
                                             user?.role === 'ADMIN'
                                             &&
-                                            <Link to={`/projects/delete/${project._id}`}>
-                                                <Button size="sm" variant="danger">Delete</Button>
+                                            <Link to='/'>
+                                                <Button size="sm" variant="danger"
+                                                    onClick={() => projectDelete()}>
+                                                    Delete
+                                                </Button>
                                             </Link>
                                         }
-
                                     </ButtonGroup>
                                 </div>
                             </Link>

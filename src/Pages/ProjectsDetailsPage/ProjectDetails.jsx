@@ -43,7 +43,6 @@ const ProjectDetailsPage = () => {
                 isLoading ?
                     <Loader /> :
                     <>
-
                         <Card className='projectDetails'>
                             <Card.Img variant="top" src={project.gallery} />
                             <Card.Body>
@@ -54,7 +53,6 @@ const ProjectDetailsPage = () => {
                                 </Card.Text>
                             </Card.Body>
                         </Card>
-
                     </>
             }
         </article>

@@ -12,7 +12,6 @@ const EditProjectPage = () => {
     const navigate = useNavigate()
 
     const fireFinalActions = () => {
-        closeModal()
         navigate('/projects')
 
     }

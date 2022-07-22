@@ -51,10 +51,7 @@ const Navigation = () => {
                                     <Nav.Link as="span" onClick={logout}>Log out</Nav.Link>
 
                                 </>
-
                         }
-
-
                     </Nav>
                 </Navbar.Collapse>
             </Container>

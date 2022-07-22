@@ -23,7 +23,9 @@ const EditProjectForm = ({ fireFinalActions }) => {
         languagesSpoken: ''
     })
 
-    console.log(projectData)
+    const [breakfastChecked, setBreakfastChecked] = useState(false)
+    const [lunchChecked, setLunchChecked] = useState(false)
+    const [supperChecked, setSupperChecked] = useState(false)
 
     const loadProject = () => {
 
@@ -31,22 +33,30 @@ const EditProjectForm = ({ fireFinalActions }) => {
             .getOneProject(project_id)
             .then(({ data }) => {
                 setProjectData(data)
+                isIncluded(data)
             })
             .catch(err => console.log(err))
     }
+
+    const isIncluded = (name) => {
+        name.mealsIncluded.includes('Breakfast') && setBreakfastChecked(true)
+        name.mealsIncluded.includes('Lunch') && setLunchChecked(true)
+        name.mealsIncluded.includes('Supper') && setSupperChecked(true)
+
+    }
+
     const handleChange = e => {
 
         const { value, name, type, checked } = e.target
         const inputValue = type === 'checkbox' ? checked : value
         const currentMeals = [...projectData.mealsIncluded]
 
+
         if (type === 'checkbox' && checked && !projectData.mealsIncluded.includes(name)) {
             currentMeals.push(name)
         } else if (projectData.mealsIncluded.includes(name)) {
             const mealIndex = currentMeals.indexOf(name)
-
             mealIndex > -1 && currentMeals.splice(mealIndex, 1)
-            console.log(currentMeals)
         }
         setProjectData({ ...projectData, mealsIncluded: currentMeals, [name]: inputValue })
     }
@@ -58,7 +68,8 @@ const EditProjectForm = ({ fireFinalActions }) => {
 
         projectsService
             .editProject(project_id, projectData)
-            .then(() => {
+            .then(({ data }) => {
+                console.log(data)
                 fireFinalActions()
             })
             .catch(ERR => console.error(ERR))
@@ -145,28 +156,72 @@ const EditProjectForm = ({ fireFinalActions }) => {
                             <Form.Group className='mb-3' controlId='mealsIncluded' name='mealsIncluded' onChange={handleChange}>
                                 <Form.Label>Meals included</Form.Label>
                                 <div key={`inline-checkbox`} className="mb-3">
-                                    <Form.Check
-                                        inline
-                                        label="Breakfast"
-                                        name="Breakfast"
-                                        type={`checkbox`}
-                                        id={"Breakfast"}
 
-                                    />
-                                    <Form.Check
-                                        inline
-                                        label="Lunch"
-                                        name="Lunch"
-                                        type={`checkbox`}
-                                        id={"Lunch"}
-                                    />
-                                    <Form.Check
-                                        inline
-                                        label="Supper"
-                                        name="Supper"
-                                        type={`checkbox`}
-                                        id={"Supper"}
-                                    />
+                                    {
+                                        breakfastChecked
+                                            ?
+                                            <Form.Check
+                                                inline
+                                                defaultChecked
+                                                label="Breakfast"
+                                                name="Breakfast"
+                                                type={`checkbox`}
+                                                id={"Breakfast"}
+
+                                            /> :
+                                            <Form.Check
+                                                inline
+                                                label="Breakfast"
+                                                name="Breakfast"
+                                                type={`checkbox`}
+                                                id={"Breakfast"}
+
+                                            />
+
+                                    }
+                                    {
+                                        lunchChecked
+                                            ?
+                                            <Form.Check
+                                                inline
+                                                defaultChecked
+                                                label="Lunch"
+                                                name="Lunch"
+                                                type={`checkbox`}
+                                                id={"Lunch"}
+                                            />
+                                            :
+                                            <Form.Check
+                                                inline
+                                                label="Lunch"
+                                                name="Lunch"
+                                                type={`checkbox`}
+                                                id={"Lunch"}
+                                            />
+
+                                    }
+
+                                    {
+                                        supperChecked
+                                            ?
+                                            <Form.Check
+                                                inline
+                                                defaultChecked
+                                                label="Supper"
+                                                name="Supper"
+                                                type={`checkbox`}
+                                                id={"Supper"}
+                                            />
+                                            :
+                                            <Form.Check
+                                                inline
+                                                label="Supper"
+                                                name="Supper"
+                                                type={`checkbox`}
+                                                id={"Supper"}
+                                            />
+                                    }
+
                                 </div>
                             </Form.Group>
                         </Form>
