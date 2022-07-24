@@ -10,6 +10,7 @@ import UserEditPage from '../Pages/UserEditPage/UserEditPage'
 import PrivateRoute from './PrivateRoutes'
 import ProjectDetailsPage from '../Pages/ProjectsDetailsPage/ProjectDetails'
 import EditProjectPage from '../Pages/EditProjectPage/EditProjectPage'
+import MapPage from '../Pages/MapPage/MapPage'
 
 
 const AppRoutes = () => {
@@ -38,6 +39,9 @@ const AppRoutes = () => {
                 </Route>
 
                 <Route path="/projects" element={<ProjectsPage />} />
+
+                <Route path="/projects/map" element={<MapPage />} />
+
 
                 <Route path="/signup" element={<SignupPage />} />
                 <Route path="/login" element={<LoginPage />} />
