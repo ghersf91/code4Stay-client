@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { Card, Col, Row } from "react-bootstrap"
 import { useParams } from "react-router-dom"
 import Loader from "../../Components/Loader/Loader"
+import JoinButton from "../../Components/JoinProjectButton/JoinProjectButton"
 import projectsService from "../../Services/project.services"
 import RatingPage from "../RatingPage/RatingPage"
 import './ProjectDetails.css'
@@ -48,10 +49,10 @@ const ProjectDetailsPage = () => {
                                 </Card>
                             </Col>
                             <Col className="sm-12 md-6">
-                                <RatingPage />
+                                <RatingPage testimonials={project.testimonials} _id={project_id} />
                             </Col>
                         </Row>
-
+                        <JoinButton />
 
                     </>
             }

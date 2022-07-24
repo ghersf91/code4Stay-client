@@ -1,11 +1,16 @@
-import { useState } from "react"
-import { Button, Form } from "react-bootstrap"
+import { useContext, useState } from "react"
+import { Button, Form, Row, Col } from "react-bootstrap"
 import CommentBox from "../../Components/CommentBox/CommentBox"
 import RatingSystem from "../../Components/RatingSystem/RatingSystem"
 import ratingServices from './../../Services/rating.services'
+import { AuthContext } from "../../Context/auth.context"
+import CommentList from "../../Components/CommentList/CommentList"
 
 
-const RatingPage = () => {
+const RatingPage = ({ testimonials, _id }) => {
+
+    const { user } = useContext(AuthContext)
+
 
     const [rate, setRate] = useState(0)
     const [comment, setComment] = useState('')
@@ -21,19 +26,19 @@ const RatingPage = () => {
 
     const handleSubmit = e => {
         e.preventDefault()
-        console.log(rate)
-        console.log(comment)
 
         ratingServices
-            .createRating({ score: rate, comment: comment })
-            .then(({ data }) => {
-                console.log(data)
+            .createRating(_id, { score: rate, comment: comment, receiver: _id, giver: user._id })
+            .then(response => {
+                console.log(response)
             })
             .catch(err => console.log(err))
     }
 
     return (
         <div>
+
+            <CommentList testimonials={testimonials} />
 
             <Form onSubmit={handleSubmit}>
                 <RatingSystem rating={rate} getRating={getRating} />
@@ -43,6 +48,9 @@ const RatingPage = () => {
                     <Button variant='dark' type='submit'>Rate project</Button>
                 </div>
             </Form>
+
+
+
 
         </div>
     )

@@ -37,6 +37,10 @@ class ProjectService {
 
     }
 
+    joinProject(project_id) {
+        return this.api.put(`join/${project_id}`)
+    }
+
     deleteProject(project_id) {
         return this.api.delete(`/delete/${project_id}`)
     }
