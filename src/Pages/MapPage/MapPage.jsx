@@ -1,4 +1,5 @@
 import Marker from '../../Components/Marker/Marker'
+import Map from '../../Components/Map/Map'
 import projectsService from "../../Services/project.services"
 import CreateProjectForm from "../../Components/CreateProjectForm/CreateProjectForm"
 
@@ -27,7 +28,9 @@ const MapPage = () => {
 
 
     return (
-        <Marker projects={projects} />
+        <>
+            <Map />
+        </>
     )
 }
 
