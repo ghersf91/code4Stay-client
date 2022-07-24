@@ -20,8 +20,12 @@ class RatingService {
         })
     }
 
-    createRating(ratingData) {
-        return this.api.post('/createRating', ratingData)
+    getRatings(project_id) {
+        return this.api.get(`getRatings/${project_id}`)
+    }
+
+    createRating(project_id, ratingData) {
+        return this.api.post(`/createRating/${project_id}`, ratingData)
     }
 
 }

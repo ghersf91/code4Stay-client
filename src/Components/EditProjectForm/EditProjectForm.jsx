@@ -20,7 +20,9 @@ const EditProjectForm = ({ fireFinalActions }) => {
         shelterType: '',
         mealsIncluded: [],
         gallery: '',
-        languagesSpoken: ''
+        languagesSpoken: '',
+        testimonials: []
+
     })
 
     const [breakfastChecked, setBreakfastChecked] = useState(false)
