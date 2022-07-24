@@ -14,6 +14,8 @@ const EditProjectForm = ({ fireFinalActions }) => {
         projectType: '',
         city: '',
         country: '',
+        latitude: '',
+        longitude: '',
         description: '',
         hoursPerWeek: '',
         minWeeks: '',
@@ -95,7 +97,7 @@ const EditProjectForm = ({ fireFinalActions }) => {
     }, [])
 
 
-    const { city, country, projectName, projectType, hoursPerWeek, description, minWeeks, mealsIncluded, shelterType, gallery, languagesSpoken } = projectData
+    const { city, country, latitude, longitude, projectName, projectType, hoursPerWeek, description, minWeeks, mealsIncluded, shelterType, gallery, languagesSpoken } = projectData
 
     return (
         <Container>
@@ -122,6 +124,27 @@ const EditProjectForm = ({ fireFinalActions }) => {
                         <Form.Group className='mb-3' controlId='country'>
                             <Form.Label>Country</Form.Label>
                             <Form.Control type='text' value={country} onChange={handleChange} name='country' />
+                        </Form.Group>
+                    </Col>
+
+                </Row>
+
+                <Row>
+
+                    <Col>
+
+                        <Form.Group className='mb-3' controlId='latitude'>
+                            <Form.Label>Latitude</Form.Label>
+                            <Form.Control type='text' value={latitude} onChange={handleChange} name='latitude' />
+                        </Form.Group>
+
+                    </Col>
+
+                    <Col>
+
+                        <Form.Group className='mb-3' controlId='longitude'>
+                            <Form.Label>Longitude</Form.Label>
+                            <Form.Control type='text' value={longitude} onChange={handleChange} name='longitude' />
                         </Form.Group>
                     </Col>
 
