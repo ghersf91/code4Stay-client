@@ -13,6 +13,9 @@ const CreateProjectForm = ({ fireFinalActions }) => {
         projectType: 'FARM',
         city: '',
         country: '',
+        location: { coordinates: [] },
+        // latitude: '',
+        // longitude: '',
         description: '',
         hoursPerWeek: '',
         minWeeks: '',
@@ -37,12 +40,12 @@ const CreateProjectForm = ({ fireFinalActions }) => {
             mealIndex > -1 && currentMeals.splice(mealIndex, 1)
             console.log(currentMeals)
         }
-        setProjectData({ ...projectData, mealsIncluded: currentMeals, [name]: inputValue })
+        setProjectData({ ...projectData, mealsIncluded: currentMeals, location: { coordinates: [latitude, longitude] }, [name]: inputValue })
     }
 
     const handleSubmit = e => {
         e.preventDefault()
-
+        console.log(projectData)
         projectsService
             .createProject(projectData)
             .then(() => {
@@ -65,7 +68,7 @@ const CreateProjectForm = ({ fireFinalActions }) => {
             .catch(err => console.log(err))
     }
 
-    const { city, country, projectName, projectType, hoursPerWeek, description, minWeeks, mealsIncluded, shelterType, gallery, languagesSpoken } = projectData
+    const { city, country, latitude, longitude, projectName, projectType, hoursPerWeek, description, minWeeks, mealsIncluded, shelterType, gallery, languagesSpoken } = projectData
 
     return (
         <Container>
@@ -92,6 +95,27 @@ const CreateProjectForm = ({ fireFinalActions }) => {
                         <Form.Group className='mb-3' controlId='country'>
                             <Form.Label>Country</Form.Label>
                             <Form.Control type='text' value={country} onChange={handleChange} name='country' />
+                        </Form.Group>
+                    </Col>
+
+                </Row>
+
+                <Row>
+
+                    <Col>
+
+                        <Form.Group className='mb-3' controlId='latitude'>
+                            <Form.Label>Latitude</Form.Label>
+                            <Form.Control type='text' value={latitude} onChange={handleChange} name='latitude' />
+                        </Form.Group>
+
+                    </Col>
+
+                    <Col>
+
+                        <Form.Group className='mb-3' controlId='longitude'>
+                            <Form.Label>Longitude</Form.Label>
+                            <Form.Control type='text' value={longitude} onChange={handleChange} name='longitude' />
                         </Form.Group>
                     </Col>
 
