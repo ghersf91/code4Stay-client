@@ -26,7 +26,10 @@ const AppRoutes = () => {
                     <Route path="" element={<UserEditPage />} />
                 </Route>
 
-                <Route path="projects/details/:project_id" element={<ProjectDetailsPage />} />
+                <Route path="projects/details/:project_id" element={<PrivateRoute />}>
+                    <Route path="" element={<ProjectDetailsPage />} />
+                </Route>
+
 
                 <Route path="projects/edit/:project_id" element={<EditProjectPage />} />
 

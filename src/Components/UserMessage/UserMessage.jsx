@@ -16,7 +16,7 @@ function UserMessage() {
             delay={5000}
         >
             <Toast.Header>
-                <strong classname='me-auto'>{showMessage.title}</strong>
+                <strong className='me-auto'>{showMessage.title}</strong>
             </Toast.Header>
             <Toast.Body>{showMessage.text}</Toast.Body>
         </Toast>
