@@ -1,10 +1,6 @@
 import { GoogleMap, LoadScript } from '@react-google-maps/api';
-import { useState } from "react"
-import './Map.css'
 
-const Map = () => {
-
-    const [update, setUpdate] = useState(false)
+const MapGoogle = () => {
 
     const center = {
         lat: 64.31275217542137,
@@ -20,7 +16,7 @@ const Map = () => {
 
         <LoadScript googleMapsApiKey='AIzaSyDyJLzEV4bMHGkkovvuE00bI7PJjY1QgSA'>
 
-            <GoogleMap className="map"
+            <GoogleMap
                 mapContainerStyle={size}
                 zoom={2}
                 center={center}>
@@ -31,4 +27,4 @@ const Map = () => {
     )
 }
 
-export default Map
+export default MapGoogle

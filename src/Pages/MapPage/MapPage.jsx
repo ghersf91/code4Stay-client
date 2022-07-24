@@ -1,5 +1,4 @@
-import Marker from '../../Components/Marker/Marker'
-import Map from '../../Components/Map/Map'
+import MapGoogle from '../../Components/MapGoogle/MapGoogle'
 import projectsService from "../../Services/project.services"
 import CreateProjectForm from "../../Components/CreateProjectForm/CreateProjectForm"
 
@@ -29,7 +28,7 @@ const MapPage = () => {
 
     return (
         <>
-            <Map />
+            <MapGoogle />
         </>
     )
 }

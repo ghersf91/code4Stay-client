@@ -4,8 +4,6 @@ import Navigation from './Components/Navigation/Navigation';
 import AppRoutes from './Routes/AppRoutes';
 import UserMessage from './Components/UserMessage/UserMessage';
 import MapPage from './Pages/MapPage/MapPage';
-import Map from "./Components/Map/Map";
-
 
 
 function App() {
