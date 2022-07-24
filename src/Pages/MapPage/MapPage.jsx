@@ -1,6 +1,5 @@
 import MapGoogle from '../../Components/MapGoogle/MapGoogle'
 import projectsService from "../../Services/project.services"
-import CreateProjectForm from "../../Components/CreateProjectForm/CreateProjectForm"
 
 import { useState, useEffect } from "react"
 
