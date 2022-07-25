@@ -1,12 +1,11 @@
-import ProjectsList from "../../Components/ProjectsList/ProjectList"
 import { useState, useEffect, useContext } from "react"
-import projectsService from "../../Services/project.services"
 import { Modal } from 'react-bootstrap'
-
-
+import projectsService from "../../Services/project.services"
 import { MessageContext } from "./../../Context/userMessage.context"
 import { AuthContext } from "./../../Context/auth.context"
 import CreateProjectForm from "../../Components/CreateProjectForm/CreateProjectForm"
+import MapGoogle from '../../Components/MapGoogle/MapGoogle'
+import ProjectsList from "../../Components/ProjectsList/ProjectList"
 
 
 const ProjectPage = () => {
@@ -41,6 +40,8 @@ const ProjectPage = () => {
 
     return (
         <>
+            <MapGoogle projects={projects} />
+
             <h1>Browse through our opportunities {user && <span onClick={openModal}>+</span>}</h1>
 
             <ProjectsList projects={projects} />

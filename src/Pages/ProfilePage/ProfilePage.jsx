@@ -96,7 +96,7 @@ const ProfilePage = () => {
                                 }
                             </ListGroup>
                             {
-                                user?.role === 'HOST' || user?.role === 'ADMIN'
+                                user?.role === 'HOST'
                                 &&
                                 <ListGroup className="mb-5">
                                     {
