@@ -14,8 +14,9 @@ const EditProjectForm = ({ fireFinalActions }) => {
         projectType: '',
         city: '',
         country: '',
-        latitude: '',
-        longitude: '',
+        location: { coordinates: [] },
+        // latitude: '',
+        // longitude: '',
         description: '',
         hoursPerWeek: '',
         minWeeks: '',
@@ -65,7 +66,7 @@ const EditProjectForm = ({ fireFinalActions }) => {
             mealIndex > -1 && currentMeals.splice(mealIndex, 1)
 
         }
-        setProjectData({ ...projectData, mealsIncluded: currentMeals, [name]: inputValue })
+        setProjectData({ ...projectData, mealsIncluded: currentMeals, location: { coordinates: [latitude, longitude] }, [name]: inputValue })
     }
 
     const handleSubmit = e => {

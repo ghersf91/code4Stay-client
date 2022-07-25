@@ -38,14 +38,12 @@ const CreateProjectForm = ({ fireFinalActions }) => {
             const mealIndex = currentMeals.indexOf(name)
 
             mealIndex > -1 && currentMeals.splice(mealIndex, 1)
-            console.log(currentMeals)
         }
         setProjectData({ ...projectData, mealsIncluded: currentMeals, location: { coordinates: [latitude, longitude] }, [name]: inputValue })
     }
 
     const handleSubmit = e => {
         e.preventDefault()
-        console.log(projectData)
         projectsService
             .createProject(projectData)
             .then(() => {
