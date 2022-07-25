@@ -8,6 +8,7 @@ import LoginPage from '../Pages/LoginPage/LoginPage'
 import ProfilePage from '../Pages/ProfilePage/ProfilePage'
 import UserEditPage from '../Pages/UserEditPage/UserEditPage'
 import PrivateRoute from './PrivateRoutes'
+import AcceptJoinButton from './../Components/AcceptJoinButton/AcceptJoinButton'
 import ProjectDetailsPage from '../Pages/ProjectsDetailsPage/ProjectDetails'
 import EditProjectPage from '../Pages/EditProjectPage/EditProjectPage'
 import MapPage from '../Pages/MapPage/MapPage'
@@ -30,6 +31,9 @@ const AppRoutes = () => {
                 <Route path="projects/details/:project_id" element={<PrivateRoute />}>
                     <Route path="" element={<ProjectDetailsPage />} />
                 </Route>
+                {/* <Route path="projects/join/:user_id" element={<PrivateRoute />}>
+                    <Route path="" element={<AcceptJoinButton />} />
+                </Route> */}
 
 
                 <Route path="projects/edit/:project_id" element={<EditProjectPage />} />

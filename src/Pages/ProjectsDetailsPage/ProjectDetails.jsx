@@ -52,7 +52,7 @@ const ProjectDetailsPage = () => {
                                 <RatingPage testimonials={project.testimonials} _id={project_id} />
                             </Col>
                         </Row>
-                        <JoinButton />
+                        <JoinButton project_id={project_id} />
 
                     </>
             }

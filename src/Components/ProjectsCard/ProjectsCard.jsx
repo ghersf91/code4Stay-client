@@ -4,7 +4,6 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useContext } from 'react'
 import { AuthContext } from './../../Context/auth.context'
 import projectsService from '../../Services/project.services'
-import JoinButton from '../JoinProjectButton/JoinProjectButton'
 
 
 const ProjectCard = ({ gallery, projectName, city, country, description, _id, owner }) => {
@@ -40,7 +39,6 @@ const ProjectCard = ({ gallery, projectName, city, country, description, _id, ow
                             <Button size="sm" variant="dark">Details</Button>
                         </Link>
 
-                        <JoinButton project_id={_id} />
 
                         {
                             user && owner === user._id
