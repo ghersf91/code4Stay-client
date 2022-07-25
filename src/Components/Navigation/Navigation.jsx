@@ -18,7 +18,7 @@ const Navigation = () => {
 
 
     return (
-        <Navbar bg="dark" expand="md" variant="dark" className='mb-5'>
+        <Navbar bg="dark" expand="md" variant="dark">
             <Container>
                 <Navbar.Brand>Code4Stay</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
