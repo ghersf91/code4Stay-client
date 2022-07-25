@@ -2,7 +2,8 @@ import { Link, useParams, useNavigate } from "react-router-dom"
 import userService from "../../Services/user.services"
 import { useEffect, useState, useContext } from "react"
 import { AuthContext } from '../../Context/auth.context'
-import { Button, Card, ListGroup } from 'react-bootstrap'
+import { Button, ButtonGroup, Card, ListGroup } from 'react-bootstrap'
+import projectsService from "../../Services/project.services"
 
 
 const ProfilePage = () => {
@@ -26,6 +27,7 @@ const ProfilePage = () => {
         projectTypeInterests: [],
         locationInterests: [],
         profilePicture: '',
+        requests: []
     })
 
     useEffect(() => {
@@ -41,6 +43,15 @@ const ProfilePage = () => {
             .catch(err => console.log(err))
     }
 
+    const clickAccept = e => {
+        projectsService
+            .joinProject(e)
+            .then(() => {
+
+            })
+            .catch(err => console.log(err))
+    }
+
     const userDelete = () => {
         userService
             .deleteUser(user_id)
@@ -48,7 +59,7 @@ const ProfilePage = () => {
             .catch(err => console.log(err))
     }
 
-    const { username, email, bio, role, projectTypeInterests, locationInterests, profilePicture, _id } = userData
+    const { username, email, bio, role, projectTypeInterests, locationInterests, profilePicture, _id, requests } = userData
 
     return (
         <>
@@ -84,6 +95,32 @@ const ProfilePage = () => {
                                     locationInterests.map(project => <ListGroup.Item>-{project}</ListGroup.Item>)
                                 }
                             </ListGroup>
+                            {
+                                user?.role === 'HOST' || user?.role === 'ADMIN'
+                                &&
+                                <ListGroup className="mb-5">
+                                    {
+                                        requests.map(response => {
+                                            // console.log(response)
+                                            return (
+                                                <>
+                                                    <ListGroup.Item>-{response.username}: {response.bio}</ListGroup.Item>
+                                                    <ButtonGroup>
+
+                                                        <Button variant='success' onClick={() => clickAccept(response._id)}>Accept</Button>
+
+                                                        <Link to={`/projects/join/${user_id}`}>
+                                                            <Button variant='danger'>Deny</Button>
+                                                        </Link>
+                                                    </ButtonGroup>
+
+
+                                                </>
+                                            )
+                                        })
+                                    }
+                                </ListGroup>
+                            }
 
                             <Link to={`/users/editUser/${user_id}`} >
                                 <Button variant="primary" className='mb-1'>Update user information</Button>

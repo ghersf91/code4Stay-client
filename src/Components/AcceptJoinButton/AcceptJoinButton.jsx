@@ -2,11 +2,11 @@ import { Button } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 import projectsService from '../../Services/project.services'
 
-const JoinButton = ({ project_id }) => {
+const AcceptJoinButton = ({ user_id }) => {
     const navigate = useNavigate()
     const handleClick = () => {
         projectsService
-            .requestsProject(project_id)
+            .joinProject(user_id)
             .then(({ data }) => {
                 console.log(data)
                 navigate(`/projects`)
@@ -18,4 +18,4 @@ const JoinButton = ({ project_id }) => {
     )
 }
 
-export default JoinButton
+export default AcceptJoinButton
