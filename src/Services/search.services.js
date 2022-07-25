@@ -20,7 +20,7 @@ class SearchService {
         })
     }
 
-    getContinents(continent) {
+    getContinent(continent) {
         return this.api.get(`/${continent}`)
     }
 

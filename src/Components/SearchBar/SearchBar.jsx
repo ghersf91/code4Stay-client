@@ -6,10 +6,10 @@ const SearchBar = ({ receiveFilter, receiveContinents }) => {
     const toggleContinent = e => {
         console.log(e)
         searchService
-            .getContinents(e)
+            .getContinent(e)
             .then(response => {
                 console.log(response)
-                // receiveContinents(e)
+                receiveContinents(response)
             })
             .catch(err => console.log(err))
     }
@@ -30,7 +30,7 @@ const SearchBar = ({ receiveFilter, receiveContinents }) => {
                     allContinents.map(e => {
                         return (
                             <Button variant='light'
-                                onClick={toggleContinent(e)}>{e}</Button>)
+                                onClick={() => toggleContinent(e)}>{e}</Button>)
                     })
                 }
             </ButtonGroup>
