@@ -4,6 +4,7 @@ import { useEffect, useState, useContext } from "react"
 import { AuthContext } from '../../Context/auth.context'
 import { Button, ButtonGroup, Card, ListGroup } from 'react-bootstrap'
 import projectsService from "../../Services/project.services"
+import AcceptJoinButton from "../../Components/AcceptJoinButton/AcceptJoinButton"
 
 
 const ProfilePage = () => {
@@ -43,21 +44,15 @@ const ProfilePage = () => {
             .catch(err => console.log(err))
     }
 
-    const clickAccept = e => {
-        projectsService
-            .joinProject(e)
-            .then(() => {
-
-            })
-            .catch(err => console.log(err))
-    }
-
     const userDelete = () => {
         userService
             .deleteUser(user_id)
             .then(() => navigate('/'))
             .catch(err => console.log(err))
     }
+
+    const isHost = userData.role === 'HOST' || userData.role === 'ADMIN' ? true : false
+
 
     const { username, email, bio, role, projectTypeInterests, locationInterests, profilePicture, _id, requests } = userData
 
@@ -96,7 +91,7 @@ const ProfilePage = () => {
                                 }
                             </ListGroup>
                             {
-                                user?.role === 'HOST' || user?.role === 'ADMIN'
+                                isHost
                                 &&
                                 <ListGroup className="mb-5">
                                     {
@@ -107,8 +102,7 @@ const ProfilePage = () => {
                                                     <ListGroup.Item>-{response.username}: {response.bio}</ListGroup.Item>
                                                     <ButtonGroup>
 
-                                                        <Button variant='success' onClick={() => clickAccept(response._id)}>Accept</Button>
-
+                                                        <AcceptJoinButton user_id={response._id} />
                                                         <Link to={`/projects/join/${user_id}`}>
                                                             <Button variant='danger'>Deny</Button>
                                                         </Link>

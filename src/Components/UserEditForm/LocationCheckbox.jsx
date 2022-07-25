@@ -1,8 +1,5 @@
 import { useEffect } from "react"
 import { Form } from "react-bootstrap"
-import userService from "../../Services/user.services"
-
-const { useState } = require("react")
 
 const LocationCheckbox = ({ locationsChecked, receiveLocations }) => {
 

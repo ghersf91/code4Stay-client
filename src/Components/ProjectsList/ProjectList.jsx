@@ -6,7 +6,11 @@ import SearchBar from '../SearchBar/SearchBar'
 
 const ProjectsList = ({ projects }) => {
     const [query, setQuery] = useState('')
+    // const [continents, setContinents] = useState([])
 
+    // const receiveContinents = data => {
+    //     setContinents([...continents, data])
+    // }
     const receiveFilter = data => {
         setQuery(data)
     }

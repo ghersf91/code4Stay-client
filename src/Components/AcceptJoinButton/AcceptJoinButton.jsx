@@ -11,10 +11,11 @@ const AcceptJoinButton = ({ user_id }) => {
                 console.log(data)
                 navigate(`/projects`)
             })
+            .catch(err => console.log(err))
 
     }
     return (
-        <Button size="sm" variant="success" onClick={handleClick}>Join</Button>
+        <Button size="md" variant="success" onClick={handleClick}>Accept</Button>
     )
 }
 

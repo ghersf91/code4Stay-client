@@ -68,45 +68,7 @@ const UserEditForm = () => {
 
         const inputValue = type === 'checkbox' ? checked : value
 
-        // const projectInterests = ['Farm', 'NGO', 'Hostel', 'School', 'Camping', 'Other']
-        // const locations = ['Americas', 'Europe', 'Asia', 'Africa', 'Oceania']
-
-        // const currentLocationInterests = [...locationsChecked]
-        // const currentProjectInterests = [...userData.projectTypeInterests]
-
-        // if (projectInterests.includes(name)) {
-
-        //     if (checked && !locationsChecked.includes(name)) {
-
-        //         currentProjectInterests.push(name)
-
-        //     } else if (locationsChecked.includes(name)) {
-
-        //         const projectInterestsIndex = currentProjectInterests.indexOf(name)
-
-        //         projectInterestsIndex > -1 && currentProjectInterests.splice(projectInterestsIndex, 1)
-        //         console.log(currentProjectInterests)
-        //     }
-
-        //     } else if (locations.includes(name)) {
-
-        //         if (checked && !userData.locationInterests.includes(name)) {
-
-        //             currentLocationInterests.push(name)
-
-        //         } else if (userData.locationInterests.includes(name)) {
-
-        //             const locationInterestsIndex = currentLocationInterests.indexOf(name)
-
-        //             locationInterestsIndex > -1 && currentLocationInterests.splice(locationInterestsIndex, 1)
-
-        //             console.log(currentLocationInterests)
-        //         }
-        // }
-
-        setUserData({
-            ...userData, [name]: inputValue
-        })
+        setUserData({ ...userData, [name]: inputValue })
     }
 
 
@@ -131,31 +93,28 @@ const UserEditForm = () => {
             .catch(err => console.log(err))
     }
 
-    const { username, email, bio, role, projectTypeInterests, locationInterests } = userData
+    const { username, email, bio } = userData
     return (
 
-        <Container>
+        <Container className="mb-5">
             <Form onSubmit={handleSubmit}>
                 <h1>Edit profile</h1>
                 <Row>
                     <Col>
-                        <Form.Group className="mb-3" controlId="username">
+                        <Form.Group className="sm-12 mb-3" controlId="username">
                             <Form.Label>Username</Form.Label>
                             <Form.Control type="text" value={username} onChange={handleInputChange} name="username" />
                         </Form.Group>
                     </Col>
-                    {/* <Form.Group className="mb-3" controlId="password">
-                    <Form.Label>Password</Form.Label>
-                    <Form.Control type="password" value={password} onChange={handleInputChange} name="password" />
-                </Form.Group> */}
+
                     <Col>
-                        <Form.Group className="mb-3" controlId="email">
+                        <Form.Group className="sm-12 mb-3" controlId="email">
                             <Form.Label>Email</Form.Label>
                             <Form.Control type="email" value={email} onChange={handleInputChange} name="email" />
                         </Form.Group>
                     </Col>
                     <Col>
-                        <Form.Group className='mb-3' controlId='role'>
+                        <Form.Group className='sm-12 mb-3' controlId='role'>
                             <Form.Label>Type of user</Form.Label>
                             <Form.Select aria-label="Default select example" name='role' onChange={handleInputChange}>
                                 <option value={'VOLUNTEER'}>Volunteer</option>

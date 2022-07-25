@@ -15,6 +15,7 @@ const EditProjectForm = ({ fireFinalActions }) => {
         projectType: '',
         city: '',
         country: '',
+        continent: '',
         location: { coordinates: [] },
         // latitude: '',
         // longitude: '',
@@ -29,27 +30,18 @@ const EditProjectForm = ({ fireFinalActions }) => {
 
     })
     const [mealsChecked, setMealsChecked] = useState([])
-    // const [breakfastChecked, setBreakfastChecked] = useState(false)
-    // const [lunchChecked, setLunchChecked] = useState(false)
-    // const [supperChecked, setSupperChecked] = useState(false)
 
     const loadProject = () => {
 
         projectsService
             .getOneProject(project_id)
             .then(({ data }) => {
+                console.log(data)
                 setMealsChecked(data.mealsIncluded)
                 setProjectData(data)
             })
             .catch(err => console.log(err))
     }
-
-    // const isIncluded = (name) => {
-    //     name.mealsIncluded.includes('Breakfast') && setBreakfastChecked(true)
-    //     name.mealsIncluded.includes('Lunch') && setLunchChecked(true)
-    //     name.mealsIncluded.includes('Supper') && setSupperChecked(true)
-
-    // }
 
     const receiveMeals = data => {
         setMealsChecked(data)
@@ -71,7 +63,10 @@ const EditProjectForm = ({ fireFinalActions }) => {
             mealIndex > -1 && currentMeals.splice(mealIndex, 1)
 
         }
-        setProjectData({ ...projectData, mealsIncluded: currentMeals, location: { coordinates: [latitude, longitude] }, [name]: inputValue })
+        setProjectData({
+            ...projectData, mealsIncluded: currentMeals,
+            location: { coordinates: [latitude, longitude] }, [name]: inputValue
+        })
     }
 
     const handleSubmit = e => {
@@ -99,6 +94,7 @@ const EditProjectForm = ({ fireFinalActions }) => {
             .catch(err => console.log(err))
     }
     useEffect(() => {
+
         loadProject()
     }, [])
 
@@ -106,12 +102,17 @@ const EditProjectForm = ({ fireFinalActions }) => {
         setProjectData({ ...projectData, mealsIncluded: mealsChecked })
     }, [mealsChecked])
 
+    console.log(projectData.location.coordinates)
+    const { city, country, continent, location, projectName, projectType,
+        hoursPerWeek, description, minWeeks, mealsIncluded,
+        shelterType, gallery, languagesSpoken } = projectData
+    const latitude = location.coordinates[0]
+    const longitude = location.coordinates[1]
 
-    const { city, country, latitude, longitude, projectName, projectType,
-        hoursPerWeek, description, minWeeks, mealsIncluded, shelterType, gallery, languagesSpoken } = projectData
+    console.log(latitude)
 
     return (
-        <Container>
+        <Container className='mb-5'>
             <Form onSubmit={handleSubmit}>
                 <h1>Edit Project</h1>
                 <Form.Group className='mb-3' controlId='projectName'>
@@ -120,6 +121,21 @@ const EditProjectForm = ({ fireFinalActions }) => {
                 </Form.Group>
 
                 <Row>
+                    <Col>
+
+                        <Form.Group className='mb-3' controlId='continent'>
+                            <Form.Label>Continent</Form.Label>
+                            <Form.Select aria-label="Default select example"
+                                value={continent} name='continent' onChange={handleChange}>
+                                <option value={'Africa'}>Africa</option>
+                                <option value={'Americas'}>Americas</option>
+                                <option value={'Asia'}>Asia</option>
+                                <option value={'Europe'}>Europe</option>
+                                <option value={'Oceania'}>Oceania</option>
+                            </Form.Select>
+                        </Form.Group>
+
+                    </Col>
 
                     <Col>
 
@@ -189,78 +205,6 @@ const EditProjectForm = ({ fireFinalActions }) => {
 
                         <Form>
                             <MealsCheckbox receiveMeals={receiveMeals} mealsChecked={mealsChecked} />
-                            {/* <Form.Group className='mb-3' controlId='mealsIncluded' name='mealsIncluded' onClick={handleChange}>
-                                <Form.Label>Meals included</Form.Label>
-                                <div key={`inline-checkbox`} className="mb-3">
-
-                                    {
-                                        breakfastChecked
-                                            ?
-                                            <Form.Check
-                                                inline
-                                                defaultChecked
-                                                label="Breakfast"
-                                                name="Breakfast"
-                                                type={`checkbox`}
-                                                id={"Breakfast"}
-                                                value={'on'}
-
-                                            /> :
-                                            <Form.Check
-                                                inline
-                                                label="Breakfast"
-                                                name="Breakfast"
-                                                type={`checkbox`}
-                                                id={"Breakfast"}
-
-                                            />
-
-                                    }
-                                    {
-                                        lunchChecked
-                                            ?
-                                            <Form.Check
-                                                inline
-                                                defaultChecked
-                                                label="Lunch"
-                                                name="Lunch"
-                                                type={`checkbox`}
-                                                id={"Lunch"}
-                                            />
-                                            :
-                                            <Form.Check
-                                                inline
-                                                label="Lunch"
-                                                name="Lunch"
-                                                type={`checkbox`}
-                                                id={"Lunch"}
-                                            />
-
-                                    }
-
-                                    {
-                                        supperChecked
-                                            ?
-                                            <Form.Check
-                                                inline
-                                                defaultChecked
-                                                label="Supper"
-                                                name="Supper"
-                                                type={`checkbox`}
-                                                id={"Supper"}
-                                            />
-                                            :
-                                            <Form.Check
-                                                inline
-                                                label="Supper"
-                                                name="Supper"
-                                                type={`checkbox`}
-                                                id={"Supper"}
-                                            />
-                                    }
-
-                                </div>
-                            </Form.Group> */}
                         </Form>
 
                     </Col>

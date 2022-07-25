@@ -1,9 +1,8 @@
 import { Form, Button, Row, Col, Container } from 'react-bootstrap'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import projectsService from './../../Services/project.services'
-import './CreateProjectForm.css'
-import { useEffect } from 'react'
 import uploadService from './../../Services/upload.services'
+import './CreateProjectForm.css'
 
 
 const CreateProjectForm = ({ fireFinalActions }) => {
@@ -13,6 +12,7 @@ const CreateProjectForm = ({ fireFinalActions }) => {
         projectType: 'FARM',
         city: '',
         country: '',
+        continent: 'Africa',
         location: { coordinates: [] },
         // latitude: '',
         // longitude: '',
@@ -66,7 +66,8 @@ const CreateProjectForm = ({ fireFinalActions }) => {
             .catch(err => console.log(err))
     }
 
-    const { city, country, latitude, longitude, projectName, projectType, hoursPerWeek, description, minWeeks, mealsIncluded, shelterType, gallery, languagesSpoken } = projectData
+    const { city, country, continent, latitude, longitude, projectName, projectType,
+        hoursPerWeek, description, minWeeks, mealsIncluded, shelterType, gallery, languagesSpoken } = projectData
 
     return (
         <Container>
@@ -78,6 +79,20 @@ const CreateProjectForm = ({ fireFinalActions }) => {
                 </Form.Group>
 
                 <Row>
+                    <Col>
+
+                        <Form.Group className='mb-3' controlId='continent'>
+                            <Form.Label>Project type</Form.Label>
+                            <Form.Select aria-label="Default select example" name='continent' onChange={handleChange}>
+                                <option value={'Africa'}>Africa</option>
+                                <option value={'Americas'}>Americas</option>
+                                <option value={'Asia'}>Asia</option>
+                                <option value={'Europe'}>Europe</option>
+                                <option value={'Oceania'}>Oceania</option>
+                            </Form.Select>
+                        </Form.Group>
+
+                    </Col>
 
                     <Col>
 

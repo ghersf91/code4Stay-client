@@ -31,10 +31,6 @@ const AppRoutes = () => {
                 <Route path="projects/details/:project_id" element={<PrivateRoute />}>
                     <Route path="" element={<ProjectDetailsPage />} />
                 </Route>
-                {/* <Route path="projects/join/:user_id" element={<PrivateRoute />}>
-                    <Route path="" element={<AcceptJoinButton />} />
-                </Route> */}
-
 
                 <Route path="projects/edit/:project_id" element={<EditProjectPage />} />
 
