@@ -24,7 +24,7 @@ const ProjectCheckbox = ({ receiveProjects, projectsChecked }) => {
     }
     return (
         <>
-            <Form.Group className='mb-3' controlId='projectTypeInterests' name='projectTypeInterests' onChange={handleInputChange}>
+            <Form.Group className='mb-3' controlId='projectTypeInterests' name='projectTypeInterests' onClick={handleInputChange}>
                 <Form.Label>Project interests</Form.Label>
                 <div key={`inline-checkbox`} className="mb-3">
                     {

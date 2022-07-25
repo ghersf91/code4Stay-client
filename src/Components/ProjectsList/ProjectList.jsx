@@ -2,15 +2,28 @@ import { Row, Col } from 'react-bootstrap'
 
 import { useState, useEffect } from "react"
 import ProjectCard from "../ProjectsCard/ProjectsCard"
+import SearchBar from '../SearchBar/SearchBar'
 
 const ProjectsList = ({ projects }) => {
+    const [query, setQuery] = useState('')
 
+    const receiveFilter = data => {
+        setQuery(data)
+    }
     return (
 
         <>
+            <SearchBar receiveFilter={receiveFilter} />
             <Row>
-                {
-                    projects.map(project => {
+                {projects.filter(post => {
+                    console.log(post)
+                    if (query === "") {
+                        return post;
+                    } else if (post.projectName.toLowerCase().includes(query.toLowerCase())) {
+                        return post;
+                    }
+                })
+                    .map(project => {
                         return (
                             <Col md={3} key={project._id} >
                                 <ProjectCard {...project} />

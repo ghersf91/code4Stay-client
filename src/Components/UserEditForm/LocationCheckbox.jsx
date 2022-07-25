@@ -17,10 +17,7 @@ const LocationCheckbox = ({ locationsChecked, receiveLocations }) => {
 
         const { name, checked } = e.target
 
-
-        console.log(checked, name)
         const currentLocationInterests = [...locationsChecked]
-        console.log(currentLocationInterests)
 
         if (checked && !currentLocationInterests.includes(name)) {
 

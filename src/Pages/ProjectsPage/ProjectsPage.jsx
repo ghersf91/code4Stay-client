@@ -42,6 +42,7 @@ const ProjectPage = () => {
     return (
         <>
             <h1>Browse through our opportunities {user && <span onClick={openModal}>+</span>}</h1>
+
             <ProjectsList projects={projects} />
 
             <Modal show={showModal} onHide={closeModal}>

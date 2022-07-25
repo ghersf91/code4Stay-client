@@ -172,102 +172,13 @@ const UserEditForm = () => {
                     <Col>
                         <Form>
                             <ProjectCheckbox receiveProjects={receiveProjects} projectsChecked={projectsChecked} />
-                            {/* <Form.Group className='mb-3' controlId='projectTypeInterests' name='projectTypeInterests' onChange={handleInputChange}>
-                                <Form.Label>Project interests</Form.Label>
-                                <div key={`inline-checkbox`} className="mb-3">
-                                    <Form.Check
-                                        inline
-                                        label="Farm"
-                                        name="Farm"
-                                        type={`checkbox`}
-                                        id={"Farm"}
-                                    />
-                                    <Form.Check
-                                        inline
-                                        label="NGO"
-                                        name="NGO"
-                                        type={`checkbox`}
-                                        id={"NGO"}
-                                    />
-                                    <Form.Check
-                                        inline
-                                        label="School"
-                                        name="School"
-                                        type={`checkbox`}
-                                        id={"School"}
-                                    />
-                                    <Form.Check
-                                        inline
-                                        label="Hostel"
-                                        name="Hostel"
-                                        type={`checkbox`}
-                                        id={"Hostel"}
-                                    />
-                                    <Form.Check
-                                        inline
-                                        label="Camping"
-                                        name="Camping"
-                                        type={`checkbox`}
-                                        id={"Camping"}
-                                    />
-                                    <Form.Check
-                                        inline
-                                        label="Other"
-                                        name="Other"
-                                        type={`checkbox`}
-                                        id={"Other"}
-                                    />
-                                </div>
-                            </Form.Group> */}
+
                         </Form>
                     </Col>
                     <Col>
                         <Form >
                             <LocationCheckbox locationsChecked={locationsChecked} receiveLocations={receiveLocations} />
                         </Form>
-
-                        {/* <Form>
-                            <Form.Group className='mb-3' controlId='locationInterests' name='locationInterests' onChange={handleInputChange}>
-                                <Form.Label>Region interests</Form.Label>
-                                <div key={`inline-checkbox`} className="mb-3">
-                                    <Form.Check
-                                        inline
-                                        label="Americas"
-                                        name="Americas"
-                                        type={`checkbox`}
-                                        id={"Americas"}
-                                    />
-                                    <Form.Check
-                                        inline
-                                        label="Europe"
-                                        name="Europe"
-                                        type={`checkbox`}
-                                        id={"Europe"}
-                                    />
-                                    <Form.Check
-                                        inline
-                                        label="Asia"
-                                        name="Asia"
-                                        type={`checkbox`}
-                                        id={"Asia"}
-                                    />
-                                    <Form.Check
-                                        inline
-                                        label="Africa"
-                                        name="Africa"
-                                        type={`checkbox`}
-                                        id={"Africa"}
-                                    />
-                                    <Form.Check
-                                        inline
-                                        label="Oceania"
-                                        name="Oceania"
-                                        type={`checkbox`}
-                                        id={"Oceania"}
-                                    />
-                                </div>
-                            </Form.Group>
-                        </Form> */}
                     </Col>
                 </Row>
                 <Form.Group className='mb-3' controlId='profilePicture'>

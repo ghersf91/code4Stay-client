@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import projectsService from './../../Services/project.services'
 import uploadService from './../../Services/upload.services'
 import { useParams } from 'react-router-dom'
+import MealsCheckbox from './MealsCheckbox'
 
 
 const EditProjectForm = ({ fireFinalActions }) => {
@@ -26,41 +27,45 @@ const EditProjectForm = ({ fireFinalActions }) => {
         testimonials: []
 
     })
-
-    const [breakfastChecked, setBreakfastChecked] = useState(false)
-    const [lunchChecked, setLunchChecked] = useState(false)
-    const [supperChecked, setSupperChecked] = useState(false)
+    const [mealsChecked, setMealsChecked] = useState([])
+    // const [breakfastChecked, setBreakfastChecked] = useState(false)
+    // const [lunchChecked, setLunchChecked] = useState(false)
+    // const [supperChecked, setSupperChecked] = useState(false)
 
     const loadProject = () => {
 
         projectsService
             .getOneProject(project_id)
             .then(({ data }) => {
+                setMealsChecked(data.mealsIncluded)
                 setProjectData(data)
-                isIncluded(data)
             })
             .catch(err => console.log(err))
     }
 
-    const isIncluded = (name) => {
-        name.mealsIncluded.includes('Breakfast') && setBreakfastChecked(true)
-        name.mealsIncluded.includes('Lunch') && setLunchChecked(true)
-        name.mealsIncluded.includes('Supper') && setSupperChecked(true)
+    // const isIncluded = (name) => {
+    //     name.mealsIncluded.includes('Breakfast') && setBreakfastChecked(true)
+    //     name.mealsIncluded.includes('Lunch') && setLunchChecked(true)
+    //     name.mealsIncluded.includes('Supper') && setSupperChecked(true)
 
+    // }
+
+    const receiveMeals = data => {
+        setMealsChecked(data)
     }
 
     const handleChange = e => {
 
         const { value, name, type, checked } = e.target
         const inputValue = type === 'checkbox' ? checked : value
-        const currentMeals = [...projectData.mealsIncluded]
+        const currentMeals = [...mealsChecked]
 
         const mealIndex = currentMeals.indexOf(name)
 
-        if (type === 'checkbox' && checked && !projectData.mealsIncluded.includes(name)) {
+        if (type === 'checkbox' && checked && !mealsChecked.includes(name)) {
             currentMeals.push(name)
 
-        } else if (projectData.mealsIncluded.includes(name) && !checked) {
+        } else if (mealsChecked.includes(name) && !checked) {
 
             mealIndex > -1 && currentMeals.splice(mealIndex, 1)
 
@@ -96,8 +101,13 @@ const EditProjectForm = ({ fireFinalActions }) => {
         loadProject()
     }, [])
 
+    useEffect(() => {
+        setProjectData({ ...projectData, mealsIncluded: mealsChecked })
+    }, [mealsChecked])
 
-    const { city, country, latitude, longitude, projectName, projectType, hoursPerWeek, description, minWeeks, mealsIncluded, shelterType, gallery, languagesSpoken } = projectData
+
+    const { city, country, latitude, longitude, projectName, projectType,
+        hoursPerWeek, description, minWeeks, mealsIncluded, shelterType, gallery, languagesSpoken } = projectData
 
     return (
         <Container>
@@ -177,7 +187,8 @@ const EditProjectForm = ({ fireFinalActions }) => {
                     <Col>
 
                         <Form>
-                            <Form.Group className='mb-3' controlId='mealsIncluded' name='mealsIncluded' onClick={handleChange}>
+                            <MealsCheckbox receiveMeals={receiveMeals} mealsChecked={mealsChecked} />
+                            {/* <Form.Group className='mb-3' controlId='mealsIncluded' name='mealsIncluded' onClick={handleChange}>
                                 <Form.Label>Meals included</Form.Label>
                                 <div key={`inline-checkbox`} className="mb-3">
 
@@ -248,7 +259,7 @@ const EditProjectForm = ({ fireFinalActions }) => {
                                     }
 
                                 </div>
-                            </Form.Group>
+                            </Form.Group> */}
                         </Form>
 
                     </Col>

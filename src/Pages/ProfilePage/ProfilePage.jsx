@@ -2,7 +2,7 @@ import { Link, useParams, useNavigate } from "react-router-dom"
 import userService from "../../Services/user.services"
 import { useEffect, useState, useContext } from "react"
 import { AuthContext } from '../../Context/auth.context'
-import { Button, Card } from 'react-bootstrap'
+import { Button, Card, ListGroup } from 'react-bootstrap'
 
 
 const ProfilePage = () => {
@@ -69,21 +69,24 @@ const ProfilePage = () => {
                                 {email}
                             </Card.Text>
                             <Card.Text>
-                                Interested in: <ul>
-                                    {
-                                        projectTypeInterests.map(project => <li>{project}</li>)
-                                    }
-                                </ul>
+                                I'm interested in these projects:
                             </Card.Text>
+                            <ListGroup>
+                                {
+                                    projectTypeInterests.map(project => <ListGroup.Item>-{project}</ListGroup.Item>)
+                                }
+                            </ListGroup>
                             <Card.Text>
-                                I want to go to: <ul>
-                                    {
-                                        locationInterests.map(project => <li>{project}</li>)
-                                    }
-                                </ul>
+                                I want to go to:
                             </Card.Text>
-                            <Link to={`/users/editUser/${user_id}`}>
-                                <Button variant="primary">Update user information</Button>
+                            <ListGroup className="mb-5">
+                                {
+                                    locationInterests.map(project => <ListGroup.Item>-{project}</ListGroup.Item>)
+                                }
+                            </ListGroup>
+
+                            <Link to={`/users/editUser/${user_id}`} >
+                                <Button variant="primary" className='mb-1'>Update user information</Button>
                             </Link>
                             <Link to={`/`}>
                                 <Button variant="danger"
