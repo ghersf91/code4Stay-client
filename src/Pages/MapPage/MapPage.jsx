@@ -27,7 +27,7 @@ const MapPage = () => {
 
     return (
         <>
-            <MapGoogle />
+            <MapGoogle projects={projects} />
         </>
     )
 }

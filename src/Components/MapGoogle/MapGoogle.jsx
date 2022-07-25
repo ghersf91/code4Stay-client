@@ -1,10 +1,12 @@
 import { GoogleMap, LoadScript } from '@react-google-maps/api';
+import MarkerGoogle from './../MarkerGoogle/MarkerGoogle'
 
-const MapGoogle = () => {
+
+const MapGoogle = ({ projects }) => {
 
     const center = {
-        lat: 64.31275217542137,
-        lng: - 51.75075658515222
+        lat: 40.555038168446856,
+        lng: - 4.005984874407696
     }
 
     const size = {
@@ -20,6 +22,8 @@ const MapGoogle = () => {
                 mapContainerStyle={size}
                 zoom={2}
                 center={center}>
+
+                <MarkerGoogle projects={projects} />
 
             </GoogleMap>
 
