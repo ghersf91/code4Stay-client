@@ -1,3 +1,6 @@
+import { Form } from "react-bootstrap"
+
+
 const ProjectCheckbox = ({ receiveProjects, projectsChecked }) => {
 
     const handleInputChange = e => {
@@ -25,7 +28,7 @@ const ProjectCheckbox = ({ receiveProjects, projectsChecked }) => {
                 <Form.Label>Project interests</Form.Label>
                 <div key={`inline-checkbox`} className="mb-3">
                     {
-                        projectsChecked.length && projectsChecked.includes('Farm')
+                        projectsChecked && projectsChecked.includes('Farm')
                             ?
                             <Form.Check
                                 inline
@@ -46,7 +49,7 @@ const ProjectCheckbox = ({ receiveProjects, projectsChecked }) => {
                     }
 
                     {
-                        projectsChecked.length && projectsChecked.includes('NGO')
+                        projectsChecked && projectsChecked.includes('NGO')
                             ?
                             <Form.Check
                                 inline
@@ -67,7 +70,7 @@ const ProjectCheckbox = ({ receiveProjects, projectsChecked }) => {
                     }
 
                     {
-                        projectsChecked.length && projectsChecked.includes('School')
+                        projectsChecked && projectsChecked.includes('School')
                             ?
                             <Form.Check
                                 inline
@@ -88,7 +91,7 @@ const ProjectCheckbox = ({ receiveProjects, projectsChecked }) => {
                     }
 
                     {
-                        projectsChecked.length && projectsChecked.includes('Hostel')
+                        projectsChecked && projectsChecked.includes('Hostel')
                             ?
                             <Form.Check
                                 inline
@@ -109,7 +112,7 @@ const ProjectCheckbox = ({ receiveProjects, projectsChecked }) => {
                     }
 
                     {
-                        projectsChecked.length && projectsChecked.includes('Camping')
+                        projectsChecked && projectsChecked.includes('Camping')
                             ?
                             <Form.Check
                                 inline
@@ -130,7 +133,7 @@ const ProjectCheckbox = ({ receiveProjects, projectsChecked }) => {
                     }
 
                     {
-                        projectsChecked.length && projectsChecked.includes('Camping')
+                        projectsChecked && projectsChecked.includes('Other')
                             ?
                             <Form.Check
                                 inline

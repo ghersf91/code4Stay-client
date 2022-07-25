@@ -4,52 +4,22 @@ import userService from "../../Services/user.services"
 
 const { useState } = require("react")
 
-const LocationCheckbox = ({ id, receiveLocations }) => {
-    const [areChecked, setAreChecked] = useState([])
-    const [americaChecked, setAmericaChecked] = useState(false)
-    const [asiaChecked, setAsiaChecked] = useState(false)
-    const [europeChecked, setEuropeChecked] = useState(false)
-    const [africaChecked, setAfricaChecked] = useState(false)
-    const [oceaniaChecked, setOceaniaChecked] = useState(false)
+const LocationCheckbox = ({ locationsChecked, receiveLocations }) => {
 
-    const isIncluded = (name) => {
-        name.locationInterests.includes('Americas') && setAmericaChecked(true)
-        name.locationInterests.includes('Europe') && setEuropeChecked(true)
-        name.locationInterests.includes('Asia') && setAsiaChecked(true)
-        name.locationInterests.includes('Africa') && setAfricaChecked(true)
-        name.locationInterests.includes('Oceania') && setOceaniaChecked(true)
-
-    }
 
     useEffect(() => {
-        loadLocations()
-        receiveLocations(areChecked)
+        receiveLocations(locationsChecked)
 
     }, [])
-    console.log(id)
-    const loadLocations = () => {
-        userService
-            .getUser(id)
-            .then(({ data }) => {
-                console.log(data)
-                setAreChecked(data.locationInterests)
-                isIncluded(data)
 
-            })
-            .catch(err => console.log(err))
-
-    }
 
     const handleInputChange = e => {
 
         const { name, checked } = e.target
 
 
-        // const checkedLocations = () => locations.forEach(e => {
-        //     allLocations.includes(e) && handleClick()
-        // })
         console.log(checked, name)
-        const currentLocationInterests = [...areChecked]
+        const currentLocationInterests = [...locationsChecked]
         console.log(currentLocationInterests)
 
         if (checked && !currentLocationInterests.includes(name)) {
@@ -66,10 +36,10 @@ const LocationCheckbox = ({ id, receiveLocations }) => {
         }
 
 
-        setAreChecked(currentLocationInterests)
+        receiveLocations(currentLocationInterests)
     }
     return (
-        <Form>
+        <>
             <Form.Group className='mb-3' controlId='locationInterests' name='locationInterests' onClick={handleInputChange}>
                 <Form.Label>Region interests</Form.Label>
                 <div key={`inline-checkbox`} className="mb-3">
@@ -88,7 +58,7 @@ const LocationCheckbox = ({ id, receiveLocations }) => {
                         })
                     } */}
                     {
-                        americaChecked
+                        locationsChecked && locationsChecked.includes("Americas")
                             ?
                             <Form.Check
                                 inline
@@ -109,7 +79,7 @@ const LocationCheckbox = ({ id, receiveLocations }) => {
                     }
 
                     {
-                        europeChecked
+                        locationsChecked && locationsChecked.includes("Europe")
                             ?
                             <Form.Check
                                 inline
@@ -130,7 +100,7 @@ const LocationCheckbox = ({ id, receiveLocations }) => {
                     }
 
                     {
-                        asiaChecked
+                        locationsChecked && locationsChecked.includes("Asia")
                             ?
                             <Form.Check
                                 inline
@@ -151,7 +121,7 @@ const LocationCheckbox = ({ id, receiveLocations }) => {
                     }
 
                     {
-                        africaChecked
+                        locationsChecked && locationsChecked.includes("Africa")
                             ?
                             <Form.Check
                                 inline
@@ -172,7 +142,7 @@ const LocationCheckbox = ({ id, receiveLocations }) => {
                     }
 
                     {
-                        oceaniaChecked
+                        locationsChecked && locationsChecked.includes("Oceania")
                             ?
                             <Form.Check
                                 inline
@@ -194,7 +164,7 @@ const LocationCheckbox = ({ id, receiveLocations }) => {
 
                 </div>
             </Form.Group>
-        </Form>
+        </>
     )
 }
 

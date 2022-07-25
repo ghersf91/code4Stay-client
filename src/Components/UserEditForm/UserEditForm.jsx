@@ -5,6 +5,7 @@ import userService from "./../../Services/user.services"
 import uploadService from './../../Services/upload.services'
 import { useEffect } from "react"
 import LocationCheckbox from "./LocationCheckbox"
+import ProjectCheckbox from "./ProjectCheckbox"
 
 
 const UserEditForm = () => {
@@ -22,16 +23,30 @@ const UserEditForm = () => {
         profilePicture: '',
     })
 
+    const [locationsChecked, setLocationsChecked] = useState([])
+    const [projectsChecked, setProjectsChecked] = useState([])
+
     const navigate = useNavigate()
 
     useEffect(() => {
         loadUser()
     }, [])
 
+    useEffect(() => {
+        setUserData({
+            ...userData, locationInterests: locationsChecked,
+            projectTypeInterests: projectsChecked
+        })
+    }, [locationsChecked, projectsChecked])
+
     const receiveLocations = data => {
-        const updatedLocations = data
-        return updatedLocations
+        setLocationsChecked(data)
     }
+
+    const receiveProjects = data => {
+        setProjectsChecked(data)
+    }
+
 
 
 
@@ -39,6 +54,9 @@ const UserEditForm = () => {
         userService
             .getUser(user_id)
             .then(({ data }) => {
+                console.log(data.projectTypeInterests)
+                setProjectsChecked(data.projectTypeInterests)
+                setLocationsChecked(data.locationInterests)
                 setUserData(data)
             })
             .catch(err => console.log(err))
@@ -50,51 +68,51 @@ const UserEditForm = () => {
 
         const inputValue = type === 'checkbox' ? checked : value
 
-        const projectInterests = ['Farm', 'NGO', 'Hostel', 'School', 'Camping', 'Other']
-        const locations = ['Americas', 'Europe', 'Asia', 'Africa', 'Oceania']
+        // const projectInterests = ['Farm', 'NGO', 'Hostel', 'School', 'Camping', 'Other']
+        // const locations = ['Americas', 'Europe', 'Asia', 'Africa', 'Oceania']
 
-        const currentLocationInterests = [...userData.locationInterests]
-        const currentProjectInterests = [...userData.projectTypeInterests]
+        // const currentLocationInterests = [...locationsChecked]
+        // const currentProjectInterests = [...userData.projectTypeInterests]
 
-        console.log(checked)
-        if (projectInterests.includes(name)) {
+        // if (projectInterests.includes(name)) {
 
-            if (checked && !userData.projectTypeInterests.includes(name)) {
+        //     if (checked && !locationsChecked.includes(name)) {
 
-                currentProjectInterests.push(name)
+        //         currentProjectInterests.push(name)
 
-            } else if (userData.projectTypeInterests.includes(name)) {
+        //     } else if (locationsChecked.includes(name)) {
 
-                const projectInterestsIndex = currentProjectInterests.indexOf(name)
+        //         const projectInterestsIndex = currentProjectInterests.indexOf(name)
 
-                projectInterestsIndex > -1 && currentProjectInterests.splice(projectInterestsIndex, 1)
-                console.log(currentProjectInterests)
-            }
+        //         projectInterestsIndex > -1 && currentProjectInterests.splice(projectInterestsIndex, 1)
+        //         console.log(currentProjectInterests)
+        //     }
 
-            // } else if (locations.includes(name)) {
+        //     } else if (locations.includes(name)) {
 
-            //     if (checked && !userData.locationInterests.includes(name)) {
+        //         if (checked && !userData.locationInterests.includes(name)) {
 
-            //         currentLocationInterests.push(name)
+        //             currentLocationInterests.push(name)
 
-            //     } else if (userData.locationInterests.includes(name)) {
+        //         } else if (userData.locationInterests.includes(name)) {
 
-            //         const locationInterestsIndex = currentLocationInterests.indexOf(name)
+        //             const locationInterestsIndex = currentLocationInterests.indexOf(name)
 
-            //         locationInterestsIndex > -1 && currentLocationInterests.splice(locationInterestsIndex, 1)
+        //             locationInterestsIndex > -1 && currentLocationInterests.splice(locationInterestsIndex, 1)
 
-            //         console.log(currentLocationInterests)
-            //     }
-        }
+        //             console.log(currentLocationInterests)
+        //         }
+        // }
 
         setUserData({
-            ...userData, locationInterests: currentLocationInterests,
-            projectTypeInterests: currentProjectInterests, [name]: inputValue
+            ...userData, [name]: inputValue
         })
     }
 
+
     const handleSubmit = e => {
         e.preventDefault()
+
         userService
             .editUser(user_id, userData)
             .then(({ data }) => navigate(`/users/profile/${user_id}`))
@@ -153,7 +171,8 @@ const UserEditForm = () => {
                 <Row>
                     <Col>
                         <Form>
-                            <Form.Group className='mb-3' controlId='projectTypeInterests' name='projectTypeInterests' onChange={handleInputChange}>
+                            <ProjectCheckbox receiveProjects={receiveProjects} projectsChecked={projectsChecked} />
+                            {/* <Form.Group className='mb-3' controlId='projectTypeInterests' name='projectTypeInterests' onChange={handleInputChange}>
                                 <Form.Label>Project interests</Form.Label>
                                 <div key={`inline-checkbox`} className="mb-3">
                                     <Form.Check
@@ -199,11 +218,14 @@ const UserEditForm = () => {
                                         id={"Other"}
                                     />
                                 </div>
-                            </Form.Group>
+                            </Form.Group> */}
                         </Form>
                     </Col>
                     <Col>
-                        <LocationCheckbox id={user_id} receiveLocations={receiveLocations} />
+                        <Form >
+                            <LocationCheckbox locationsChecked={locationsChecked} receiveLocations={receiveLocations} />
+                        </Form>
+
                         {/* <Form>
                             <Form.Group className='mb-3' controlId='locationInterests' name='locationInterests' onChange={handleInputChange}>
                                 <Form.Label>Region interests</Form.Label>
