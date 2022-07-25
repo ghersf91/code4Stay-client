@@ -1,4 +1,4 @@
-import { Marker } from '@react-google-maps/api'
+import { Marker, InfoWindow } from '@react-google-maps/api'
 import { useState } from 'react'
 
 const MarkerGoogle = ({ projects }) => {
@@ -19,11 +19,34 @@ const MarkerGoogle = ({ projects }) => {
                                     lat: project.location.coordinates[0],
                                     lng: project.location.coordinates[1]
                                 }}
-                            // onClick={() => console.log(project._id)}
+                                onMouseOver={() => onSelect(project)}
                             />
                         </>
                     )
                 })
+            }
+
+            {
+                selected.location &&
+                (
+                    <InfoWindow
+                        position={{
+                            lat: selected.location.coordinates[0],
+                            lng: selected.location.coordinates[1]
+                        }}
+                        clickable={true}
+                        onCloseClick={() => setSelected({})}
+
+                    >
+
+                        <>
+                            <h6>{selected.projectName}</h6>
+                            <p>{selected.city}, {selected.country}</p>
+                            <img src={selected.gallery}></img>
+                        </>
+
+                    </InfoWindow>
+                )
             }
         </>
     )
