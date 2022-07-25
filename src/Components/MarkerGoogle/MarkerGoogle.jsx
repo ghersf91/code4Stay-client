@@ -1,5 +1,7 @@
 import { Marker, InfoWindow } from '@react-google-maps/api'
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import './MarkerGoogle.css'
 
 const MarkerGoogle = ({ projects }) => {
     const [selected, setSelected] = useState({})
@@ -7,6 +9,8 @@ const MarkerGoogle = ({ projects }) => {
     const onSelect = item => {
         setSelected(item)
     }
+
+    const navigate = useNavigate()
 
     return (
         <>
@@ -40,9 +44,10 @@ const MarkerGoogle = ({ projects }) => {
                     >
 
                         <>
+                            <img className='marker-image' src={selected.gallery}></img>
                             <h6>{selected.projectName}</h6>
                             <p>{selected.city}, {selected.country}</p>
-                            <img src={selected.gallery}></img>
+                            <p onClick={() => navigate(`/projects/details/${selected._id}`)}>See more</p>
                         </>
 
                     </InfoWindow>
