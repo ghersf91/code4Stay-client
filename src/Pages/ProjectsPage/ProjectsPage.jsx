@@ -40,7 +40,9 @@ const ProjectPage = () => {
 
     return (
         <>
-            <MapGoogle projects={projects} />
+            <container className="d-none d-md-block">
+                <MapGoogle projects={projects} />
+            </container>
 
             <h1>Browse through our opportunities {user && <span onClick={openModal}>+</span>}</h1>
 
