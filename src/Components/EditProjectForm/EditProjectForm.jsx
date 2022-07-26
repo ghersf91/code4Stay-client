@@ -22,7 +22,7 @@ const EditProjectForm = ({ fireFinalActions }) => {
         minWeeks: '',
         shelterType: '',
         mealsIncluded: [],
-        gallery: '',
+        gallery: [],
         languagesSpoken: '',
         testimonials: []
 

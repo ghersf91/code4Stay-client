@@ -1,13 +1,10 @@
-import { Carousel, ThemeProvider } from 'react-bootstrap'
+import { Carousel, Container } from 'react-bootstrap'
 import './HomePage.css'
 
 const HomePage = () => {
     return (
-        <ThemeProvider
-            breakpoints={['xxxl', 'xxl', 'xl', 'lg', 'md', 'sm', 'xs', 'xxs']}
-            minBreakpoint="xxs"
-        >
-            <Carousel className='carousel'>
+        <Container>
+            <Carousel>
                 <Carousel.Item>
                     <img
                         className="d-inline w-100 carousel-img"
@@ -52,7 +49,7 @@ const HomePage = () => {
                     </Carousel.Caption>
                 </Carousel.Item>
             </Carousel>
-        </ThemeProvider>
+        </Container>
     )
 }
 
