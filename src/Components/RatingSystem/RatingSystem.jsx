@@ -1,42 +1,29 @@
-import { FaStar } from "react-icons/fa"
-import { Container, Radio, Rating } from "./RatingStyles"
-import './RatingSystem.css'
+import { Rating } from 'react-simple-star-rating'
 
+const RatingStars = ({ rating, getRating }) => {
 
-
-const RatingSystem = ({ rating, getRating }) => {
-
-    // const [rating, setRating] = useState(0)
-
+    const handleRating = (rate) => {
+        const newRate = rate / 20
+        getRating(newRate)
+    }
 
     return (
-        <Container >
-            {[...Array(5)].map((item, index) => {
-                const givenRating = index + 1;
-                return (
-                    <label>
-                        <Radio
-                            type="radio"
-                            value={givenRating}
-                            onClick={() => {
-                                getRating(givenRating);
-                            }}
-                        />
-                        <Rating className="ratingStars">
-                            <FaStar
-                                className="star"
-                                color={
-                                    givenRating < rating || givenRating === rating
-                                        ? "000"
-                                        : "rgb(192,192,192)"
-                                }
-                            />
-                        </Rating>
-                    </label>
-                );
-            })}
-        </Container>
+        <div className='App'>
+            <Rating
+                onClick={handleRating}
+                ratingValue={rating * 20}
+                size={20}
+                label
+                transition
+                fillColor='orange'
+                emptyColor='gray'
+                className='foo'
+            />
+            {rating}
+        </div>
     )
 }
 
-export default RatingSystem
+export default RatingStars
+
+

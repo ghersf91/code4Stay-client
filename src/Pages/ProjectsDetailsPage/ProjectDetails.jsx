@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom"
 import Loader from "../../Components/Loader/Loader"
 import JoinButton from "../../Components/JoinProjectButton/JoinProjectButton"
 import projectsService from "../../Services/project.services"
-import RatinWidget from "../../Components/RatinWidget/RatinWidget"
+import RatingWidget from "../../Components/RatingWidget/RatingWidget"
 import './ProjectDetails.css'
 
 
@@ -49,7 +49,7 @@ const ProjectDetailsPage = () => {
                                 </Card>
                             </Col>
                             <Col className="sm-12 md-6">
-                                <RatinWidget testimonials={project.testimonials} _id={project_id} />
+                                <RatingWidget testimonials={project.testimonials} _id={project_id} />
                             </Col>
                         </Row>
                         <JoinButton project_id={project_id} />

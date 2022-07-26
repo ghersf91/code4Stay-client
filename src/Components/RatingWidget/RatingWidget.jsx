@@ -5,9 +5,9 @@ import RatingSystem from "../RatingSystem/RatingSystem"
 import ratingServices from '../../Services/rating.services'
 import { AuthContext } from "../../Context/auth.context"
 import CommentList from "../CommentList/CommentList"
+import { Link } from "react-router-dom"
 
-
-const RatinWidget = ({ testimonials, _id }) => {
+const RatingWidget = ({ testimonials, _id }) => {
 
     const { user } = useContext(AuthContext)
 
@@ -42,11 +42,13 @@ const RatinWidget = ({ testimonials, _id }) => {
 
             <Form onSubmit={handleSubmit}>
                 <RatingSystem rating={rate} getRating={getRating} />
+                {/* <RatingStars /> */}
+
                 <CommentBox comment={comment} getComment={getComment} />
 
-                <div className='d-grid form-button'>
+                <Link to='/'>
                     <Button variant='dark' type='submit'>Rate project</Button>
-                </div>
+                </Link>
             </Form>
 
 
@@ -56,4 +58,4 @@ const RatinWidget = ({ testimonials, _id }) => {
     )
 }
 
-export default RatinWidget
+export default RatingWidget

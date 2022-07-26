@@ -6,3 +6,8 @@
     height: 250px;
     object-fit: cover;
 }
+
+.cardName {
+    text-decoration: none;
+    color: black;
+}
