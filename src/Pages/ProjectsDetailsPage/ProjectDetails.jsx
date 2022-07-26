@@ -38,7 +38,7 @@ const ProjectDetailsPage = () => {
                         <Row>
                             <Col className="sm-12 md-6">
                                 <Card className='projectDetails'>
-                                    <Card.Img variant="top" src={project.gallery} />
+                                    <Card.Img variant="top" src={project.gallery[0]} />
                                     <Card.Body>
                                         <Card.Title>{project.projectName}</Card.Title>
                                         <Card.Subtitle className="mb-2 text-muted">Site: {project.city}, {project.country}</Card.Subtitle>
