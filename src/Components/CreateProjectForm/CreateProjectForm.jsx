@@ -56,15 +56,15 @@ const CreateProjectForm = ({ fireFinalActions }) => {
     }
 
 
-    const handleFileInput = e => {
+    const handleMultipleFilesInput = e => {
         const formData = new FormData()
-        formData.append('imageData', e.target.files[0])
+        formData.append('multipleImagesData', e.target.files[0])
 
         uploadService
-            .uploadImage(formData)
-            .then(({ data }) => {
-                const fileToUpload = data.cloudinary_url
-                setProjectData({ ...projectData, gallery: fileToUpload })
+            .uploadMultipleImages(formData)
+            .then(([data]) => {
+                const filesToUpload = [data.cloudinary_url]
+                setProjectData({ ...projectData, gallery: [filesToUpload] })
             })
             .catch(err => console.log(err))
     }
@@ -215,8 +215,8 @@ const CreateProjectForm = ({ fireFinalActions }) => {
                 </Form.Group>
 
                 <Form.Group className='mb-3' controlId='gallery'>
-                    <Form.Label>Photo (File)</Form.Label>
-                    <Form.Control type='file' onChange={handleFileInput} name='gallery' />
+                    <Form.Label>Photos (Files)</Form.Label>
+                    <Form.Control type='file' onChange={handleMultipleFilesInput} name='gallery' />
                 </Form.Group>
 
                 <Form.Group className='mb-3' controlId='languagesSpoken'>
