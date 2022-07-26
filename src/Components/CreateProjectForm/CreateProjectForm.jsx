@@ -7,7 +7,7 @@ import './CreateProjectForm.css'
 const CreateProjectForm = ({ fireFinalActions }) => {
 
     const [projectData, setProjectData] = useState({
-        projectType: 'FARM',
+        projectType: 'Farm',
         city: '',
         country: '',
         continent: 'Africa',
@@ -213,7 +213,7 @@ const CreateProjectForm = ({ fireFinalActions }) => {
 
             <Form.Group className='mb-3' controlId='gallery'>
                 <Form.Label>Photo (File)</Form.Label>
-                <Form.Control type='file' onChange={handleFileInput} name='gallery' />
+                <Form.Control type='file' onChange={handleMultipleFilesInput} name='gallery' />
             </Form.Group>
 
             <Form.Group className='mb-3' controlId='languagesSpoken'>

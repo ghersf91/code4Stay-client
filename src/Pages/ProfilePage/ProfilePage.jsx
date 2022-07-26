@@ -1,9 +1,8 @@
-import { Link, useParams, useNavigate, Navigate } from "react-router-dom"
+import { Link, useParams, useNavigate } from "react-router-dom"
 import userService from "../../Services/user.services"
 import { useEffect, useState, useContext } from "react"
 import { AuthContext } from '../../Context/auth.context'
 import { Button, ButtonGroup, Card, ListGroup } from 'react-bootstrap'
-import projectsService from "../../Services/project.services"
 import AcceptJoinButton from "../../Components/AcceptJoinButton/AcceptJoinButton"
 
 
@@ -60,7 +59,6 @@ const ProfilePage = () => {
         <>
             {
                 user._id === _id &&
-
                 <div>
                     <h1>Welcome, {username}!</h1>
 
@@ -96,26 +94,21 @@ const ProfilePage = () => {
                                 <ListGroup className="mb-5">
                                     {
                                         requests.map(response => {
-                                            // console.log(response)
                                             return (
                                                 <>
                                                     <ListGroup.Item>-{response.username}: {response.bio}</ListGroup.Item>
                                                     <ButtonGroup>
-
                                                         <AcceptJoinButton user_id={response._id} />
                                                         <Link to={`/projects/join/${user_id}`}>
                                                             <Button variant='danger'>Deny</Button>
                                                         </Link>
                                                     </ButtonGroup>
-
-
                                                 </>
                                             )
                                         })
                                     }
                                 </ListGroup>
                             }
-
                             <Link to={`/users/editUser/${user_id}`} >
                                 <Button variant="primary" className='mb-1'>Update user information</Button>
                             </Link>
@@ -133,9 +126,9 @@ const ProfilePage = () => {
                 </div>
             }
 
-            {
+            {/* {
                 user._id !== _id && <Navigate to="/" />
-            }
+            } */}
         </>
 
     )
