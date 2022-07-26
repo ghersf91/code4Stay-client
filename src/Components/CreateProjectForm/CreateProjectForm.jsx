@@ -19,7 +19,7 @@ const CreateProjectForm = ({ fireFinalActions }) => {
         minWeeks: '',
         shelterType: '',
         mealsIncluded: [],
-        gallery: '',
+        gallery: [],
         languagesSpoken: '',
         testimonials: []
     })
