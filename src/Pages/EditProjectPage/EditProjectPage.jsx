@@ -1,6 +1,9 @@
 import { useState } from 'react'
+import { Container } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 import EditProjectForm from './../../Components/EditProjectForm/EditProjectForm'
+
+
 
 const EditProjectPage = () => {
 
@@ -13,12 +16,11 @@ const EditProjectPage = () => {
 
     const fireFinalActions = () => {
         navigate('/projects')
-
     }
     return (
-        <>
+        <Container className='mb-5'>
             <EditProjectForm fireFinalActions={fireFinalActions} />
-        </>
+        </Container>
     )
 }
 

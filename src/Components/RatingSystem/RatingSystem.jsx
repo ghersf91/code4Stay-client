@@ -1,6 +1,7 @@
-import { useState } from "react"
 import { FaStar } from "react-icons/fa"
 import { Container, Radio, Rating } from "./RatingStyles"
+import './RatingSystem.css'
+
 
 
 const RatingSystem = ({ rating, getRating }) => {
@@ -21,8 +22,9 @@ const RatingSystem = ({ rating, getRating }) => {
                                 getRating(givenRating);
                             }}
                         />
-                        <Rating>
+                        <Rating className="ratingStars">
                             <FaStar
+                                className="star"
                                 color={
                                     givenRating < rating || givenRating === rating
                                         ? "000"

@@ -1,13 +1,13 @@
 import { useContext, useState } from "react"
 import { Button, Form, Row, Col } from "react-bootstrap"
-import CommentBox from "../../Components/CommentBox/CommentBox"
-import RatingSystem from "../../Components/RatingSystem/RatingSystem"
-import ratingServices from './../../Services/rating.services'
+import CommentBox from "../CommentBox/CommentBox"
+import RatingSystem from "../RatingSystem/RatingSystem"
+import ratingServices from '../../Services/rating.services'
 import { AuthContext } from "../../Context/auth.context"
-import CommentList from "../../Components/CommentList/CommentList"
+import CommentList from "../CommentList/CommentList"
 
 
-const RatingPage = ({ testimonials, _id }) => {
+const RatinWidget = ({ testimonials, _id }) => {
 
     const { user } = useContext(AuthContext)
 
@@ -56,4 +56,4 @@ const RatingPage = ({ testimonials, _id }) => {
     )
 }
 
-export default RatingPage
+export default RatinWidget
