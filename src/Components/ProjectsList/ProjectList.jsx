@@ -1,4 +1,4 @@
-import { Row, Col } from 'react-bootstrap'
+import { Row, Col, Form } from 'react-bootstrap'
 
 import { useState, useEffect } from "react"
 import ProjectCard from "../ProjectsCard/ProjectsCard"
@@ -23,21 +23,23 @@ const ProjectsList = ({ projects }) => {
     return (
 
         <>
-            <SearchBar receiveFilter={receiveFilter} receiveContinents={receiveContinents} />
-            <Row>
-                {
-                    continents && continents.length > 0
-                        ?
+            <Form>
+                <SearchBar receiveFilter={receiveFilter} receiveContinents={receiveContinents} />
 
-                        continents.filter(post => {
-                            console.log(continents)
-                            if (query === "") {
-                                return post;
-                            } else if (post.projectName.toLowerCase().includes(query.toLowerCase())) {
-                                return post;
-                            }
-                        })
-                            .map(project => {
+                <Row>
+                    {
+                        continents && continents.length > 0
+                            ?
+
+                            // continents.filter(post => {
+                            //     console.log(continents)
+                            //     if (query === "") {
+                            //         return post;
+                            //     } else if (post.projectName.toLowerCase().includes(query.toLowerCase())) {
+                            //         return post;
+                            //     }
+                            // })
+                            continents.map(project => {
                                 return (
                                     <Col md={3} key={project._id} >
                                         <ProjectCard {...project} />
@@ -46,17 +48,17 @@ const ProjectsList = ({ projects }) => {
                             })
 
 
-                        :
+                            :
 
-                        projects.filter(post => {
-                            console.log(continents)
-                            if (query === "") {
-                                return post;
-                            } else if (post.projectName.toLowerCase().includes(query.toLowerCase())) {
-                                return post;
-                            }
-                        })
-                            .map(project => {
+                            // projects.filter(post => {
+                            //     console.log(continents)
+                            //     if (query === "") {
+                            //         return post;
+                            //     } else if (post.projectName.toLowerCase().includes(query.toLowerCase())) {
+                            //         return post;
+                            //     }
+                            // })
+                            projects.map(project => {
                                 return (
                                     <Col md={3} key={project._id} >
                                         <ProjectCard {...project} />
@@ -64,8 +66,11 @@ const ProjectsList = ({ projects }) => {
                                 )
                             })
 
-                }
-            </Row>
+                    }
+                </Row>
+            </Form>
+
+
         </>
 
     )
