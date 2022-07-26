@@ -14,8 +14,6 @@ const CreateProjectForm = ({ fireFinalActions }) => {
         country: '',
         continent: 'Africa',
         location: { coordinates: [] },
-        // latitude: '',
-        // longitude: '',
         description: '',
         hoursPerWeek: '',
         minWeeks: '',
@@ -39,14 +37,19 @@ const CreateProjectForm = ({ fireFinalActions }) => {
 
             mealIndex > -1 && currentMeals.splice(mealIndex, 1)
         }
-        setProjectData({ ...projectData, mealsIncluded: currentMeals, location: { coordinates: [latitude, longitude] }, [name]: inputValue })
+        setProjectData({
+            ...projectData, mealsIncluded: currentMeals,
+            location: { coordinates: [latitude, longitude] }, [name]: inputValue
+        })
     }
 
     const handleSubmit = e => {
         e.preventDefault()
+        console.log(projectData)
         projectsService
             .createProject(projectData)
-            .then(() => {
+            .then(response => {
+                console.log(response)
                 fireFinalActions()
             })
             .catch(err => console.error(err))
