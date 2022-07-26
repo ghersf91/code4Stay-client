@@ -40,6 +40,17 @@ const HomePage = () => {
                         <h1 className='mb-5 carousel-text'>code4stay slide 3</h1>
                     </Carousel.Caption>
                 </Carousel.Item>
+                <Carousel.Item>
+                    <img
+                        className="d-inline w-100 carousel-img"
+                        src="https://images.unsplash.com/photo-1503457574462-bd27054394c1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
+                        alt="Third slide"
+                    />
+
+                    <Carousel.Caption>
+                        <h1 className='mb-5 carousel-text'>code4stay slide 4</h1>
+                    </Carousel.Caption>
+                </Carousel.Item>
             </Carousel>
         </ThemeProvider>
     )
