@@ -22,12 +22,12 @@ const MealsCheckbox = ({ mealsChecked, receiveMeals }) => {
 
         receiveMeals(currentMeals)
     }
+
     return (
         <>
             <Form.Group className='mb-3' controlId='mealsIncluded' name='mealsIncluded' onClick={handleChange}>
                 <Form.Label>Meals included</Form.Label>
                 <div key={`inline-checkbox`} className="mb-3">
-
                     {
                         mealsChecked && mealsChecked.includes("Breakfast")
                             ?
@@ -49,7 +49,6 @@ const MealsCheckbox = ({ mealsChecked, receiveMeals }) => {
                                 id={"Breakfast"}
 
                             />
-
                     }
                     {
                         mealsChecked && mealsChecked.includes("Lunch")
@@ -71,7 +70,6 @@ const MealsCheckbox = ({ mealsChecked, receiveMeals }) => {
                                 type={`checkbox`}
                                 id={"Lunch"}
                             />
-
                     }
 
                     {
@@ -95,7 +93,6 @@ const MealsCheckbox = ({ mealsChecked, receiveMeals }) => {
                                 id={"Supper"}
                             />
                     }
-
                 </div>
             </Form.Group>
         </>

@@ -1,8 +1,14 @@
+import { Container } from "react-bootstrap"
 import LoginForm from "../../Components/LoginForm/LoginForm"
+
 
 const LoginPage = () => {
     return (
-        <LoginForm />
+        <Container>
+            <h1>Log In</h1>
+            <LoginForm />
+        </Container>
+
     )
 }
 

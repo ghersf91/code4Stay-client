@@ -1,13 +1,13 @@
 import { useContext, useState } from "react"
 import { Button, Form, Row, Col } from "react-bootstrap"
-import CommentBox from "../../Components/CommentBox/CommentBox"
-import RatingSystem from "../../Components/RatingSystem/RatingSystem"
-import ratingServices from './../../Services/rating.services'
+import CommentBox from "../CommentBox/CommentBox"
+import RatingSystem from "../RatingSystem/RatingSystem"
+import ratingServices from '../../Services/rating.services'
 import { AuthContext } from "../../Context/auth.context"
-import CommentList from "../../Components/CommentList/CommentList"
+import CommentList from "../CommentList/CommentList"
+import { Link } from "react-router-dom"
 
-
-const RatingPage = ({ testimonials, _id }) => {
+const RatingWidget = ({ testimonials, _id }) => {
 
     const { user } = useContext(AuthContext)
 
@@ -42,11 +42,13 @@ const RatingPage = ({ testimonials, _id }) => {
 
             <Form onSubmit={handleSubmit}>
                 <RatingSystem rating={rate} getRating={getRating} />
+                {/* <RatingStars /> */}
+
                 <CommentBox comment={comment} getComment={getComment} />
 
-                <div className='d-grid form-button'>
+                <Link to='/'>
                     <Button variant='dark' type='submit'>Rate project</Button>
-                </div>
+                </Link>
             </Form>
 
 
@@ -56,4 +58,4 @@ const RatingPage = ({ testimonials, _id }) => {
     )
 }
 
-export default RatingPage
+export default RatingWidget

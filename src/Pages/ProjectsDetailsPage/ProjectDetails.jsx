@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom"
 import Loader from "../../Components/Loader/Loader"
 import JoinButton from "../../Components/JoinProjectButton/JoinProjectButton"
 import projectsService from "../../Services/project.services"
-import RatingPage from "../RatingPage/RatingPage"
+import RatingWidget from "../../Components/RatingWidget/RatingWidget"
 import './ProjectDetails.css'
 
 
@@ -34,30 +34,26 @@ const ProjectDetailsPage = () => {
             {
                 isLoading ?
                     <Loader /> :
-                    <>
-                        <Container className='mb-5'>
-                            <Row>
-                                <Col className="sm-12 md-6">
-                                    <Card className='projectDetails'>
-                                        <Card.Img variant="top" src={project.gallery} />
-                                        <Card.Body>
-                                            <Card.Title>{project.projectName}</Card.Title>
-                                            <Card.Subtitle className="mb-2 text-muted">Site: {project.city}, {project.country}</Card.Subtitle>
-                                            <Card.Text>
-                                                {project.description}
-                                            </Card.Text>
-                                        </Card.Body>
-                                    </Card>
-                                </Col>
-                                <Col className="sm-12 md-6">
-                                    <RatingPage testimonials={project.testimonials} _id={project_id} />
-                                </Col>
-                            </Row>
-                            <JoinButton project_id={project_id} />
-                        </Container >
-
-
-                    </>
+                    <Container className='mb-5'>
+                        <Row>
+                            <Col className="sm-12 md-6">
+                                <Card className='projectDetails'>
+                                    <Card.Img variant="top" src={project.gallery} />
+                                    <Card.Body>
+                                        <Card.Title>{project.projectName}</Card.Title>
+                                        <Card.Subtitle className="mb-2 text-muted">Site: {project.city}, {project.country}</Card.Subtitle>
+                                        <Card.Text>
+                                            {project.description}
+                                        </Card.Text>
+                                    </Card.Body>
+                                </Card>
+                            </Col>
+                            <Col className="sm-12 md-6">
+                                <RatingWidget testimonials={project.testimonials} _id={project_id} />
+                            </Col>
+                        </Row>
+                        <JoinButton project_id={project_id} />
+                    </Container >
             }
         </article>
     )

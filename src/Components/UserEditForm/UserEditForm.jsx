@@ -1,9 +1,8 @@
-import { useContext, useState } from "react"
-import { Form, Button, Container, Row, Col } from "react-bootstrap"
+import { useState, useEffect } from "react"
+import { Form, Button, Row, Col } from "react-bootstrap"
 import { useNavigate, useParams } from 'react-router-dom'
 import userService from "./../../Services/user.services"
 import uploadService from './../../Services/upload.services'
-import { useEffect } from "react"
 import LocationCheckbox from "./LocationCheckbox"
 import ProjectCheckbox from "./ProjectCheckbox"
 

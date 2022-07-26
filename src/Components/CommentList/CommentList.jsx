@@ -1,5 +1,4 @@
 const CommentList = ({ testimonials }) => {
-    console.log(testimonials)
     return (
         <>
             {
@@ -13,7 +12,6 @@ const CommentList = ({ testimonials }) => {
                 })
             }
         </>
-
     )
 }
 
