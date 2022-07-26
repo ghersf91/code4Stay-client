@@ -19,12 +19,7 @@ const SearchBar = ({ receiveFilter, receiveContinents }) => {
                 console.log(event.target.value)
                 receiveFilter(event.target.value)
             }}></Form.Control>
-            {/* <div>
-                <input placeholder="Enter Search" onChange={event => {
-                    console.log(event.target.value)
-                    receiveFilter(event.target.value)
-                }} />
-            </div> */}
+
             <ButtonGroup>
                 {
                     allContinents.map(e => {

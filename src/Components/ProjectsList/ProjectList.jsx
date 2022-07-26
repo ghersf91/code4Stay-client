@@ -17,15 +17,16 @@ const ProjectsList = ({ projects }) => {
     }
 
     const receiveFilter = data => {
-        setContinents(data)
+        setQuery(data)
     }
+    console.log(continents)
     return (
 
         <>
             <SearchBar receiveFilter={receiveFilter} receiveContinents={receiveContinents} />
             <Row>
                 {
-                    continents.length > 0
+                    continents && continents.length > 0
                         ?
 
                         continents.filter(post => {
