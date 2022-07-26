@@ -36,7 +36,6 @@ const EditProjectForm = ({ fireFinalActions }) => {
         projectsService
             .getOneProject(project_id)
             .then(({ data }) => {
-                console.log(data)
                 setMealsChecked(data.mealsIncluded)
                 setProjectData(data)
             })
@@ -102,12 +101,11 @@ const EditProjectForm = ({ fireFinalActions }) => {
         setProjectData({ ...projectData, mealsIncluded: mealsChecked })
     }, [mealsChecked])
 
-    console.log(projectData.location.coordinates)
-    const { city, country, continent, location, projectName, projectType,
+    const { city, country, continent, latitude, longitude, projectName, projectType,
         hoursPerWeek, description, minWeeks, mealsIncluded,
         shelterType, gallery, languagesSpoken } = projectData
-    const latitude = location.coordinates[0]
-    const longitude = location.coordinates[1]
+    // const latitude = location.coordinates[0]
+    // const longitude = location.coordinates[1]
 
     console.log(latitude)
 
@@ -117,7 +115,8 @@ const EditProjectForm = ({ fireFinalActions }) => {
                 <h1>Edit Project</h1>
                 <Form.Group className='mb-3' controlId='projectName'>
                     <Form.Label>Project name</Form.Label>
-                    <Form.Control type='text' value={projectName} onChange={handleChange} name='projectName' />
+                    <Form.Control type='text' value={projectName}
+                        onChange={handleChange} name='projectName' />
                 </Form.Group>
 
                 <Row>
@@ -141,7 +140,8 @@ const EditProjectForm = ({ fireFinalActions }) => {
 
                         <Form.Group className='mb-3' controlId='city'>
                             <Form.Label>City</Form.Label>
-                            <Form.Control type='text' value={city} onChange={handleChange} name='city' />
+                            <Form.Control type='text' value={city}
+                                onChange={handleChange} name='city' />
                         </Form.Group>
 
                     </Col>
@@ -150,7 +150,8 @@ const EditProjectForm = ({ fireFinalActions }) => {
 
                         <Form.Group className='mb-3' controlId='country'>
                             <Form.Label>Country</Form.Label>
-                            <Form.Control type='text' value={country} onChange={handleChange} name='country' />
+                            <Form.Control type='text' value={country}
+                                onChange={handleChange} name='country' />
                         </Form.Group>
                     </Col>
 
@@ -162,7 +163,8 @@ const EditProjectForm = ({ fireFinalActions }) => {
 
                         <Form.Group className='mb-3' controlId='latitude'>
                             <Form.Label>Latitude</Form.Label>
-                            <Form.Control type='text' value={latitude} onChange={handleChange} name='latitude' />
+                            <Form.Control type='text' value={latitude}
+                                onChange={handleChange} name='latitude' />
                         </Form.Group>
 
                     </Col>
@@ -171,7 +173,8 @@ const EditProjectForm = ({ fireFinalActions }) => {
 
                         <Form.Group className='mb-3' controlId='longitude'>
                             <Form.Label>Longitude</Form.Label>
-                            <Form.Control type='text' value={longitude} onChange={handleChange} name='longitude' />
+                            <Form.Control type='text' value={longitude}
+                                onChange={handleChange} name='longitude' />
                         </Form.Group>
                     </Col>
 
@@ -179,7 +182,8 @@ const EditProjectForm = ({ fireFinalActions }) => {
 
                 <Form.Group className='mb-3' controlId='description'>
                     <Form.Label>Description</Form.Label>
-                    <Form.Control type='text' value={description} onChange={handleChange} name='description' />
+                    <Form.Control type='text' value={description}
+                        onChange={handleChange} name='description' />
                 </Form.Group>
 
                 <Row>

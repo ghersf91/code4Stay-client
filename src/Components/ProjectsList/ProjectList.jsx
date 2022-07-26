@@ -5,35 +5,63 @@ import ProjectCard from "../ProjectsCard/ProjectsCard"
 import SearchBar from '../SearchBar/SearchBar'
 
 const ProjectsList = ({ projects }) => {
+    // const allContinents = ['Africa', 'Americas', 'Asia', 'Europe', 'Oceania']
+
     const [query, setQuery] = useState('')
     const [continents, setContinents] = useState([])
 
-    // const receiveContinents = data => {
-    //     setContinents([...continents, data])
-    // }
+    // useEffect
+
+    const receiveContinents = data => {
+        setContinents(data)
+    }
+
     const receiveFilter = data => {
         setContinents(data)
     }
     return (
 
         <>
-            <SearchBar receiveFilter={receiveFilter} />
+            <SearchBar receiveFilter={receiveFilter} receiveContinents={receiveContinents} />
             <Row>
-                {projects.filter(post => {
-                    console.log(post)
-                    if (query === "") {
-                        return post;
-                    } else if (post.projectName.toLowerCase().includes(query.toLowerCase())) {
-                        return post;
-                    }
-                })
-                    .map(project => {
-                        return (
-                            <Col md={3} key={project._id} >
-                                <ProjectCard {...project} />
-                            </Col>
-                        )
-                    })
+                {
+                    continents.length > 0
+                        ?
+
+                        continents.filter(post => {
+                            console.log(continents)
+                            if (query === "") {
+                                return post;
+                            } else if (post.projectName.toLowerCase().includes(query.toLowerCase())) {
+                                return post;
+                            }
+                        })
+                            .map(project => {
+                                return (
+                                    <Col md={3} key={project._id} >
+                                        <ProjectCard {...project} />
+                                    </Col>
+                                )
+                            })
+
+
+                        :
+
+                        projects.filter(post => {
+                            console.log(continents)
+                            if (query === "") {
+                                return post;
+                            } else if (post.projectName.toLowerCase().includes(query.toLowerCase())) {
+                                return post;
+                            }
+                        })
+                            .map(project => {
+                                return (
+                                    <Col md={3} key={project._id} >
+                                        <ProjectCard {...project} />
+                                    </Col>
+                                )
+                            })
 
                 }
             </Row>

@@ -9,7 +9,7 @@ const SearchBar = ({ receiveFilter, receiveContinents }) => {
             .getContinent(e)
             .then(response => {
                 console.log(response)
-                receiveContinents(response)
+                receiveContinents(response.data)
             })
             .catch(err => console.log(err))
     }
