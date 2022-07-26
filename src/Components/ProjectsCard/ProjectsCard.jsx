@@ -23,7 +23,7 @@ const ProjectCard = ({ gallery, projectName, city, country, description, _id, ow
 
         <Card className='ProjectCard'>
             <Link to={`/projects/details/${_id}`}>
-                <Card.Img variant="top" src={gallery} />
+                <Card.Img variant="top" src={gallery[0]} />
             </Link>
             <Card.Body>
                 <Link to={`/projects/details/${_id}`} className='cardName'>

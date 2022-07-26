@@ -44,7 +44,7 @@ const MarkerGoogle = ({ projects }) => {
                     >
 
                         <>
-                            <img className='marker-image' src={selected.gallery}></img>
+                            <img className='marker-image' src={selected.gallery[0]}></img>
                             <h6>{selected.projectName}</h6>
                             <p>{selected.city}, {selected.country}</p>
                             <p onClick={() => navigate(`/projects/details/${selected._id}`)}>See more</p>
