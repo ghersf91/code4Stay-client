@@ -1,4 +1,4 @@
-import { Link, useParams, useNavigate } from "react-router-dom"
+import { Link, useParams, useNavigate, Navigate } from "react-router-dom"
 import userService from "../../Services/user.services"
 import { useEffect, useState, useContext } from "react"
 import { AuthContext } from '../../Context/auth.context'
@@ -10,7 +10,6 @@ import AcceptJoinButton from "../../Components/AcceptJoinButton/AcceptJoinButton
 const ProfilePage = () => {
 
     const { user, logoutUser } = useContext(AuthContext)
-    console.log(user)
 
     const { user_id } = useParams()
 
@@ -52,6 +51,7 @@ const ProfilePage = () => {
     }
 
     const isHost = userData.role === 'HOST' || userData.role === 'ADMIN' ? true : false
+    // const isHost = userData.role.includes(['HOST', 'ADMIN'])
 
 
     const { username, email, bio, role, projectTypeInterests, locationInterests, profilePicture, _id, requests } = userData
@@ -134,8 +134,7 @@ const ProfilePage = () => {
             }
 
             {
-                user._id !== _id &&
-                <h1>You are not allowed to enter this route</h1>
+                user._id !== _id && <Navigate to="/" />
             }
         </>
 
