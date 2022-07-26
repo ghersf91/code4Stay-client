@@ -5,6 +5,7 @@ const UserEditPage = () => {
 
     return (
         <Container className="mb-5">
+            <h1>Edit profile</h1>
             <UserEditForm />
         </Container>
     )

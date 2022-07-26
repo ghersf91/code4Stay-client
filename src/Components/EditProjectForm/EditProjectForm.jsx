@@ -1,4 +1,4 @@
-import { Form, Button, Row, Col, Container } from 'react-bootstrap'
+import { Form, Button, Row, Col } from 'react-bootstrap'
 import { useState, useEffect } from 'react'
 import projectsService from './../../Services/project.services'
 import uploadService from './../../Services/upload.services'
@@ -17,8 +17,6 @@ const EditProjectForm = ({ fireFinalActions }) => {
         country: '',
         continent: '',
         location: { coordinates: [] },
-        // latitude: '',
-        // longitude: '',
         description: '',
         hoursPerWeek: '',
         minWeeks: '',
@@ -104,10 +102,6 @@ const EditProjectForm = ({ fireFinalActions }) => {
     const { city, country, continent, latitude, longitude, projectName, projectType,
         hoursPerWeek, description, minWeeks, mealsIncluded,
         shelterType, gallery, languagesSpoken } = projectData
-    // const latitude = location.coordinates[0]
-    // const longitude = location.coordinates[1]
-
-    console.log(latitude)
 
     return (
         <Form onSubmit={handleSubmit}>

@@ -5,10 +5,10 @@ import projectsService from '../../Services/project.services'
 const JoinButton = ({ project_id }) => {
     const navigate = useNavigate()
     const handleClick = () => {
+
         projectsService
             .requestsProject(project_id)
-            .then(({ data }) => {
-                console.log(data)
+            .then(() => {
                 navigate(`/projects`)
             })
 

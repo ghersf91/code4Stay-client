@@ -4,9 +4,7 @@ import projectsService from './../../Services/project.services'
 import uploadService from './../../Services/upload.services'
 import './CreateProjectForm.css'
 
-
 const CreateProjectForm = ({ fireFinalActions }) => {
-
 
     const [projectData, setProjectData] = useState({
         projectType: 'FARM',
@@ -45,7 +43,7 @@ const CreateProjectForm = ({ fireFinalActions }) => {
 
     const handleSubmit = e => {
         e.preventDefault()
-        console.log(projectData)
+
         projectsService
             .createProject(projectData)
             .then(response => {

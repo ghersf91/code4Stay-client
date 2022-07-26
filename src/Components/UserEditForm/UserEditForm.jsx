@@ -96,7 +96,6 @@ const UserEditForm = () => {
     return (
 
         <Form onSubmit={handleSubmit}>
-            <h1>Edit profile</h1>
             <Row>
                 <Col>
                     <Form.Group className="sm-12 mb-3" controlId="username">
