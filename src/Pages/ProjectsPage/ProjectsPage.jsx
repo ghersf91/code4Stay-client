@@ -48,7 +48,7 @@ const ProjectPage = () => {
 
             <ProjectsList projects={projects} />
 
-            <Modal show={showModal} onHide={closeModal}>
+            <Modal className='modal' show={showModal} onHide={closeModal}>
                 <Modal.Header closeButton>
                     <Modal.Title>New project</Modal.Title>
                 </Modal.Header>
