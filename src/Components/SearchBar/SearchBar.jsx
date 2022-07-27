@@ -16,21 +16,17 @@ const SearchBar = ({ receiveFilter, receiveContinents }) => {
 
     const toggleFilter = e => {
         searchService
-            .filterProjects(e)
+            .filterProjects(e.target.value)
             .then(({ data }) => {
-                console.log(data)
+                console.log('----', data)
                 // toggleContinent()
-                receiveFilter(e)
+                // receiveFilter(e)
             })
             .catch(err => console.log(err))
     }
     return (
         <>
-            <Form.Control placeholder="Enter Search" onChange={event => {
-                console.log(event.target.value)
-                toggleFilter(event.target.value)
-
-            }}></Form.Control>
+            <Form.Control placeholder="Enter Search" onChange={toggleFilter}></Form.Control>
 
             <ButtonGroup>
                 {

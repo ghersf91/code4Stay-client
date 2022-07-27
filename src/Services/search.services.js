@@ -25,7 +25,7 @@ class SearchService {
     }
 
     filterProjects(query) {
-        return this.api.get(`/filter/?from_to=${query}`)
+        return this.api.get(`/filter?from_to=${query}`)
     }
 
 }

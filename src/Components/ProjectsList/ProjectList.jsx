@@ -3,6 +3,7 @@ import { Row, Col, Form } from 'react-bootstrap'
 import { useState, useEffect } from "react"
 import ProjectCard from "../ProjectsCard/ProjectsCard"
 import SearchBar from '../SearchBar/SearchBar'
+import searchService from '../../Services/search.services'
 
 const ProjectsList = ({ projects }) => {
     // const allContinents = ['Africa', 'Americas', 'Asia', 'Europe', 'Oceania']
@@ -16,15 +17,24 @@ const ProjectsList = ({ projects }) => {
         setContinents(data)
     }
 
-    const receiveFilter = data => {
-        setQuery(data)
-    }
-    console.log(continents)
+    // const receiveFilter = e => {
+    //     console.log(e)
+    //     searchService
+    //         .filterProjects(e.target.value)
+    //         .then(({ data }) => {
+    //             console.log(data)
+    //             // toggleContinent()
+    //             setContinents(data)
+    //         })
+    //         .catch(err => console.log(err))
+    //     // setQuery(data)
+    // }
+    // console.log(continents)
     return (
 
         <>
             <Form>
-                <SearchBar receiveFilter={receiveFilter} receiveContinents={receiveContinents} />
+                <SearchBar receiveContinents={receiveContinents} />
 
                 <Row>
                     {
