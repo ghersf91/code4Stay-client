@@ -12,16 +12,14 @@ const CommentList = ({ testimonials }) => {
                         <>
                             <Card id="commentCard">
                                 <Row>
-                                    <Col className="sm-12 md-6  ">
+                                    <Col sm='3' lg='6' className="imageSide">
                                         <Card.Img variant="top" size='sm' src={e.giver.profilePicture} id='cardImage' />
+                                        <Card.Title >{e.giver.username}</Card.Title>
                                     </Col>
 
-                                    <Col className="sm-12 md-8  ">
-                                        <Card.Title >{e.giver.username}</Card.Title>
-                                        <hr />
-                                        <Card.Text>{e.comment}</Card.Text>
-                                        <hr />
-                                        <Card.Text>{e.score}/5</Card.Text>
+                                    <Col sm='8' lg='6' className='commentSide'>
+                                        <Card.Title>{e.comment}</Card.Title>
+                                        <Card.Subtitle>{e.score}/5</Card.Subtitle>
                                     </Col>
 
                                 </Row>

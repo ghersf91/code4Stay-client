@@ -2,11 +2,25 @@
     display: flex;
     padding: 10px;
     width: 100%;
+
 }
 
 #cardImage {
-    width: 50px;
+    width: 80px;
     object-fit: cover;
     border-radius: 50%;
+}
+
+.imageSide {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-self: center;
+}
+
+.commentSide {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-self: center;
 }

@@ -2,7 +2,7 @@ import { Link, useParams, useNavigate } from "react-router-dom"
 import userService from "../../Services/user.services"
 import { useEffect, useState, useContext } from "react"
 import { AuthContext } from '../../Context/auth.context'
-import { Button, ButtonGroup, Card, ListGroup } from 'react-bootstrap'
+import { Button, ButtonGroup, Card, ListGroup, Container } from 'react-bootstrap'
 import AcceptJoinButton from "../../Components/AcceptJoinButton/AcceptJoinButton"
 
 
@@ -59,10 +59,10 @@ const ProfilePage = () => {
         <>
             {
                 user._id === _id &&
-                <div>
+                <Container>
                     <h1>Welcome, {username}!</h1>
 
-                    <Card style={{ width: '18rem' }}>
+                    <Card >
                         <Card.Img variant="top" src={profilePicture} />
                         <Card.Body>
                             <Card.Title>{role}</Card.Title>
@@ -75,18 +75,22 @@ const ProfilePage = () => {
                             <Card.Text>
                                 I'm interested in these projects:
                             </Card.Text>
-                            <ListGroup>
-                                {
-                                    projectTypeInterests.map(project => <ListGroup.Item>-{project}</ListGroup.Item>)
-                                }
+                            <ListGroup variant='flush'>
+                                <ListGroup.Item>
+                                    {
+                                        projectTypeInterests.map(project => <>-{project}<br /></>)
+                                    }
+                                </ListGroup.Item>
                             </ListGroup>
                             <Card.Text>
                                 I want to go to:
                             </Card.Text>
-                            <ListGroup className="mb-5">
-                                {
-                                    locationInterests.map(project => <ListGroup.Item>-{project}</ListGroup.Item>)
-                                }
+                            <ListGroup variant='flush' className="mb-5">
+                                <ListGroup.Item>
+                                    {
+                                        locationInterests.map(project => <>-{project}<br /></>)
+                                    }
+                                </ListGroup.Item>
                             </ListGroup>
                             {
                                 isHost
@@ -123,7 +127,7 @@ const ProfilePage = () => {
                             </Link>
                         </Card.Body>
                     </Card>
-                </div>
+                </Container>
             }
 
             {/* {

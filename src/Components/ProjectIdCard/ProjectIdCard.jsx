@@ -1,5 +1,7 @@
 import { Card } from "react-bootstrap"
+import JoinButton from "../JoinProjectButton/JoinProjectButton"
 import './ProjectIdCard.css'
+
 
 const ProjectIdCard = ({ project }) => {
     return (
@@ -12,6 +14,8 @@ const ProjectIdCard = ({ project }) => {
                 <Card.Text>
                     {project.description}
                 </Card.Text>
+                <JoinButton project_id={project._id} />
+
             </Card.Body>
         </Card>
     )

@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from "react"
-import { Modal } from 'react-bootstrap'
+import { Modal, Container } from 'react-bootstrap'
 import projectsService from "../../Services/project.services"
 import { MessageContext } from "./../../Context/userMessage.context"
 import { AuthContext } from "./../../Context/auth.context"
@@ -39,7 +39,7 @@ const ProjectPage = () => {
     }
 
     return (
-        <>
+        <Container>
             <container className="d-none d-md-block">
                 <MapGoogle projects={projects} />
             </container>
@@ -57,7 +57,7 @@ const ProjectPage = () => {
                 </Modal.Body>
             </Modal>
 
-        </>
+        </Container>
     )
 }
 

@@ -44,16 +44,18 @@ const ProjectDetailsPage = () => {
             {
                 isLoading ?
                     <Loader /> :
-                    <Container className='mb-5'>
+                    <Container className='mb-5 detailsCard'>
                         <Row>
                             <Col className="sm-12 lg-6  ">
                                 <ProjectIdCard project={project} />
+                                {/* <JoinButton project_id={project_id} /> */}
+
                             </Col>
+
                             <Col className="sm-12 lg-6  ">
                                 <RatingWidget testimonials={project.testimonials} _id={project_id} />
                             </Col>
                         </Row>
-                        <JoinButton project_id={project_id} />
                     </Container >
             }
         </article>
@@ -61,14 +63,4 @@ const ProjectDetailsPage = () => {
 }
 export default ProjectDetailsPage
 
-// const Container = styled.img`
-//       width: 400px;
-//     object-fit: cover;
-//     margin: 20px;
-// `;
 
-const CommentList = styled.img`
-    width: 50px;
-    object-fit: cover;
-    border-radius: 50%;
-`;
