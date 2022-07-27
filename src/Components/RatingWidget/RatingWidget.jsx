@@ -39,7 +39,7 @@ const RatingWidget = ({ testimonials, _id }) => {
 
             <RatingSystem rating={rate} getRating={getRating} />
 
-            <CommentBox comment={comment} getComment={getComment} />
+            <CommentBox id='comment-box' comment={comment} getComment={getComment} />
 
             <Button id='rating-button' type='submit' onClick={handleSubmit}>Rate project</Button>
 

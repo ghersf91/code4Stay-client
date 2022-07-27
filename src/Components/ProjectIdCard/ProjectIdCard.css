@@ -1,6 +1,10 @@
-#idImg {
+.carousel-item {
     width: 400px;
+    height: 450px;
     object-fit: cover;
     margin: 20px;
-
 }
+
+/* #details-carousel {
+    height: 40vh
+} */

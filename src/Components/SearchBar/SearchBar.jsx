@@ -26,7 +26,7 @@ const SearchBar = ({ receiveFilter, receiveContinents }) => {
     }
     return (
         <>
-            <Form.Control placeholder="Enter Search" onChange={toggleFilter}></Form.Control>
+            <Form.Control className='form-input' placeholder="Enter Search" onChange={toggleFilter}></Form.Control>
 
             <ButtonGroup>
                 {

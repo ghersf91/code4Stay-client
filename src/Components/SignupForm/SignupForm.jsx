@@ -50,13 +50,13 @@ const SignupForm = () => {
 
             <Form.Group className="mb-3" controlId="password">
                 <Form.Label>Password</Form.Label>
-                <Form.Control type="password" value={password} onChange={handleInputChange} name="password" />
+                <Form.Control className='form-input' type="password" value={password} onChange={handleInputChange} name="password" />
             </Form.Group>
 
 
             <Form.Group className="mb-3" controlId="email">
                 <Form.Label>Email</Form.Label>
-                <Form.Control type="email" value={email} onChange={handleInputChange} name="email" />
+                <Form.Control className='form-input' type="email" value={email} onChange={handleInputChange} name="email" />
             </Form.Group>
 
 
