@@ -1,19 +1,13 @@
-.form-button {
-    margin-bottom: 100px;
-}
-
-.form-control {
-    border-radius: 0px;
-}
-
-.form-select {
-    border-radius: 00px;
+.form-input {
+    border-radius: 100px;
 }
 
 #create-button {
     background-color: #0b3f5f;
     border-color: #0b3f5f;
     width: 200px;
+    border-radius: 100px;
+    margin-bottom: 100px;
 }
 
 #create-button:hover {
