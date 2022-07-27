@@ -53,7 +53,6 @@ const CreateProjectForm = ({ fireFinalActions }) => {
             .catch(err => console.error(err))
     }
 
-
     const handleMultipleFilesInput = e => {
         const formData = new FormData()
 
@@ -64,7 +63,6 @@ const CreateProjectForm = ({ fireFinalActions }) => {
         uploadService
             .uploadMultipleImages(formData)
             .then(({ data }) => {
-                console.log(data)
                 setProjectData({ ...projectData, gallery: data.cloudinary_urls })
             })
             .catch(err => console.log(err))
