@@ -111,7 +111,7 @@ const EditProjectForm = ({ fireFinalActions }) => {
             <h1>Edit Project</h1>
             <Form.Group className='mb-3' controlId='projectName'>
                 <Form.Label>Project name</Form.Label>
-                <Form.Control type='text' value={projectName}
+                <Form.Control className='form-input' type='text' value={projectName}
                     onChange={handleChange} name='projectName' />
             </Form.Group>
 
@@ -120,7 +120,7 @@ const EditProjectForm = ({ fireFinalActions }) => {
 
                     <Form.Group className='mb-3' controlId='continent'>
                         <Form.Label>Continent</Form.Label>
-                        <Form.Select aria-label="Default select example"
+                        <Form.Select className='form-input' aria-label="Default select example"
                             value={continent} name='continent' onChange={handleChange}>
                             <option value={'Africa'}>Africa</option>
                             <option value={'Americas'}>Americas</option>
@@ -136,7 +136,7 @@ const EditProjectForm = ({ fireFinalActions }) => {
 
                     <Form.Group className='mb-3' controlId='city'>
                         <Form.Label>City</Form.Label>
-                        <Form.Control type='text' value={city}
+                        <Form.Control className='form-input' type='text' value={city}
                             onChange={handleChange} name='city' />
                     </Form.Group>
 
@@ -146,7 +146,7 @@ const EditProjectForm = ({ fireFinalActions }) => {
 
                     <Form.Group className='mb-3' controlId='country'>
                         <Form.Label>Country</Form.Label>
-                        <Form.Control type='text' value={country}
+                        <Form.Control className='form-input' type='text' value={country}
                             onChange={handleChange} name='country' />
                     </Form.Group>
                 </Col>
@@ -159,7 +159,7 @@ const EditProjectForm = ({ fireFinalActions }) => {
 
                     <Form.Group className='mb-3' controlId='latitude'>
                         <Form.Label>Latitude</Form.Label>
-                        <Form.Control type='text' value={latitude}
+                        <Form.Control className='form-input' type='text' value={latitude}
                             onChange={handleChange} name='latitude' />
                     </Form.Group>
 
@@ -169,7 +169,7 @@ const EditProjectForm = ({ fireFinalActions }) => {
 
                     <Form.Group className='mb-3' controlId='longitude'>
                         <Form.Label>Longitude</Form.Label>
-                        <Form.Control type='text' value={longitude}
+                        <Form.Control className='form-input' type='text' value={longitude}
                             onChange={handleChange} name='longitude' />
                     </Form.Group>
                 </Col>
@@ -178,7 +178,7 @@ const EditProjectForm = ({ fireFinalActions }) => {
 
             <Form.Group className='mb-3' controlId='description'>
                 <Form.Label>Description</Form.Label>
-                <Form.Control type='text' value={description}
+                <Form.Control className='form-input' type='text' value={description}
                     onChange={handleChange} name='description' />
             </Form.Group>
 
@@ -188,7 +188,7 @@ const EditProjectForm = ({ fireFinalActions }) => {
 
                     <Form.Group className='mb-3' controlId='projectType'>
                         <Form.Label>Project type</Form.Label>
-                        <Form.Select aria-label="Default select example" name='projectType'
+                        <Form.Select className='form-input' aria-label="Default select example" name='projectType'
                             value={projectType} onChange={handleChange}>
                             <option value={'Farm'}>Farm</option>
                             <option value={'NGO'}>NGO</option>
@@ -212,14 +212,14 @@ const EditProjectForm = ({ fireFinalActions }) => {
                 <Col>
                     <Form.Group className='mb-3' controlId='hoursPerWeek'>
                         <Form.Label>Hours per week</Form.Label>
-                        <Form.Control type='number' value={hoursPerWeek} onChange={handleChange} name='hoursPerWeek' />
+                        <Form.Control className='form-input' type='number' value={hoursPerWeek} onChange={handleChange} name='hoursPerWeek' />
                     </Form.Group>
                 </Col>
 
                 <Col>
                     <Form.Group className='mb-3' controlId='minWeeks'>
                         <Form.Label>Minimum weeks</Form.Label>
-                        <Form.Control type='number' value={minWeeks} onChange={handleChange} name='minWeeks' />
+                        <Form.Control className='form-input' type='number' value={minWeeks} onChange={handleChange} name='minWeeks' />
                     </Form.Group>
                 </Col>
 
@@ -227,17 +227,17 @@ const EditProjectForm = ({ fireFinalActions }) => {
 
             <Form.Group className='mb-3' controlId='shelterType'>
                 <Form.Label>Shelter type</Form.Label>
-                <Form.Control type='text' value={shelterType} onChange={handleChange} name='shelterType' />
+                <Form.Control className='form-input' type='text' value={shelterType} onChange={handleChange} name='shelterType' />
             </Form.Group>
 
             <Form.Group className='mb-3' controlId='gallery'>
                 <Form.Label>Photos (Files)</Form.Label>
-                <Form.Control type='file' onChange={handleMultipleFilesInput} name='gallery' multiple />
+                <Form.Control className='form-input' type='file' onChange={handleMultipleFilesInput} name='gallery' multiple />
             </Form.Group>
 
             <Form.Group className='mb-3' controlId='languagesSpoken'>
                 <Form.Label>Languages spoken</Form.Label>
-                <Form.Control type='text' value={languagesSpoken} onChange={handleChange} name='languagesSpoken' />
+                <Form.Control className='form-input' type='text' value={languagesSpoken} onChange={handleChange} name='languagesSpoken' />
             </Form.Group>
 
             <div className='d-grid form-button'>

@@ -1,6 +1,7 @@
 #login-button {
     background-color: #0b3f5f;
     border-color: #0b3f5f;
+    border-radius: 100px;
     width: 200px;
 }
 
