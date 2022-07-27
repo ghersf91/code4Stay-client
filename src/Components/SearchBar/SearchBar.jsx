@@ -33,7 +33,7 @@ const SearchBar = ({ receiveFilter, receiveContinents }) => {
                 {
                     allContinents.map(e => {
                         return (
-                            <Link to={`/search/${e}`}>
+                            <Link key={e} to={`/search/${e}`}>
                                 <Button variant='light'
                                 // onClick={() => toggleContinent(e)}
                                 >{e}</Button>
