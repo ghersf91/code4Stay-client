@@ -13,7 +13,7 @@ const ProjectIdCard = ({ project }) => {
                         return (
                             <Carousel.Item interval={100000}>
                                 <img
-                                    className="d-block"
+                                    className="d-block carousel-pic"
                                     src={elem}
                                 />
                             </Carousel.Item>
