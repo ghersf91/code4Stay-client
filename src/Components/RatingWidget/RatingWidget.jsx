@@ -6,6 +6,8 @@ import ratingServices from '../../Services/rating.services'
 import { AuthContext } from "../../Context/auth.context"
 import CommentList from "../CommentList/CommentList"
 
+import './RatingWidget.css'
+
 const RatingWidget = ({ testimonials, _id }) => {
 
     const { user } = useContext(AuthContext)
@@ -39,7 +41,7 @@ const RatingWidget = ({ testimonials, _id }) => {
 
             <CommentBox comment={comment} getComment={getComment} />
 
-            <Button variant='dark' type='submit' onClick={handleSubmit}>Rate project</Button>
+            <Button id='rating-button' type='submit' onClick={handleSubmit}>Rate project</Button>
 
         </div >
     )

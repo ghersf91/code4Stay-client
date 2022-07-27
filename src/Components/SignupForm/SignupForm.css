@@ -1,15 +1,10 @@
-.rating-container {
-    display: flex;
-    flex-direction: row;
-}
-
-#rating-button {
+#signup-button {
     background-color: #0b3f5f;
     border-color: #0b3f5f;
     width: 200px;
 }
 
-#rating-button:hover {
+#signup-button:hover {
     background-color: #125883;
     border-color: #125883;
 }

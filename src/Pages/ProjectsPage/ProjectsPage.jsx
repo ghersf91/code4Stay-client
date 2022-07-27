@@ -19,9 +19,6 @@ const ProjectPage = () => {
         loadProjects()
     }, [])
 
-    useEffect(() => {
-        loadProjects()
-    }, [projects])
 
 
 
