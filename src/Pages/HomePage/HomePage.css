@@ -1,0 +1,16 @@
+.carousel {
+    height: 90vh;
+}
+
+.carousel img {
+    width: auto;
+    height: 100vh;
+}
+
+.pic-background {
+    height: 89vh;
+    width: 100vw;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
