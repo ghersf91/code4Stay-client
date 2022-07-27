@@ -87,4 +87,6 @@ const ProjectCard = ({ gallery, projectName, city, country, description, _id, ow
     )
 
 }
+
+
 export default ProjectCard
