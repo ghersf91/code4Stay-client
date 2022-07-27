@@ -1,20 +1,17 @@
 import { useContext, useState } from "react"
-import { Button, Form, Row, Col } from "react-bootstrap"
+import { Button, } from "react-bootstrap"
 import CommentBox from "../CommentBox/CommentBox"
 import RatingSystem from "../RatingSystem/RatingSystem"
 import ratingServices from '../../Services/rating.services'
 import { AuthContext } from "../../Context/auth.context"
 import CommentList from "../CommentList/CommentList"
-import { Link } from "react-router-dom"
 
 const RatingWidget = ({ testimonials, _id }) => {
 
     const { user } = useContext(AuthContext)
 
-
     const [rate, setRate] = useState(0)
     const [comment, setComment] = useState('')
-
 
     const getRating = rating => {
         setRate(rating)
@@ -29,9 +26,7 @@ const RatingWidget = ({ testimonials, _id }) => {
 
         ratingServices
             .createRating(_id, { score: rate, comment: comment, receiver: _id, giver: user._id })
-            .then(response => {
-                console.log(response)
-            })
+            .then(response => console.log(response))
             .catch(err => console.log(err))
     }
 
@@ -40,21 +35,13 @@ const RatingWidget = ({ testimonials, _id }) => {
 
             <CommentList testimonials={testimonials} />
 
-            <Form onSubmit={handleSubmit}>
-                <RatingSystem rating={rate} getRating={getRating} />
-                {/* <RatingStars /> */}
+            <RatingSystem rating={rate} getRating={getRating} />
 
-                <CommentBox comment={comment} getComment={getComment} />
+            <CommentBox comment={comment} getComment={getComment} />
 
-                <Link to='/'>
-                    <Button variant='dark' type='submit'>Rate project</Button>
-                </Link>
-            </Form>
+            <Button variant='dark' type='submit' onClick={handleSubmit}>Rate project</Button>
 
-
-
-
-        </div>
+        </div >
     )
 }
 
