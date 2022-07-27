@@ -159,39 +159,6 @@ const CreateProjectForm = ({ fireFinalActions }) => {
                 </Col>
 
                 <Col>
-
-                    <Form>
-                        <Form.Group className='mb-3' controlId='mealsIncluded' name='mealsIncluded' onChange={handleChange}>
-                            <Form.Label>Meals included</Form.Label>
-                            <div key={`inline-checkbox`} className="mb-3">
-                                <Form.Check
-                                    inline
-                                    label="Breakfast"
-                                    name="Breakfast"
-                                    type={`checkbox`}
-                                    id={"Breakfast"}
-                                />
-                                <Form.Check
-                                    inline
-                                    label="Lunch"
-                                    name="Lunch"
-                                    type={`checkbox`}
-                                    id={"Lunch"}
-                                />
-                                <Form.Check
-                                    inline
-                                    label="Supper"
-                                    name="Supper"
-                                    type={`checkbox`}
-                                    id={"Supper"}
-                                />
-                            </div>
-                        </Form.Group>
-                    </Form>
-
-                </Col>
-
-                <Col>
                     <Form.Group className='mb-3' controlId='hoursPerWeek'>
                         <Form.Label>Hours/week</Form.Label>
                         <Form.Control className='input-bar' type='number' value={hoursPerWeek} onChange={handleChange} name='hoursPerWeek' />
@@ -207,18 +174,41 @@ const CreateProjectForm = ({ fireFinalActions }) => {
 
             </Row>
 
+            <Form>
+                <Form.Group className='mb-3' controlId='mealsIncluded' name='mealsIncluded' onChange={handleChange}>
+                    <Form.Label>Meals included</Form.Label>
+                    <div key={`inline-checkbox`} className="mb-3">
+                        <Form.Check
+                            inline
+                            label="Breakfast"
+                            name="Breakfast"
+                            type={`checkbox`}
+                            id={"Breakfast"}
+                        />
+                        <Form.Check
+                            inline
+                            label="Lunch"
+                            name="Lunch"
+                            type={`checkbox`}
+                            id={"Lunch"}
+                        />
+                        <Form.Check
+                            inline
+                            label="Supper"
+                            name="Supper"
+                            type={`checkbox`}
+                            id={"Supper"}
+                        />
+                    </div>
+                </Form.Group>
+            </Form>
+
+
             <Row>
                 <Col>
                     <Form.Group className='mb-3' controlId='shelterType'>
                         <Form.Label>Shelter type</Form.Label>
                         <Form.Control className='input-bar' type='text' value={shelterType} onChange={handleChange} name='shelterType' />
-                    </Form.Group>
-                </Col>
-
-                <Col>
-                    <Form.Group className='mb-3' controlId='gallery'>
-                        <Form.Label>Photos (Files)</Form.Label>
-                        <Form.Control className='input-bar' type='file' onChange={handleMultipleFilesInput} name='gallery' multiple />
                     </Form.Group>
                 </Col>
 
@@ -231,8 +221,13 @@ const CreateProjectForm = ({ fireFinalActions }) => {
 
             </Row>
 
+            <Form.Group className='mb-3' controlId='gallery'>
+                <Form.Label>Photos (Files)</Form.Label>
+                <Form.Control className='input-bar' type='file' onChange={handleMultipleFilesInput} name='gallery' multiple />
+            </Form.Group>
+
             <div className='d-grid form-button'>
-                <Button variant='dark' type='submit'>Create project</Button>
+                <Button id='create-button' type='submit'>Create project</Button>
             </div>
         </Form>
 
