@@ -1,6 +1,7 @@
 import { Container } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 import CreateProjectForm from './../../Components/CreateProjectForm/CreateProjectForm'
+import './CreateProjectPage.css'
 
 const CreateProjectPage = () => {
 
@@ -11,7 +12,7 @@ const CreateProjectPage = () => {
     }
     return (
         <Container>
-            <h1>New Project</h1>
+            <h1>Create a new project</h1>
             <CreateProjectForm fireFinalActions={fireFinalActions} />
         </Container>
     )

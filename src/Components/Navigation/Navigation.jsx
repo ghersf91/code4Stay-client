@@ -3,6 +3,7 @@ import { Nav, Navbar, Container } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { AuthContext } from '../../Context/auth.context'
 import { MessageContext } from '../../Context/userMessage.context'
+import './Navigation.css'
 
 
 const Navigation = () => {
@@ -18,7 +19,7 @@ const Navigation = () => {
 
 
     return (
-        <Navbar bg="dark" expand="md" variant="dark">
+        <Navbar expand="md" variant='dark'>
             <Container>
                 <Navbar.Brand>Code4Stay</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
