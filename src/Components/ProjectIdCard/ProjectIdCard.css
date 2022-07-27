@@ -1,10 +1,10 @@
-.carousel-item {
-    width: 400px;
-    height: 450px;
+.carousel-pic {
+    width: 100%;
+    height: 60vh;
     object-fit: cover;
-    margin: 20px;
 }
 
-/* #details-carousel {
-    height: 40vh
-} */
+#details-carousel {
+    height: 100%;
+    width: 100%;
+}
