@@ -3,7 +3,10 @@ import MarkerGoogle from './../MarkerGoogle/MarkerGoogle'
 import './MapGoogle.css'
 
 
+
 const MapGoogle = ({ projects }) => {
+
+
 
     const center = {
         lat: 27.766024583856897,
@@ -16,21 +19,23 @@ const MapGoogle = ({ projects }) => {
     }
 
     return (
+        <div className='mapWidget'>
+            <LoadScript googleMapsApiKey='AIzaSyDyJLzEV4bMHGkkovvuE00bI7PJjY1QgSA'>
+                <container className='map-container'>
+                    <GoogleMap
 
-        <LoadScript googleMapsApiKey='AIzaSyDyJLzEV4bMHGkkovvuE00bI7PJjY1QgSA'>
-            <container className='map-container'>
-                <GoogleMap
+                        mapContainerStyle={size}
+                        zoom={1.7}
+                        center={center}>
 
-                    mapContainerStyle={size}
-                    zoom={1.7}
-                    center={center}>
+                        <MarkerGoogle projects={projects} />
 
-                    <MarkerGoogle projects={projects} />
+                    </GoogleMap>
+                </container>
 
-                </GoogleMap>
-            </container>
+            </LoadScript >
+        </div>
 
-        </LoadScript>
     )
 }
 

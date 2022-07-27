@@ -1,4 +1,5 @@
 import { ButtonGroup, Button, Form } from "react-bootstrap"
+import { Link } from "react-router-dom"
 import searchService from "../../Services/search.services"
 
 const SearchBar = ({ receiveFilter, receiveContinents }) => {
@@ -32,8 +33,13 @@ const SearchBar = ({ receiveFilter, receiveContinents }) => {
                 {
                     allContinents.map(e => {
                         return (
-                            <Button variant='light'
-                                onClick={() => toggleContinent(e)}>{e}</Button>)
+                            <Link to={`/search/${e}`}>
+                                <Button variant='light'
+                                // onClick={() => toggleContinent(e)}
+                                >{e}</Button>
+                            </Link>
+                        )
+
                     })
                 }
             </ButtonGroup>

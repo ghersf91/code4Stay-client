@@ -1,5 +1,5 @@
 import { Row, Col, Form } from 'react-bootstrap'
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import ProjectCard from "../ProjectsCard/ProjectsCard"
 import SearchBar from '../SearchBar/SearchBar'
 
@@ -8,7 +8,9 @@ const ProjectsList = ({ projects }) => {
     const [query, setQuery] = useState('')
     const [continents, setContinents] = useState([])
 
-
+    useEffect(() => {
+        setContinents(projects)
+    }, [])
     const receiveContinents = data => {
         setContinents(data)
     }
@@ -16,7 +18,9 @@ const ProjectsList = ({ projects }) => {
     const receiveFilter = data => {
         setQuery(data)
     }
+
     console.log(query)
+
     return (
 
         <>
@@ -29,7 +33,6 @@ const ProjectsList = ({ projects }) => {
                             ?
 
                             continents.filter(post => {
-                                console.log(continents)
                                 if (query === "") {
                                     return post;
                                 } else if (post.projectName.toLowerCase().includes(query.toLowerCase())) {
@@ -48,7 +51,6 @@ const ProjectsList = ({ projects }) => {
                             :
 
                             projects.filter(post => {
-                                console.log(continents)
                                 if (query === "") {
                                     return post;
                                 } else if (post.projectName.toLowerCase().includes(query.toLowerCase())) {

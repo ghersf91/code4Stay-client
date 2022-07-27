@@ -6,11 +6,10 @@ import ProjectsPage from './../Pages/ProjectsPage/ProjectsPage'
 import CreateProjectPage from './../Pages/CreateProjectPage/CreateProjectPage'
 import LoginPage from '../Pages/LoginPage/LoginPage'
 import ProfilePage from '../Pages/ProfilePage/ProfilePage'
-import UserEditPage from '../Pages/UserEditPage/UserEditPage'
 import PrivateRoute from './PrivateRoutes'
-import AcceptJoinButton from './../Components/AcceptJoinButton/AcceptJoinButton'
 import ProjectDetailsPage from '../Pages/ProjectsDetailsPage/ProjectDetails'
 import EditProjectPage from '../Pages/EditProjectPage/EditProjectPage'
+import SearchPage from '../Pages/SearchPage/SearchPage'
 
 
 const AppRoutes = () => {
@@ -23,9 +22,9 @@ const AppRoutes = () => {
                     <Route path="" element={<ProfilePage />} />
                 </Route>
 
-                {/* <Route path="/users/editUser/:user_id" element={<PrivateRoute />}>
-                    <Route path="" element={<UserEditPage />} />
-                </Route> */}
+                <Route path="search/:continent" element={<PrivateRoute />}>
+                    <Route path="" element={<SearchPage />} />
+                </Route>
 
                 <Route path="projects/details/:project_id" element={<PrivateRoute />}>
                     <Route path="" element={<ProjectDetailsPage />} />

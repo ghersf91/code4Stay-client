@@ -21,13 +21,12 @@ const Navigation = () => {
     return (
         <Navbar expand="lg" variant='dark'>
             <Container>
-                <Navbar.Brand>Code4Stay</Navbar.Brand>
+                <Link to="/">
+                    <Navbar.Brand>Code4Stay</Navbar.Brand>
+                </Link>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ms-auto">
-                        <Link to="/">
-                            <Nav.Link as="span">Home</Nav.Link>
-                        </Link>
                         <Link to="/projects">
                             <Nav.Link as="span">Projects</Nav.Link>
                         </Link>
