@@ -7,7 +7,7 @@ import LocationCheckbox from "./LocationCheckbox"
 import ProjectCheckbox from "./ProjectCheckbox"
 
 
-const UserEditForm = () => {
+const UserEditForm = ({ fireFinalActions }) => {
 
     const { user_id } = useParams()
 
@@ -24,6 +24,7 @@ const UserEditForm = () => {
 
     const [locationsChecked, setLocationsChecked] = useState([])
     const [projectsChecked, setProjectsChecked] = useState([])
+
 
     const navigate = useNavigate()
 

@@ -11,3 +11,11 @@
     text-decoration: none;
     color: black;
 }
+
+.deleteLink {
+    color: red;
+}
+
+.editLink {
+    color: blue;
+}

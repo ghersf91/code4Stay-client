@@ -19,6 +19,12 @@ const ProjectPage = () => {
         loadProjects()
     }, [])
 
+    useEffect(() => {
+        loadProjects()
+    }, [projects])
+
+
+
     const loadProjects = () => {
         projectsService
             .getProjects()

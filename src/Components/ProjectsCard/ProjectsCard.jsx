@@ -1,22 +1,37 @@
 import './ProjectsCard.css'
-import { Card, Button, ButtonGroup } from 'react-bootstrap'
+import { Card, Button, ButtonGroup, Modal } from 'react-bootstrap'
 import { Link, useNavigate } from 'react-router-dom'
 import { useContext } from 'react'
+import EditProjectForm from '../EditProjectForm/EditProjectForm'
 import { AuthContext } from './../../Context/auth.context'
+import { MessageContext } from "./../../Context/userMessage.context"
 import projectsService from '../../Services/project.services'
+import { useState } from 'react'
+
 
 
 const ProjectCard = ({ gallery, projectName, city, country, description, _id, owner }) => {
 
     const { user } = useContext(AuthContext)
+    const [showModal, setShowModal] = useState(false)
+
+    const { setShowMessage } = useContext(MessageContext)
 
     const navigate = useNavigate()
 
     const projectDelete = () => {
         projectsService
             .deleteProject(_id)
-            .then(() => navigate('/'))
+            .then(() => navigate('/projects'))
             .catch(err => console.log(err))
+    }
+
+    const openModal = () => setShowModal(true)
+    const closeModal = () => setShowModal(false)
+
+    const fireFinalActions = () => {
+        closeModal()
+        setShowMessage({ show: true, title: 'Completed', text: 'Project created' })
     }
 
     return (
@@ -31,27 +46,23 @@ const ProjectCard = ({ gallery, projectName, city, country, description, _id, ow
                 </Link>
                 <Card.Subtitle className="mb-2 text-muted">Site: {city}, {country}</Card.Subtitle>
                 <Card.Text>
-                    {description}
+                    {description}<br /><br />
+                    {user && owner === user._id
+                        && <span className='editLink' onClick={openModal}>Edit</span>}
+                    <br />
+                    {user && user.role === 'ADMIN'
+                        && <span className=' deleteLink' onClick={() => projectDelete()}>
+                            Delete</span>}
+                    <br />
+                    {user && owner === user._id && user.role !== 'ADMIN'
+                        && <span className='deleteLink' onClick={() => projectDelete()}>
+                            Delete</span>}
+
                 </Card.Text>
                 <div className="d-grid">
                     <ButtonGroup>
 
-                        {
-                            user && owner === user._id
-                            &&
-                            <>
-                                <Link to={`/projects/edit/${_id}`}>
-                                    <Button size="sm" variant="warning">Edit</Button>
-                                </Link>
-                                <Link to='/'>
-                                    <Button size="sm" variant="danger"
-                                        onClick={() => projectDelete()}>
-                                        Delete
-                                    </Button>
-                                </Link>
-                            </>
-                        }
-                        {
+                        {/* {
                             user?.role === 'ADMIN'
                             &&
                             <Link to='/'>
@@ -60,8 +71,16 @@ const ProjectCard = ({ gallery, projectName, city, country, description, _id, ow
                                     Delete
                                 </Button>
                             </Link>
-                        }
+                        } */}
                     </ButtonGroup>
+                    <Modal className='modal' show={showModal} onHide={closeModal}>
+                        <Modal.Header closeButton>
+                            <Modal.Title>Edit project</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>
+                            <EditProjectForm fireFinalActions={fireFinalActions} />
+                        </Modal.Body>
+                    </Modal>
                 </div>
             </Card.Body>
         </Card>

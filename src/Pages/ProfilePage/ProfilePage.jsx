@@ -2,13 +2,17 @@ import { Link, useParams, useNavigate } from "react-router-dom"
 import userService from "../../Services/user.services"
 import { useEffect, useState, useContext } from "react"
 import { AuthContext } from '../../Context/auth.context'
-import { Button, ButtonGroup, Card, ListGroup, Container } from 'react-bootstrap'
+import { MessageContext } from "./../../Context/userMessage.context"
+import { Button, ButtonGroup, Card, ListGroup, Container, Modal } from 'react-bootstrap'
 import AcceptJoinButton from "../../Components/AcceptJoinButton/AcceptJoinButton"
+import UserEditForm from "../../Components/UserEditForm/UserEditForm"
+import './ProfilePage.css'
 
 
 const ProfilePage = () => {
 
     const { user, logoutUser } = useContext(AuthContext)
+    const [showModal, setShowModal] = useState(false)
 
     const { user_id } = useParams()
 
@@ -17,7 +21,6 @@ const ProfilePage = () => {
     const logout = () => {
         logoutUser()
     }
-
     const [userData, setUserData] = useState({
         username: '',
         email: '',
@@ -28,6 +31,8 @@ const ProfilePage = () => {
         profilePicture: '',
         requests: []
     })
+
+    const { setShowMessage } = useContext(MessageContext)
 
     useEffect(() => {
         loadUser()
@@ -49,6 +54,14 @@ const ProfilePage = () => {
             .catch(err => console.log(err))
     }
 
+    const openModal = () => setShowModal(true)
+    const closeModal = () => setShowModal(false)
+
+    const fireFinalActions = () => {
+        closeModal()
+        setShowMessage({ show: true, title: 'Completed', text: 'Project created' })
+    }
+
     const isHost = userData.role === 'HOST' || userData.role === 'ADMIN' ? true : false
     // const isHost = userData.role.includes(['HOST', 'ADMIN'])
 
@@ -65,7 +78,7 @@ const ProfilePage = () => {
                     <Card >
                         <Card.Img variant="top" src={profilePicture} />
                         <Card.Body>
-                            <Card.Title>{role}</Card.Title>
+                            <Card.Title>{role} {user_id === user._id && <span className='editClick' onClick={openModal}> Edit</span>}</Card.Title>
                             <Card.Text>
                                 {bio}
                             </Card.Text>
@@ -113,9 +126,7 @@ const ProfilePage = () => {
                                     }
                                 </ListGroup>
                             }
-                            <Link to={`/users/editUser/${user_id}`} >
-                                <Button variant="primary" className='mb-1'>Update user information</Button>
-                            </Link>
+
                             <Link to={`/`}>
                                 <Button variant="danger"
                                     onClick={() => {
@@ -127,6 +138,14 @@ const ProfilePage = () => {
                             </Link>
                         </Card.Body>
                     </Card>
+                    <Modal className='modal' show={showModal} onHide={closeModal}>
+                        <Modal.Header closeButton>
+                            <Modal.Title>Edit profile</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>
+                            <UserEditForm fireFinalActions={fireFinalActions} />
+                        </Modal.Body>
+                    </Modal>
                 </Container>
             }
 

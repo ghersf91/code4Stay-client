@@ -23,9 +23,9 @@ const AppRoutes = () => {
                     <Route path="" element={<ProfilePage />} />
                 </Route>
 
-                <Route path="/users/editUser/:user_id" element={<PrivateRoute />}>
+                {/* <Route path="/users/editUser/:user_id" element={<PrivateRoute />}>
                     <Route path="" element={<UserEditPage />} />
-                </Route>
+                </Route> */}
 
                 <Route path="projects/details/:project_id" element={<PrivateRoute />}>
                     <Route path="" element={<ProjectDetailsPage />} />
