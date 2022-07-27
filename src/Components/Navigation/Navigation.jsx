@@ -19,7 +19,7 @@ const Navigation = () => {
 
 
     return (
-        <Navbar expand="md" variant='dark'>
+        <Navbar expand="lg" variant='dark'>
             <Container>
                 <Navbar.Brand>Code4Stay</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />

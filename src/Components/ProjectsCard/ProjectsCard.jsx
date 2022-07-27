@@ -6,14 +6,14 @@ import EditProjectForm from '../EditProjectForm/EditProjectForm'
 import { AuthContext } from './../../Context/auth.context'
 import { MessageContext } from "./../../Context/userMessage.context"
 import projectsService from '../../Services/project.services'
-import { useState } from 'react'
+import { ModalContext } from '../../Context/modal.context'
 
 
 
 const ProjectCard = ({ gallery, projectName, city, country, description, _id, owner }) => {
 
     const { user } = useContext(AuthContext)
-    const [showModal, setShowModal] = useState(false)
+    const { showModal, closeModal, openModal } = useContext(ModalContext)
 
     const { setShowMessage } = useContext(MessageContext)
 
@@ -26,8 +26,7 @@ const ProjectCard = ({ gallery, projectName, city, country, description, _id, ow
             .catch(err => console.log(err))
     }
 
-    const openModal = () => setShowModal(true)
-    const closeModal = () => setShowModal(false)
+
 
     const fireFinalActions = () => {
         closeModal()
@@ -60,19 +59,6 @@ const ProjectCard = ({ gallery, projectName, city, country, description, _id, ow
 
                 </Card.Text>
                 <div className="d-grid">
-                    <ButtonGroup>
-
-                        {/* {
-                            user?.role === 'ADMIN'
-                            &&
-                            <Link to='/'>
-                                <Button size="sm" variant="danger"
-                                    onClick={() => projectDelete()}>
-                                    Delete
-                                </Button>
-                            </Link>
-                        } */}
-                    </ButtonGroup>
                     <Modal className='modal' show={showModal} onHide={closeModal}>
                         <Modal.Header closeButton>
                             <Modal.Title>Edit project</Modal.Title>

@@ -5,6 +5,7 @@ import App from './App';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { MessageProviderWrapper } from './Context/userMessage.context';
 import { AuthProviderWrapper } from './Context/auth.context';
+import { ModalWrapper } from './Context/modal.context';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -12,7 +13,9 @@ root.render(
   <Router>
     <AuthProviderWrapper>
       <MessageProviderWrapper>
-        <App />
+        <ModalWrapper>
+          <App />
+        </ModalWrapper>
       </MessageProviderWrapper>
     </AuthProviderWrapper>
   </Router>

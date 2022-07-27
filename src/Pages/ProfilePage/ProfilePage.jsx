@@ -3,6 +3,7 @@ import userService from "../../Services/user.services"
 import { useEffect, useState, useContext } from "react"
 import { AuthContext } from '../../Context/auth.context'
 import { MessageContext } from "./../../Context/userMessage.context"
+import { ModalContext } from "../../Context/modal.context"
 import { Button, ButtonGroup, Card, ListGroup, Container, Modal } from 'react-bootstrap'
 import AcceptJoinButton from "../../Components/AcceptJoinButton/AcceptJoinButton"
 import UserEditForm from "../../Components/UserEditForm/UserEditForm"
@@ -12,7 +13,7 @@ import './ProfilePage.css'
 const ProfilePage = () => {
 
     const { user, logoutUser } = useContext(AuthContext)
-    const [showModal, setShowModal] = useState(false)
+    const { openModal, closeModal, showModal } = useContext(ModalContext)
 
     const { user_id } = useParams()
 
@@ -54,8 +55,6 @@ const ProfilePage = () => {
             .catch(err => console.log(err))
     }
 
-    const openModal = () => setShowModal(true)
-    const closeModal = () => setShowModal(false)
 
     const fireFinalActions = () => {
         closeModal()

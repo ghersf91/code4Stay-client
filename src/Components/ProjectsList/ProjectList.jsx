@@ -13,52 +13,55 @@ const ProjectsList = ({ projects }) => {
         setContinents(data)
     }
 
-
+    const receiveFilter = data => {
+        setQuery(data)
+    }
+    console.log(query)
     return (
 
         <>
             <Form>
-                <SearchBar receiveContinents={receiveContinents} />
+                <SearchBar receiveContinents={receiveContinents} receiveFilter={receiveFilter} />
 
                 <Row>
                     {
                         continents && continents.length > 0
                             ?
 
-                            // continents.filter(post => {
-                            //     console.log(continents)
-                            //     if (query === "") {
-                            //         return post;
-                            //     } else if (post.projectName.toLowerCase().includes(query.toLowerCase())) {
-                            //         return post;
-                            //     }
-                            // })
-                            continents.map(project => {
-                                return (
-                                    <Col md={3} key={project._id} >
-                                        <ProjectCard {...project} />
-                                    </Col>
-                                )
+                            continents.filter(post => {
+                                console.log(continents)
+                                if (query === "") {
+                                    return post;
+                                } else if (post.projectName.toLowerCase().includes(query.toLowerCase())) {
+                                    return post;
+                                }
                             })
+                                .map(project => {
+                                    return (
+                                        <Col lg={3} md={6} key={project._id} >
+                                            <ProjectCard {...project} />
+                                        </Col>
+                                    )
+                                })
 
 
                             :
 
-                            // projects.filter(post => {
-                            //     console.log(continents)
-                            //     if (query === "") {
-                            //         return post;
-                            //     } else if (post.projectName.toLowerCase().includes(query.toLowerCase())) {
-                            //         return post;
-                            //     }
-                            // })
-                            projects.map(project => {
-                                return (
-                                    <Col md={3} key={project._id} >
-                                        <ProjectCard {...project} />
-                                    </Col>
-                                )
+                            projects.filter(post => {
+                                console.log(continents)
+                                if (query === "") {
+                                    return post;
+                                } else if (post.projectName.toLowerCase().includes(query.toLowerCase())) {
+                                    return post;
+                                }
                             })
+                                .map(project => {
+                                    return (
+                                        <Col lg={3} md={6} key={project._id} >
+                                            <ProjectCard {...project} />
+                                        </Col>
+                                    )
+                                })
 
                     }
                 </Row>

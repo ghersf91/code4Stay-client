@@ -20,7 +20,7 @@ const SearchBar = ({ receiveFilter, receiveContinents }) => {
             .then(({ data }) => {
                 console.log('----', data)
                 // toggleContinent()
-                // receiveFilter(e)
+                receiveFilter(e.target.value)
             })
             .catch(err => console.log(err))
     }
