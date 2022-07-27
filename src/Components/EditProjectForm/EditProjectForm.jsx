@@ -35,6 +35,7 @@ const EditProjectForm = ({ fireFinalActions }) => {
         projectsService
             .getOneProject(project_id)
             .then(({ data }) => {
+                console.log(data)
                 setMealsChecked(data.mealsIncluded)
                 setProjectData(data)
             })

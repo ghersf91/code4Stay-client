@@ -20,12 +20,6 @@ const ProjectDetailsPage = () => {
     }, [])
 
 
-    // useEffect(() => {
-    //     loadProject()
-    // }, [project.testimonials])
-
-
-
 
     const loadProject = () => {
         projectsService

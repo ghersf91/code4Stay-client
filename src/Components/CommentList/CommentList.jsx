@@ -1,13 +1,24 @@
+import { useEffect, useState } from "react"
 import { Card, Row, Col, Container } from "react-bootstrap"
 import './CommentList.css'
 
 
 
 const CommentList = ({ testimonials }) => {
+
+    const [comments, setComments] = useState([])
+
+    useEffect(() => {
+        loadComments()
+    }, [testimonials])
+
+    const loadComments = () => {
+        setComments(testimonials)
+    }
     return (
         <>
             {
-                testimonials.map(e => {
+                comments.map(e => {
                     return (
                         <>
                             <Card id="commentCard">

@@ -1,4 +1,4 @@
-import { useContext, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { Button, } from "react-bootstrap"
 import CommentBox from "../CommentBox/CommentBox"
 import RatingSystem from "../RatingSystem/RatingSystem"
@@ -12,6 +12,8 @@ const RatingWidget = ({ testimonials, _id }) => {
 
     const { user } = useContext(AuthContext)
 
+    const [comments, setComments] = useState(testimonials)
+
     const [rate, setRate] = useState(0)
     const [comment, setComment] = useState('')
 
@@ -23,19 +25,20 @@ const RatingWidget = ({ testimonials, _id }) => {
         setComment(content)
     }
 
+
     const handleSubmit = e => {
         e.preventDefault()
 
         ratingServices
             .createRating(_id, { score: rate, comment: comment, receiver: _id, giver: user._id })
-            .then(response => console.log(response))
+            .then(({ data }) => setComments(data.testimonials))
             .catch(err => console.log(err))
     }
 
     return (
         <div>
 
-            <CommentList testimonials={testimonials} />
+            <CommentList testimonials={comments} />
 
             <RatingSystem rating={rate} getRating={getRating} />
 

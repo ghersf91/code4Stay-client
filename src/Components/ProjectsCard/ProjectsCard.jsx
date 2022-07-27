@@ -35,41 +35,51 @@ const ProjectCard = ({ gallery, projectName, city, country, description, _id, ow
 
     return (
 
-        <Card className='ProjectCard'>
-            <Link to={`/projects/details/${_id}`}>
-                <Card.Img variant="top" src={gallery[0]} />
-            </Link>
-            <Card.Body>
-                <Link to={`/projects/details/${_id}`} className='cardName'>
-                    <Card.Title >{projectName}</Card.Title>
+        <>
+            <Card className='ProjectCard'>
+                <Link to={`/projects/details/${_id}`}>
+                    <Card.Img variant="top" src={gallery[0]} />
                 </Link>
-                <Card.Subtitle className="mb-2 text-muted">Site: {city}, {country}</Card.Subtitle>
-                <Card.Text>
-                    {description}<br /><br />
-                    {user && owner === user._id
-                        && <span className='editLink' onClick={openModal}>Edit</span>}
-                    <br />
-                    {user && user.role === 'ADMIN'
-                        && <span className=' deleteLink' onClick={() => projectDelete()}>
-                            Delete</span>}
-                    <br />
-                    {user && owner === user._id && user.role !== 'ADMIN'
-                        && <span className='deleteLink' onClick={() => projectDelete()}>
-                            Delete</span>}
+                <Card.Body>
+                    <Link to={`/projects/details/${_id}`} className='cardName'>
+                        <Card.Title >{projectName}</Card.Title>
+                    </Link>
+                    <Card.Subtitle className="mb-2 text-muted">Site: {city}, {country}</Card.Subtitle>
+                    <Card.Text>
+                        {description}<br /><br />
+                        {user && owner === user._id
+                            &&
+                            <Link className='editLink' to={`/projects/edit/${_id}`}>
+                                <p >Edit</p>
+                            </Link>
+                        }
+                        {/* {user && owner === user._id
+                            && <span className='editLink' onClick={openModal}>Edit</span>} */}
+                        <br />
+                        {user && user.role === 'ADMIN'
+                            && <span className=' deleteLink' onClick={() => projectDelete()}>
+                                Delete</span>}
+                        <br />
+                        {user && owner === user._id && user.role !== 'ADMIN'
+                            && <span className='deleteLink' onClick={() => projectDelete()}>
+                                Delete</span>}
 
-                </Card.Text>
-                <div className="d-grid">
-                    <Modal className='modal' show={showModal} onHide={closeModal}>
-                        <Modal.Header closeButton>
-                            <Modal.Title>Edit project</Modal.Title>
-                        </Modal.Header>
-                        <Modal.Body>
-                            <EditProjectForm fireFinalActions={fireFinalActions} />
-                        </Modal.Body>
-                    </Modal>
-                </div>
-            </Card.Body>
-        </Card>
+                    </Card.Text>
+                    <div className="d-grid">
+
+                    </div>
+                </Card.Body>
+            </Card>
+            <Modal className='modal' show={showModal} onHide={closeModal}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Edit project</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <EditProjectForm fireFinalActions={fireFinalActions} project_id={_id} />
+                </Modal.Body>
+            </Modal>
+        </>
+
     )
 
 }
