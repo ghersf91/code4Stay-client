@@ -5,6 +5,7 @@ import authService from './../../Services/auth.services'
 
 import { MessageContext } from './../../Context/userMessage.context'
 import { AuthContext } from "./../../Context/auth.context"
+import './LoginForm.css'
 
 const LoginForm = () => {
 
@@ -54,7 +55,7 @@ const LoginForm = () => {
             </Form.Group>
 
             <div className="d-grid">
-                <Button variant="dark" type="submit">Log in</Button>
+                <Button id='login-button' variant="dark" type="submit">Log in</Button>
             </div>
 
         </Form>

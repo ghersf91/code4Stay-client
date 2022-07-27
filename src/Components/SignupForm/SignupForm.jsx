@@ -3,6 +3,7 @@ import { Form, Button } from "react-bootstrap"
 import { useNavigate } from 'react-router-dom'
 import { MessageContext } from "../../Context/userMessage.context"
 import authService from "./../../Services/auth.services"
+import './SignupForm.css'
 
 const SignupForm = () => {
     const [signupData, setSignupData] = useState({
@@ -60,7 +61,7 @@ const SignupForm = () => {
 
 
             <div className="d-grid">
-                <Button variant="dark" type="submit">Register</Button>
+                <Button id='signup-button' variant="dark" type="submit">Register</Button>
             </div>
 
         </Form>

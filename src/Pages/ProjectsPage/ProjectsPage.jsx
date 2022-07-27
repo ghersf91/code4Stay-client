@@ -20,7 +20,6 @@ const ProjectPage = () => {
     }, [])
 
 
-
     const loadProjects = () => {
         projectsService
             .getProjects()

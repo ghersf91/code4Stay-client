@@ -4,6 +4,7 @@ import projectsService from './../../Services/project.services'
 import uploadService from './../../Services/upload.services'
 import { useParams } from 'react-router-dom'
 import MealsCheckbox from './MealsCheckbox'
+import './EditProjectForm.css'
 
 
 const EditProjectForm = ({ fireFinalActions }) => {
@@ -240,7 +241,7 @@ const EditProjectForm = ({ fireFinalActions }) => {
             </Form.Group>
 
             <div className='d-grid form-button'>
-                <Button variant='dark' type='submit'>Edit project</Button>
+                <Button id='edit-button' variant='dark' type='submit'>Edit project</Button>
             </div>
 
         </Form>

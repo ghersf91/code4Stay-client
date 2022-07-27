@@ -1,0 +1,10 @@
+#edit-button {
+    background-color: #0b3f5f;
+    border-color: #0b3f5f;
+    width: 200px;
+}
+
+#edit-button:hover {
+    background-color: #125883;
+    border-color: #125883;
+}
