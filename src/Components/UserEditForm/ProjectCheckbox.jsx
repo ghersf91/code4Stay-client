@@ -18,7 +18,6 @@ const ProjectCheckbox = ({ receiveProjects, projectsChecked }) => {
             const projectInterestsIndex = currentProjectInterests.indexOf(name)
 
             projectInterestsIndex > -1 && currentProjectInterests.splice(projectInterestsIndex, 1)
-            console.log(currentProjectInterests)
         }
         receiveProjects(currentProjectInterests)
     }

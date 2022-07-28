@@ -24,7 +24,6 @@ const MarkerGoogle = ({ projects }) => {
                                     lng: project.location.coordinates[1]
                                 }}
                                 onMouseOver={() => onSelect(project)}
-                            // icon={{ url: '' }}
                             />
                         </>
                     )

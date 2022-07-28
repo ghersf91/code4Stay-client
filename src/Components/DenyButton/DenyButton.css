@@ -1,0 +1,12 @@
+#deny-button {
+    background-color: #8c1515;
+    border-color: #8c1515;
+    border-radius: 100px;
+    width: 200px;
+    margin: 10px 10px 0 0;
+}
+
+#deny-button:hover {
+    background-color: #b41b1b;
+    border-color: #b41b1b;
+}
