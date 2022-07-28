@@ -1,6 +1,7 @@
 import { Button } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 import projectsService from '../../Services/project.services'
+import './DenyButton.css'
 
 const DenyButton = ({ user_id }) => {
     const navigate = useNavigate()
@@ -11,7 +12,7 @@ const DenyButton = ({ user_id }) => {
             .catch(err => console.log(err))
     }
     return (
-        <Button size="md" variant="danger" onClick={handleClick}>Deny</Button>
+        <Button id='deny-button' size="md" variant="danger" onClick={handleClick}>Deny</Button>
     )
 }
 

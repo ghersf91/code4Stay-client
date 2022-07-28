@@ -1,6 +1,7 @@
 import { Button } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 import projectsService from '../../Services/project.services'
+import './AcceptJoinButton.css'
 
 const AcceptJoinButton = ({ user_id }) => {
     const navigate = useNavigate()
@@ -12,7 +13,7 @@ const AcceptJoinButton = ({ user_id }) => {
 
     }
     return (
-        <Button size="md" variant="success" onClick={handleClick}>Accept</Button>
+        <Button id='accept-button' size="md" variant="success" onClick={handleClick}>Accept</Button>
     )
 }
 
