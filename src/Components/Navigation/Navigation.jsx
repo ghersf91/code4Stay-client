@@ -22,7 +22,7 @@ const Navigation = () => {
         <Navbar expand="lg" variant='dark'>
             <Container>
                 <Link to="/">
-                    <Navbar.Brand>Code4Stay</Navbar.Brand>
+                    <Navbar.Brand><img src='../../../../public/logo.png' /></Navbar.Brand>
                 </Link>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
