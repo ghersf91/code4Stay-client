@@ -1,3 +1,9 @@
 .editClick {
     color: blue;
 }
+
+.deleteLink {
+    color: red;
+    text-decoration: none;
+    font-size: 1.5em;
+}

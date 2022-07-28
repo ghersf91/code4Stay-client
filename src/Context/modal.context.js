@@ -9,9 +9,6 @@ function ModalWrapper(props) {
     const openModal = () => setShowModal(true)
     const closeModal = () => setShowModal(false)
 
-
-
-
     return (
         <ModalContext.Provider value={{ showModal, openModal, closeModal }}>
             {props.children}

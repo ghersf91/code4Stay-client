@@ -45,6 +45,10 @@ class ProjectService {
         return this.api.put(`join/${user_id}`)
     }
 
+    denyProject(user_id) {
+        return this.api.put(`deny/${user_id}`)
+    }
+
     deleteProject(project_id) {
         return this.api.delete(`/delete/${project_id}`)
     }

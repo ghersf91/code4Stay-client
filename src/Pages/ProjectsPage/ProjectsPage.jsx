@@ -7,6 +7,7 @@ import CreateProjectForm from "../../Components/CreateProjectForm/CreateProjectF
 import MapGoogle from '../../Components/MapGoogle/MapGoogle'
 import ProjectsList from "../../Components/ProjectsList/ProjectList"
 import { ModalContext } from "../../Context/modal.context"
+import './ProjectsPage.css'
 
 
 const ProjectPage = () => {
@@ -42,7 +43,11 @@ const ProjectPage = () => {
                 <MapGoogle projects={projects} />
             </container>
 
-            <h1>Browse through our opportunities {user && <span onClick={openModal}>+</span>}</h1>
+            <h1>Browse through our opportunities </h1>
+            <div>
+                {user && <a href='#' className='createLink' onClick={openModal}>Create project</a>}
+            </div>
+            <br />
 
             <ProjectsList projects={projects} />
 

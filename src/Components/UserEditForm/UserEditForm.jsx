@@ -73,7 +73,10 @@ const UserEditForm = ({ fireFinalActions }) => {
 
         userService
             .editUser(user_id, userData)
-            .then(({ data }) => navigate(`/users/profile/${user_id}`))
+            .then(({ data }) => {
+                fireFinalActions()
+                // navigate(`/users/profile/${user_id}`)
+            })
             .catch(err => console.log(err))
     }
 
@@ -123,15 +126,12 @@ const UserEditForm = ({ fireFinalActions }) => {
             </Form.Group>
             <Row>
                 <Col>
-                    <Form>
-                        <ProjectCheckbox receiveProjects={receiveProjects} projectsChecked={projectsChecked} />
 
-                    </Form>
+                    <ProjectCheckbox receiveProjects={receiveProjects} projectsChecked={projectsChecked} />
+
                 </Col>
                 <Col>
-                    <Form >
-                        <LocationCheckbox locationsChecked={locationsChecked} receiveLocations={receiveLocations} />
-                    </Form>
+                    <LocationCheckbox locationsChecked={locationsChecked} receiveLocations={receiveLocations} />
                 </Col>
             </Row>
             <Form.Group className='mb-3' controlId='profilePicture'>

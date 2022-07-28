@@ -8,6 +8,7 @@ import { Button, ButtonGroup, Card, ListGroup, Container, Modal } from 'react-bo
 import AcceptJoinButton from "../../Components/AcceptJoinButton/AcceptJoinButton"
 import UserEditForm from "../../Components/UserEditForm/UserEditForm"
 import './ProfilePage.css'
+import DenyButton from "../../Components/DenyButton/DenyButton"
 
 
 const ProfilePage = () => {
@@ -56,9 +57,11 @@ const ProfilePage = () => {
     }
 
 
+
     const fireFinalActions = () => {
         closeModal()
-        setShowMessage({ show: true, title: 'Completed', text: 'Project created' })
+        setShowMessage({ show: true, title: 'Completed', text: 'User information updated' })
+        loadUser()
     }
 
     const isHost = userData.role === 'HOST' || userData.role === 'ADMIN' ? true : false
@@ -90,7 +93,7 @@ const ProfilePage = () => {
                             <ListGroup variant='flush'>
                                 <ListGroup.Item>
                                     {
-                                        projectTypeInterests.map(project => <>-{project}<br /></>)
+                                        projectTypeInterests.map(project => <div key={project}>-{project}<br /></div>)
                                     }
                                 </ListGroup.Item>
                             </ListGroup>
@@ -100,7 +103,7 @@ const ProfilePage = () => {
                             <ListGroup variant='flush' className="mb-5">
                                 <ListGroup.Item>
                                     {
-                                        locationInterests.map(project => <>-{project}<br /></>)
+                                        locationInterests.map(project => <div key={project}>-{project}<br /></div>)
                                     }
                                 </ListGroup.Item>
                             </ListGroup>
@@ -111,29 +114,26 @@ const ProfilePage = () => {
                                     {
                                         requests.map(response => {
                                             return (
-                                                <>
+                                                <div key={response._id}>
                                                     <ListGroup.Item>-{response.username}: {response.bio}</ListGroup.Item>
                                                     <ButtonGroup>
                                                         <AcceptJoinButton user_id={response._id} />
-                                                        <Link to={`/projects/join/${user_id}`}>
+                                                        <DenyButton user_id={response._id} />
+                                                        {/* <Link to={`/projects`}>
                                                             <Button variant='danger'>Deny</Button>
-                                                        </Link>
+                                                        </Link> */}
                                                     </ButtonGroup>
-                                                </>
+                                                </div>
                                             )
                                         })
                                     }
                                 </ListGroup>
                             }
 
-                            <Link to={`/`}>
-                                <Button variant="danger"
-                                    onClick={() => {
-                                        userDelete()
-                                        logout()
-                                    }}>
-                                    Delete account
-                                </Button>
+                            <Link className='deleteLink' to={'/'}>
+                                <span onClick={() => userDelete()}>
+                                    🗑
+                                </span>
                             </Link>
                         </Card.Body>
                     </Card>

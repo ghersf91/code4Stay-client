@@ -45,24 +45,35 @@ const ProjectCard = ({ gallery, projectName, city, country, description, _id, ow
                         <Card.Title >{projectName}</Card.Title>
                     </Link>
                     <Card.Subtitle className="mb-2 text-muted">Site: {city}, {country}</Card.Subtitle>
-                    <Card.Text>
+                    <Card.Text >
                         {description}<br /><br />
-                        {user && owner === user._id
-                            &&
-                            <Link className='editLink' to={`/projects/edit/${_id}`}>
-                                <p >Edit</p>
-                            </Link>
-                        }
-                        {/* {user && owner === user._id
+                        <div className='iconsText'>
+                            {user && owner === user._id
+                                &&
+                                <Link className='editLink' to={`/projects/edit/${_id}`}>
+                                    <p >🖉</p>
+                                </Link>
+                            }
+                            {/* {user && owner === user._id
                             && <span className='editLink' onClick={openModal}>Edit</span>} */}
-                        <br />
-                        {user && user.role === 'ADMIN'
-                            && <span className=' deleteLink' onClick={() => projectDelete()}>
-                                Delete</span>}
-                        <br />
-                        {user && owner === user._id && user.role !== 'ADMIN'
-                            && <span className='deleteLink' onClick={() => projectDelete()}>
-                                Delete</span>}
+                            <br />
+                            {user && user.role === 'ADMIN'
+
+                                &&
+                                <Link className='deleteLink' to='#'>
+                                    <span onClick={() => projectDelete()}>
+                                        🗑
+                                    </span>
+                                </Link>}
+                            <br />
+                            {user && owner === user._id && user.role !== 'ADMIN'
+                                && <Link className='deleteLink' to='#'>
+                                    <span onClick={() => projectDelete()}>
+                                        🗑
+                                    </span>
+                                </Link>}
+                        </div>
+
 
                     </Card.Text>
                     <div className="d-grid">
