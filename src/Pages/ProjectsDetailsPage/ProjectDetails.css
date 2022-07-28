@@ -1,13 +1,4 @@
-#id-card {
+.detailsCard {
     display: flex;
-    padding: 5px;
-    width: 100%;
-}
 
-#id-card p {
-    margin: 20px;
 }
-
-/* .detailsCard {
-    align-content: center;
-} */

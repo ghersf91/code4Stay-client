@@ -32,12 +32,12 @@ const ProjectDetailsPage = () => {
             {
                 isLoading ?
                     <Loader /> :
-                    <Container className='mb-5 detailsCard'>
+                    <Container className='mb-5'>
                         <Row>
-                            <Col className="sm-12 lg-6  ">
+                            <Col className="md-12 lg-6  ">
                                 <ProjectIdCard project={project} />
                             </Col>
-                            <Col className="sm-12 lg-6  ">
+                            <Col className="md-12 lg-6  ">
                                 <RatingWidget testimonials={project.testimonials} _id={project_id} />
                             </Col>
                         </Row>

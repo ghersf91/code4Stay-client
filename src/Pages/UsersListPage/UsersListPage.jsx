@@ -1,10 +1,14 @@
+import { Container } from "react-bootstrap"
 import UserList from "../../Components/UserList/UserList"
+import './UsersListPage.css'
 
 const UsersListPage = () => {
 
     return (
-        <UserList />
+        <Container id="list-container">
+            <UserList />
 
+        </Container>
     )
 }
 
