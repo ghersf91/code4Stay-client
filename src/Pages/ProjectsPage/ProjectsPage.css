@@ -2,3 +2,15 @@
     text-decoration: none;
     color: black;
 }
+
+.create-button {
+    background-color: #6b8e23;
+    border-color: #6b8e23;
+    border-radius: 100px;
+    margin: 10px 10px 0 0;
+}
+
+.create-button:hover {
+    background-color: #73a510;
+    border-color: #73a510;
+}

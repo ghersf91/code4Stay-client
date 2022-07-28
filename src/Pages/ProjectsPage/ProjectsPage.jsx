@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from "react"
-import { Modal, Container } from 'react-bootstrap'
+import { Modal, Container, Button } from 'react-bootstrap'
 import projectsService from "../../Services/project.services"
 import { MessageContext } from "./../../Context/userMessage.context"
 import { AuthContext } from "./../../Context/auth.context"
@@ -45,7 +45,9 @@ const ProjectPage = () => {
 
             <h1>Browse through our opportunities </h1>
             <div>
-                {user && <a href='#' className='createLink' onClick={openModal}>Create project</a>}
+                {user &&
+                    <Button className='create-button' onClick={openModal} href="#">Create project</Button>
+                }
             </div>
             <br />
 
