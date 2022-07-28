@@ -6,7 +6,11 @@
     text-decoration: none;
 }
 
+#logo-style {
+    width: 140px;
+}
+
 #navbar-logo {
-    width: 45%;
-    height: auto;
+    width: 100%;
+    /* height: auto; */
 }

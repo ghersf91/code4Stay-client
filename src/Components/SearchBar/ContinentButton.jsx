@@ -6,7 +6,7 @@ const ContinentButton = () => {
     const allContinents = ['Africa', 'Americas', 'Asia', 'Europe', 'Oceania']
 
     return (
-        <ButtonGroup>
+        <ButtonGroup className='continent-button-group'>
             {
                 allContinents.map(e => {
                     return (

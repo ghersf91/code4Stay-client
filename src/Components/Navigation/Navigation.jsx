@@ -18,7 +18,7 @@ const Navigation = () => {
     return (
         <Navbar expand="lg" variant='dark'>
             <Container>
-                <Link to="/">
+                <Link id='logo-style' to="/">
                     <Navbar.Brand><img id='navbar-logo' src='https://res.cloudinary.com/dr2octd2p/image/upload/v1659018453/code4stay_uoxh1b.png' /></Navbar.Brand>
                 </Link>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
