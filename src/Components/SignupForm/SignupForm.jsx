@@ -44,7 +44,7 @@ const SignupForm = () => {
 
             <Form.Group className="mb-3" controlId="username">
                 <Form.Label>Username</Form.Label>
-                <Form.Control type="text" value={username} onChange={handleInputChange} name="username" />
+                <Form.Control className='form-input' type="text" value={username} onChange={handleInputChange} name="username" />
             </Form.Group>
 
 
