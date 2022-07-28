@@ -3,6 +3,7 @@ import { Row, Col, Container } from "react-bootstrap"
 import { useNavigate, useParams } from "react-router-dom"
 import MapGoogle from "../../Components/MapGoogle/MapGoogle"
 import ProjectCard from "../../Components/ProjectsCard/ProjectsCard"
+import ContinentButton from "../../Components/SearchBar/ContinentButton"
 import SearchBar from "../../Components/SearchBar/SearchBar"
 import searchService from "../../Services/search.services"
 import './SearchPage.css'
@@ -11,12 +12,12 @@ const SearchPage = () => {
     const { continent } = useParams()
     const navigate = useNavigate()
 
-    const [query, setQuery] = useState('')
+    // const [query, setQuery] = useState('')
     const [projects, setProjects] = useState([])
 
     useEffect(() => {
         loadProjects()
-    })
+    }, [continent])
 
     const loadProjects = () => {
         searchService
@@ -31,13 +32,13 @@ const SearchPage = () => {
         navigate('/projects')
     }
 
-    const receiveContinents = data => {
-        setProjects(data)
-    }
+    // const receiveContinents = data => {
+    //     setProjects(data)
+    // }
 
-    const receiveFilter = data => {
-        setQuery(data)
-    }
+    // const receiveFilter = data => {
+    //     setQuery(data)
+    // }
 
     return (
         <Container>
@@ -45,23 +46,26 @@ const SearchPage = () => {
                 <MapGoogle projects={projects} />
             </div>
             <h1>These are the projects in {continent}</h1>
-            <SearchBar receiveContinents={receiveContinents} receiveFilter={receiveFilter} />
-            <br />
+            {/* <SearchBar receiveContinents={receiveContinents} receiveFilter={receiveFilter} />
+            <br /> */}
+            <ContinentButton />
             <Row>
                 {
-                    projects.filter(post => {
-                        if (query === "") {
-                            return post;
-                        } else if (post.projectName.toLowerCase().includes(query.toLowerCase())) {
-                            return post;
-                        }
-                    }).map(project => {
-                        return (
-                            <Col lg={3} md={6} key={project._id} >
-                                <ProjectCard {...project} />
-                            </Col>
-                        )
-                    })
+                    projects
+                        // .filter(post => {
+                        // if (query === "") {
+                        //     return post;
+                        // } else if (post.projectName.toLowerCase().includes(query.toLowerCase())) {
+                        //     return post;
+                        // }
+                        // })
+                        .map(project => {
+                            return (
+                                <Col lg={3} md={6} key={project._id} >
+                                    <ProjectCard {...project} />
+                                </Col>
+                            )
+                        })
                 }
             </Row>
             <div className='mb-5'>

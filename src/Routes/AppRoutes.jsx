@@ -9,6 +9,7 @@ import PrivateRoute from './PrivateRoutes'
 import ProjectDetailsPage from '../Pages/ProjectsDetailsPage/ProjectDetails'
 import EditProjectPage from '../Pages/EditProjectPage/EditProjectPage'
 import SearchPage from '../Pages/SearchPage/SearchPage'
+import UsersListPage from '../Pages/UsersListPage/UsersListPage'
 
 const AppRoutes = () => {
 
@@ -32,6 +33,10 @@ const AppRoutes = () => {
 
                 <Route path="/projects/create" element={<PrivateRoute />}>
                     <Route path="" element={<CreateProjectPage />} />
+                </Route>
+
+                <Route path="users/list" element={<PrivateRoute />}>
+                    <Route path="" element={<UsersListPage />} />
                 </Route>
 
                 <Route path="/projects" element={<ProjectsPage />} />

@@ -18,9 +18,11 @@ const Navigation = () => {
     return (
         <Navbar expand="lg" variant='dark'>
             <Container>
-                <Link to="/">
-                    <Navbar.Brand><img src='../../../../public/logo.png' /></Navbar.Brand>
-                </Link>
+
+                <Navbar.Brand href="/">
+                    <img src='../../public/logo.png' alt="Logo" />
+                </Navbar.Brand>
+
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="ms-auto">
@@ -46,11 +48,17 @@ const Navigation = () => {
                                     <Link to={`/users/profile/${user._id}`}>
                                         <Nav.Link as="span">My profile {user.username}</Nav.Link>
                                     </Link>
-
+                                    {
+                                        user?.role === 'ADMIN'
+                                        &&
+                                        <Link to={'/users/list'}>
+                                            <Nav.Link as="span">User list</Nav.Link>
+                                        </Link>
+                                    }
                                     <Nav.Link as="span" onClick={logout}>Log out</Nav.Link>
-
                                 </>
                         }
+
                     </Nav>
                 </Navbar.Collapse>
             </Container>

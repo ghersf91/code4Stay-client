@@ -1,9 +1,8 @@
-import { ButtonGroup, Button, Form } from "react-bootstrap"
-import { Link } from "react-router-dom"
+import { Form } from "react-bootstrap"
 import searchService from "../../Services/search.services"
+import ContinentButton from "./ContinentButton"
 
 const SearchBar = ({ receiveFilter, receiveContinents }) => {
-    const allContinents = ['Africa', 'Americas', 'Asia', 'Europe', 'Oceania']
 
     const toggleFilter = e => {
         searchService
@@ -14,18 +13,8 @@ const SearchBar = ({ receiveFilter, receiveContinents }) => {
     return (
         <>
             <Form.Control className='form-input' placeholder="Enter Search" onChange={toggleFilter}></Form.Control>
-            <ButtonGroup>
-                {
-                    allContinents.map(e => {
-                        return (
-                            <Link key={e} to={`/search/${e}`}>
-                                <Button variant='light'
-                                >{e}</Button>
-                            </Link>
-                        )
-                    })
-                }
-            </ButtonGroup>
+
+            <ContinentButton />
         </>
     )
 }
