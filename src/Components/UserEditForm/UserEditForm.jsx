@@ -51,7 +51,6 @@ const UserEditForm = ({ fireFinalActions }) => {
         userService
             .getUser(user_id)
             .then(({ data }) => {
-                console.log(data.projectTypeInterests)
                 setProjectsChecked(data.projectTypeInterests)
                 setLocationsChecked(data.locationInterests)
                 setUserData(data)

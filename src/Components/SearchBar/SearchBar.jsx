@@ -5,11 +5,10 @@ import searchService from "../../Services/search.services"
 const SearchBar = ({ receiveFilter, receiveContinents }) => {
     const allContinents = ['Africa', 'Americas', 'Asia', 'Europe', 'Oceania']
     const toggleContinent = e => {
-        console.log(e)
+
         searchService
             .getContinent(e)
             .then(response => {
-                console.log(response)
                 receiveContinents(response.data)
             })
             .catch(err => console.log(err))
@@ -18,11 +17,7 @@ const SearchBar = ({ receiveFilter, receiveContinents }) => {
     const toggleFilter = e => {
         searchService
             .filterProjects(e.target.value)
-            .then(({ data }) => {
-                console.log('----', data)
-                // toggleContinent()
-                receiveFilter(e.target.value)
-            })
+            .then(({ data }) => receiveFilter(e.target.value))
             .catch(err => console.log(err))
     }
     return (
@@ -35,7 +30,6 @@ const SearchBar = ({ receiveFilter, receiveContinents }) => {
                         return (
                             <Link key={e} to={`/search/${e}`}>
                                 <Button variant='light'
-                                // onClick={() => toggleContinent(e)}
                                 >{e}</Button>
                             </Link>
                         )

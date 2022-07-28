@@ -19,8 +19,6 @@ const ProjectsList = ({ projects }) => {
         setQuery(data)
     }
 
-    console.log(query)
-
     return (
 
         <>

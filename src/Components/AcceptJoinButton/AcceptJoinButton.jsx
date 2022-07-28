@@ -7,10 +7,7 @@ const AcceptJoinButton = ({ user_id }) => {
     const handleClick = () => {
         projectsService
             .joinProject(user_id)
-            .then(({ data }) => {
-                console.log(data)
-                navigate(`/projects`)
-            })
+            .then(() => navigate(`/projects`))
             .catch(err => console.log(err))
 
     }

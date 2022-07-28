@@ -70,14 +70,6 @@ const ProjectCard = ({ gallery, projectName, city, country, description, _id, ow
                     </div>
                 </Card.Body>
             </Card>
-            <Modal className='modal' show={showModal} onHide={closeModal}>
-                <Modal.Header closeButton>
-                    <Modal.Title>Edit project</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <EditProjectForm fireFinalActions={fireFinalActions} project_id={_id} />
-                </Modal.Body>
-            </Modal>
         </>
 
     )

@@ -26,7 +26,6 @@ const LocationCheckbox = ({ locationsChecked, receiveLocations }) => {
 
             locationInterestsIndex > -1 && currentLocationInterests.splice(locationInterestsIndex, 1)
 
-            console.log(currentLocationInterests)
         }
 
 
