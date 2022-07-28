@@ -1,15 +1,21 @@
 .continent-button {
-    margin: 10px 20px 10px 0;
+    margin: 10px 20px 0 0;
     background-color: #0b3f5f;
-    color: white;
+    color: #95a9b6;
     border-radius: 100px;
 }
 
 .continent-button:hover {
     background-color: #125883;
-    color: white;
+    color: #95a9b6;
 }
 
 .continent-button:focus {
     background-color: #6b8e23;
+    color: #95a9b6;
+}
+
+.continent-button-group {
+    display: flex;
+    flex-wrap: wrap;
 }
