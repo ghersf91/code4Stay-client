@@ -5,3 +5,8 @@
 .navbar a {
     text-decoration: none;
 }
+
+#navbar-logo {
+    width: 50%;
+    height: auto;
+}
