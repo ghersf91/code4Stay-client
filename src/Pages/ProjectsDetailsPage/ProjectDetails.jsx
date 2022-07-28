@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { Col, Row, Container } from "react-bootstrap"
+import { Col, Row, Container, Card } from "react-bootstrap"
 import { useParams } from "react-router-dom"
 import Loader from "../../Components/Loader/Loader"
 import projectsService from "../../Services/project.services"
@@ -33,14 +33,17 @@ const ProjectDetailsPage = () => {
                 isLoading ?
                     <Loader /> :
                     <Container className="mb-5 detailsCard">
-                        <Row>
-                            <Col className="md-12 lg-6  ">
-                                <ProjectIdCard project={project} />
-                            </Col>
-                            <Col className="md-12 lg-6  ">
-                                <RatingWidget testimonials={project.testimonials} _id={project_id} />
-                            </Col>
-                        </Row>
+                        <Card>
+                            <Row>
+                                <Col md={6}>
+                                    <ProjectIdCard project={project} />
+                                </Col>
+                                <Col md={6}>
+                                    <RatingWidget testimonials={project.testimonials} _id={project_id} />
+                                </Col>
+                            </Row>
+                        </Card>
+
                     </Container >
             }
         </article>
