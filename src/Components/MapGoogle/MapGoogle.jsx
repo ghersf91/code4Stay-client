@@ -9,8 +9,8 @@ const MapGoogle = ({ projects }) => {
 
 
     const center = {
-        lat: 27.766024583856897,
-        lng: 9.930292853032203
+        lat: 40.38280301118558,
+        lng: - 3.4166048844266776
     }
 
     const size = {

@@ -1,0 +1,11 @@
+#join-button {
+    background-color: #6b8e23;
+    border-color: #6b8e23;
+    border-radius: 100px;
+    width: 200px;
+}
+
+#join-button:hover {
+    background-color: #73a510;
+    border-color: #73a510;
+}
