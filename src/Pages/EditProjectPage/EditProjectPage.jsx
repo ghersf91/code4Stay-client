@@ -8,8 +8,6 @@ const EditProjectPage = () => {
 
     const { closeModal } = useContext(ModalContext)
 
-
-
     const navigate = useNavigate()
 
     const fireFinalActions = () => {

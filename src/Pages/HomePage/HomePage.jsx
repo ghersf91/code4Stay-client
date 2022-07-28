@@ -28,7 +28,6 @@ const HomePage = () => {
                     <h1 className='mb-5 carousel-text'>You code. We take care of you.</h1>
                 </Carousel.Caption>
             </Carousel.Item>
-
         </Carousel>
     )
 }

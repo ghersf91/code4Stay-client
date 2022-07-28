@@ -39,7 +39,6 @@ const SearchPage = () => {
         setQuery(data)
     }
 
-
     return (
         <Container>
             <div className="d-none d-md-block">
@@ -47,11 +46,9 @@ const SearchPage = () => {
             </div>
             <h1>These are the projects in {continent}</h1>
             <SearchBar receiveContinents={receiveContinents} receiveFilter={receiveFilter} />
-
             <br />
             <Row>
                 {
-
                     projects.filter(post => {
                         if (query === "") {
                             return post;
@@ -65,14 +62,12 @@ const SearchPage = () => {
                             </Col>
                         )
                     })
-
                 }
             </Row>
             <div className='mb-5'>
                 <span onClick={() => goBack()}><a className='backLink' href="#">Back to projects</a></span>
             </div>
         </Container>
-
     )
 }
 

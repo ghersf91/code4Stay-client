@@ -34,10 +34,7 @@ const SignupForm = () => {
             .catch(err => console.log(err))
     }
 
-
-
     const { username, password, email } = signupData
-
 
     return (
         <Form onSubmit={handleSubmit}>
@@ -47,18 +44,15 @@ const SignupForm = () => {
                 <Form.Control className='form-input' type="text" value={username} onChange={handleInputChange} name="username" />
             </Form.Group>
 
-
             <Form.Group className="mb-3" controlId="password">
                 <Form.Label>Password</Form.Label>
                 <Form.Control className='form-input' type="password" value={password} onChange={handleInputChange} name="password" />
             </Form.Group>
 
-
             <Form.Group className="mb-3" controlId="email">
                 <Form.Label>Email</Form.Label>
                 <Form.Control className='form-input' type="email" value={email} onChange={handleInputChange} name="email" />
             </Form.Group>
-
 
             <div className="d-grid">
                 <Button id='signup-button' variant="dark" type="submit">Register</Button>

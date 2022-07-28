@@ -36,7 +36,6 @@ const LoginForm = () => {
             .catch(err => console.log(err))
     }
 
-
     const { password, email } = loginData
 
     return (

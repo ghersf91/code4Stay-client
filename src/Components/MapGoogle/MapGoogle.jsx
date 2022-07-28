@@ -31,7 +31,6 @@ const MapGoogle = ({ projects }) => {
                 </Container>
             </LoadScript >
         </div>
-
     )
 }
 

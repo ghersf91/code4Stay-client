@@ -5,18 +5,15 @@ import { AuthContext } from '../../Context/auth.context'
 import { MessageContext } from '../../Context/userMessage.context'
 import './Navigation.css'
 
-
 const Navigation = () => {
 
     const { user, logoutUser } = useContext(AuthContext)
     const { setShowMessage } = useContext(MessageContext)
 
-
     const logout = () => {
         setShowMessage({ show: true, title: 'Until nex time', text: 'your session was closed successfully' })
         logoutUser()
     }
-
 
     return (
         <Navbar expand="lg" variant='dark'>

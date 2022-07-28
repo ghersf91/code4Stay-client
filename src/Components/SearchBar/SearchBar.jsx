@@ -4,15 +4,6 @@ import searchService from "../../Services/search.services"
 
 const SearchBar = ({ receiveFilter, receiveContinents }) => {
     const allContinents = ['Africa', 'Americas', 'Asia', 'Europe', 'Oceania']
-    const toggleContinent = e => {
-
-        searchService
-            .getContinent(e)
-            .then(response => {
-                receiveContinents(response.data)
-            })
-            .catch(err => console.log(err))
-    }
 
     const toggleFilter = e => {
         searchService
@@ -23,7 +14,6 @@ const SearchBar = ({ receiveFilter, receiveContinents }) => {
     return (
         <>
             <Form.Control className='form-input' placeholder="Enter Search" onChange={toggleFilter}></Form.Control>
-
             <ButtonGroup>
                 {
                     allContinents.map(e => {
@@ -33,12 +23,10 @@ const SearchBar = ({ receiveFilter, receiveContinents }) => {
                                 >{e}</Button>
                             </Link>
                         )
-
                     })
                 }
             </ButtonGroup>
         </>
-
     )
 }
 

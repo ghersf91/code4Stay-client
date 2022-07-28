@@ -13,7 +13,6 @@ const RatingWidget = ({ testimonials, _id }) => {
     const { user } = useContext(AuthContext)
 
     const [comments, setComments] = useState(testimonials)
-
     const [rate, setRate] = useState(0)
     const [comment, setComment] = useState('')
 
@@ -24,7 +23,6 @@ const RatingWidget = ({ testimonials, _id }) => {
     const getComment = content => {
         setComment(content)
     }
-
 
     const handleSubmit = e => {
         e.preventDefault()

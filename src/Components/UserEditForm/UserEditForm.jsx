@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import { Form, Button, Row, Col } from "react-bootstrap"
-import { useNavigate, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import userService from "./../../Services/user.services"
 import uploadService from './../../Services/upload.services'
 import LocationCheckbox from "./LocationCheckbox"
@@ -24,9 +24,6 @@ const UserEditForm = ({ fireFinalActions }) => {
 
     const [locationsChecked, setLocationsChecked] = useState([])
     const [projectsChecked, setProjectsChecked] = useState([])
-
-
-    const navigate = useNavigate()
 
     useEffect(() => {
         loadUser()
@@ -67,16 +64,12 @@ const UserEditForm = ({ fireFinalActions }) => {
         setUserData({ ...userData, [name]: inputValue })
     }
 
-
     const handleSubmit = e => {
         e.preventDefault()
 
         userService
             .editUser(user_id, userData)
-            .then(({ data }) => {
-                fireFinalActions()
-                // navigate(`/users/profile/${user_id}`)
-            })
+            .then(() => fireFinalActions())
             .catch(err => console.log(err))
     }
 

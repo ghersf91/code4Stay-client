@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react"
-import { Card, Col, Row, Container } from "react-bootstrap"
+import { Col, Row, Container } from "react-bootstrap"
 import { useParams } from "react-router-dom"
-import styled from "styled-components"
 import Loader from "../../Components/Loader/Loader"
-import JoinButton from "../../Components/JoinProjectButton/JoinProjectButton"
 import projectsService from "../../Services/project.services"
 import RatingWidget from "../../Components/RatingWidget/RatingWidget"
 import ProjectIdCard from "../../Components/ProjectIdCard/ProjectIdCard"
@@ -18,8 +16,6 @@ const ProjectDetailsPage = () => {
     useEffect(() => {
         loadProject()
     }, [])
-
-
 
     const loadProject = () => {
         projectsService
@@ -40,10 +36,7 @@ const ProjectDetailsPage = () => {
                         <Row>
                             <Col className="sm-12 lg-6  ">
                                 <ProjectIdCard project={project} />
-                                {/* <JoinButton project_id={project_id} /> */}
-
                             </Col>
-
                             <Col className="sm-12 lg-6  ">
                                 <RatingWidget testimonials={project.testimonials} _id={project_id} />
                             </Col>
