@@ -1,0 +1,15 @@
+#continent-button {
+    margin: 10px 20px 10px 0;
+    background-color: #0b3f5f;
+    color: white;
+    border-radius: 100px;
+}
+
+#continent-button:hover {
+    background-color: #125883;
+    color: white;
+}
+
+#continent-button:focus {
+    background-color: #6b8e23;
+}

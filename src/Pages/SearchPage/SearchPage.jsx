@@ -16,7 +16,7 @@ const SearchPage = () => {
 
     useEffect(() => {
         loadProjects()
-    })
+    }, [])
 
     const loadProjects = () => {
         searchService
