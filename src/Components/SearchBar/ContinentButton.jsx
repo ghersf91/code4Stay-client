@@ -1,5 +1,6 @@
 import { ButtonGroup, Button } from "react-bootstrap"
 import { Link } from "react-router-dom"
+import './SearchBar.css'
 
 const ContinentButton = () => {
     const allContinents = ['Africa', 'Americas', 'Asia', 'Europe', 'Oceania']
@@ -10,7 +11,7 @@ const ContinentButton = () => {
                 allContinents.map(e => {
                     return (
                         <Link key={e} to={`/search/${e}`}>
-                            <Button variant='light'
+                            <Button className='continent-button' variant='light'
                             >{e}</Button>
                         </Link>
                     )
