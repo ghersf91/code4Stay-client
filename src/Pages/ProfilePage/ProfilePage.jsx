@@ -80,7 +80,7 @@ const ProfilePage = () => {
                     <Card >
                         <Card.Img variant="top" src={profilePicture} />
                         <Card.Body>
-                            <Card.Title>{role} {user_id === user._id && <span className='editClick' onClick={openModal}> Edit</span>}</Card.Title>
+                            <Card.Title>{role}</Card.Title>
                             <Card.Text>
                                 {bio}
                             </Card.Text>
@@ -119,9 +119,6 @@ const ProfilePage = () => {
                                                     <ButtonGroup>
                                                         <AcceptJoinButton user_id={response._id} />
                                                         <DenyButton user_id={response._id} />
-                                                        {/* <Link to={`/projects`}>
-                                                            <Button variant='danger'>Deny</Button>
-                                                        </Link> */}
                                                     </ButtonGroup>
                                                 </div>
                                             )
@@ -135,6 +132,13 @@ const ProfilePage = () => {
                                     🗑
                                 </span>
                             </Link>
+                            <Link className='editClick' to='#'>
+                                {
+                                    user_id === user._id && <span onClick={openModal}> 🖉</span>
+                                }
+                            </Link>
+
+
                         </Card.Body>
                     </Card>
                     <Modal className='modal' show={showModal} onHide={closeModal}>

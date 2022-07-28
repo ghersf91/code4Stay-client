@@ -171,35 +171,32 @@ const CreateProjectForm = ({ fireFinalActions }) => {
 
                 </Row>
 
-                <Form>
-                    <Form.Group className='mb-3' controlId='mealsIncluded' name='mealsIncluded' onChange={handleChange}>
-                        <Form.Label>Meals included</Form.Label>
-                        <div key={`inline-checkbox`} className="mb-3">
-                            <Form.Check
-                                inline
-                                label="Breakfast"
-                                name="Breakfast"
-                                type={`checkbox`}
-                                id={"Breakfast"}
-                            />
-                            <Form.Check
-                                inline
-                                label="Lunch"
-                                name="Lunch"
-                                type={`checkbox`}
-                                id={"Lunch"}
-                            />
-                            <Form.Check
-                                inline
-                                label="Supper"
-                                name="Supper"
-                                type={`checkbox`}
-                                id={"Supper"}
-                            />
-                        </div>
-                    </Form.Group>
-                </Form>
-
+                <Form.Group className='mb-3' controlId='mealsIncluded' name='mealsIncluded' onChange={handleChange}>
+                    <Form.Label>Meals included</Form.Label>
+                    <div key={`inline-checkbox`} className="mb-3">
+                        <Form.Check
+                            inline
+                            label="Breakfast"
+                            name="Breakfast"
+                            type={`checkbox`}
+                            id={"Breakfast"}
+                        />
+                        <Form.Check
+                            inline
+                            label="Lunch"
+                            name="Lunch"
+                            type={`checkbox`}
+                            id={"Lunch"}
+                        />
+                        <Form.Check
+                            inline
+                            label="Supper"
+                            name="Supper"
+                            type={`checkbox`}
+                            id={"Supper"}
+                        />
+                    </div>
+                </Form.Group>
 
                 <Row>
                     <Col>

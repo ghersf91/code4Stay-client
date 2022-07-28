@@ -11,7 +11,7 @@ const ProjectIdCard = ({ project }) => {
                 {
                     project.gallery.map(elem => {
                         return (
-                            <Carousel.Item interval={100000}>
+                            <Carousel.Item interval={100000} key={elem}>
                                 <img
                                     className="d-block carousel-pic"
                                     src={elem}

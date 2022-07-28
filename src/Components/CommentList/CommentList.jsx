@@ -20,23 +20,20 @@ const CommentList = ({ testimonials }) => {
             {
                 comments.map(e => {
                     return (
-                        <>
-                            <Card id="commentCard">
-                                <Row>
-                                    <Col xs='6' className="imageSide">
-                                        <Card.Img variant="top" size='sm' src={e.giver.profilePicture} id='cardImage' />
-                                        <Card.Title >{e.giver.username}</Card.Title>
-                                    </Col>
+                        <Card id="commentCard" key={e._id}>
+                            <Row>
+                                <Col xs='6' className="imageSide">
+                                    <Card.Img variant="top" size='sm' src={e.giver.profilePicture} id='cardImage' />
+                                    <Card.Title >{e.giver.username}</Card.Title>
+                                </Col>
 
-                                    <Col xs='6' className='commentSide'>
-                                        <Card.Title>{e.comment}</Card.Title>
-                                        <Card.Subtitle>{e.score}/5</Card.Subtitle>
-                                    </Col>
+                                <Col xs='6' className='commentSide'>
+                                    <Card.Title>{e.comment}</Card.Title>
+                                    <Card.Subtitle>{e.score}/5</Card.Subtitle>
+                                </Col>
 
-                                </Row>
-                            </Card>
-
-                        </>
+                            </Row>
+                        </Card>
                     )
                 })
             }

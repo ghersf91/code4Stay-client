@@ -1,12 +1,9 @@
 import { GoogleMap, LoadScript } from '@react-google-maps/api';
+import { Container } from 'react-bootstrap';
 import MarkerGoogle from './../MarkerGoogle/MarkerGoogle'
 import './MapGoogle.css'
 
-
-
 const MapGoogle = ({ projects }) => {
-
-
 
     const center = {
         lat: 40.38280301118558,
@@ -21,7 +18,7 @@ const MapGoogle = ({ projects }) => {
     return (
         <div className='mapWidget'>
             <LoadScript googleMapsApiKey='AIzaSyDyJLzEV4bMHGkkovvuE00bI7PJjY1QgSA'>
-                <container className='map-container'>
+                <Container className='map-container'>
                     <GoogleMap
 
                         mapContainerStyle={size}
@@ -31,8 +28,7 @@ const MapGoogle = ({ projects }) => {
                         <MarkerGoogle projects={projects} />
 
                     </GoogleMap>
-                </container>
-
+                </Container>
             </LoadScript >
         </div>
 

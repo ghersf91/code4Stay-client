@@ -72,7 +72,7 @@ const EditProjectForm = ({ fireFinalActions }) => {
 
         projectsService
             .editProject(project_id, projectData)
-            .then(({ data }) => {
+            .then(() => {
                 fireFinalActions()
             })
             .catch(ERR => console.error(ERR))
@@ -103,8 +103,8 @@ const EditProjectForm = ({ fireFinalActions }) => {
     }, [mealsChecked])
 
     const { city, country, continent, latitude, longitude, projectName, projectType,
-        hoursPerWeek, description, minWeeks, mealsIncluded,
-        shelterType, gallery, languagesSpoken } = projectData
+        hoursPerWeek, description, minWeeks,
+        shelterType, languagesSpoken } = projectData
 
     return (
         <Form onSubmit={handleSubmit}>

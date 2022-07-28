@@ -17,8 +17,8 @@ const MarkerGoogle = ({ projects }) => {
             {
                 projects.map(project => {
                     return (
-                        <>
-                            <Marker key={project._id}
+                        <div key={project._id}>
+                            <Marker
                                 position={{
                                     lat: project.location.coordinates[0],
                                     lng: project.location.coordinates[1]
@@ -26,7 +26,7 @@ const MarkerGoogle = ({ projects }) => {
                                 onMouseOver={() => onSelect(project)}
                             // icon={{ url: '' }}
                             />
-                        </>
+                        </div>
                     )
                 })
             }

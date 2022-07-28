@@ -39,9 +39,9 @@ const ProjectPage = () => {
 
     return (
         <Container>
-            <container className="d-none d-md-block">
+            <div className="d-none d-md-block">
                 <MapGoogle projects={projects} />
-            </container>
+            </div>
 
             <h1>Browse through our opportunities </h1>
             <div>

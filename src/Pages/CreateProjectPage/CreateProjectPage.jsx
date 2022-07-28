@@ -5,7 +5,7 @@ import { ModalContext } from '../../Context/modal.context'
 import CreateProjectForm from './../../Components/CreateProjectForm/CreateProjectForm'
 import './CreateProjectPage.css'
 const CreateProjectPage = () => {
-    const { closeModal, showModal } = useContext(ModalContext)
+    const { closeModal } = useContext(ModalContext)
 
     const navigate = useNavigate()
 
