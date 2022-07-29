@@ -1,5 +1,12 @@
+code4stay is Workaway for computer programmers. We connect organizations working in socially or enviromentally minded projects, with volunteers with technical skills willing to work in exchange for food and shelter.
 
-Client routes
+code4stay was created using Node and React, as well as the Google Maps API, by Alejandro Fisman and Ghers Fisman. It has an authentication system for users, that can be volunteers or hosts. Projects can be created, and joiners can rate them and leave comments on their page.
+
+We hope you enjoy it!
+
+
+We present below the Client routes:
+
 
 | Path                                     |  Description                                               |
 | -----------                              | -----------                                                |
