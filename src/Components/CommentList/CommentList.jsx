@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react"
 import { Card, Row, Col, Container } from "react-bootstrap"
-import './CommentList.css'
+import { Rating } from 'react-simple-star-rating'
 
+import './CommentList.css'
 
 
 const CommentList = ({ testimonials }) => {
@@ -29,7 +30,16 @@ const CommentList = ({ testimonials }) => {
 
                                 <Col xs='6' className='commentSide'>
                                     <Card.Title>{e.comment}</Card.Title>
-                                    <Card.Subtitle>{e.score}/5</Card.Subtitle>
+                                    <Card.Subtitle>
+                                        <Rating
+                                            ratingValue={e.score * 20}
+                                            size={20}
+                                            label
+                                            transition
+                                            fillColor='orange'
+                                            emptyColor='gray'
+                                            className='foo'
+                                        /></Card.Subtitle>
                                 </Col>
 
                             </Row>

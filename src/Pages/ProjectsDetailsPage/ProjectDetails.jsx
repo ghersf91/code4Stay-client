@@ -32,7 +32,7 @@ const ProjectDetailsPage = () => {
             {
                 isLoading ?
                     <Loader /> :
-                    <Container className="mb-5 detailsCard">
+                    <Container className="mb-5 mt-5 detailsCard">
                         <Card>
                             <Row>
                                 <Col md={6}>
