@@ -4,6 +4,7 @@ import './ProjectIdCard.css'
 
 
 const ProjectIdCard = ({ project }) => {
+    console.log(project)
     return (
         <Card className='projectDetails'>
             <Carousel id='details-carousel'>
@@ -25,6 +26,7 @@ const ProjectIdCard = ({ project }) => {
                 <Card.Title>{project.projectName}</Card.Title>
                 <Card.Subtitle className="mb-2 text-muted">Site: {project.city}, {project.country}</Card.Subtitle>
                 <Card.Text>{project.description}</Card.Text>
+                <Card.Text><b>Host:</b>{project.owner.username}</Card.Text>
                 <JoinButton project_id={project._id} />
             </Card.Body>
         </Card>
