@@ -19,7 +19,6 @@ const ProjectCard = ({ gallery, projectName, city, country, description, _id, ow
     }
 
     return (
-
         <Card className='ProjectCard'>
             <Link to={`/projects/details/${_id}`}>
                 <Card.Img variant="top" src={gallery[0]} />
