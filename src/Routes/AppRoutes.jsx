@@ -10,6 +10,7 @@ import ProjectDetailsPage from '../Pages/ProjectsDetailsPage/ProjectDetails'
 import EditProjectPage from '../Pages/EditProjectPage/EditProjectPage'
 import SearchPage from '../Pages/SearchPage/SearchPage'
 import UsersListPage from '../Pages/UsersListPage/UsersListPage'
+import NotFoundPage from '../Pages/NotFoundPage/NotFoundPage'
 
 const AppRoutes = () => {
 
@@ -45,6 +46,8 @@ const AppRoutes = () => {
                 <Route path="/login" element={<LoginPage />} />
 
                 <Route path="/" element={<HomePage />} />
+
+                <Route path="*" element={<NotFoundPage />} />
 
             </Routes>
 

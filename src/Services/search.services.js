@@ -24,10 +24,6 @@ class SearchService {
         return this.api.get(`/${continent}`)
     }
 
-    filterProjects(query) {
-        return this.api.get(`/filter?from_to=${query}`)
-    }
-
 }
 
 const searchService = new SearchService()

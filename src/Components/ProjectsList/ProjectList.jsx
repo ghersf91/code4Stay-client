@@ -11,9 +11,6 @@ const ProjectsList = ({ projects }) => {
     useEffect(() => {
         setContinents(projects)
     }, [])
-    const receiveContinents = data => {
-        setContinents(data)
-    }
 
     const receiveFilter = data => {
         setQuery(data)
@@ -22,7 +19,7 @@ const ProjectsList = ({ projects }) => {
     return (
 
         <Form>
-            <SearchBar receiveContinents={receiveContinents} receiveFilter={receiveFilter} />
+            <SearchBar receiveFilter={receiveFilter} />
             <Row>
                 {
                     continents && continents.length > 0

@@ -2,13 +2,10 @@ import { Form } from "react-bootstrap"
 import searchService from "../../Services/search.services"
 import ContinentButton from "./ContinentButton"
 
-const SearchBar = ({ receiveFilter, receiveContinents }) => {
+const SearchBar = ({ receiveFilter }) => {
 
     const toggleFilter = e => {
-        searchService
-            .filterProjects(e.target.value)
-            .then(({ data }) => receiveFilter(e.target.value))
-            .catch(err => console.log(err))
+        receiveFilter(e.target.value)
     }
     return (
         <>
